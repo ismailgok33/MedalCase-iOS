@@ -23,6 +23,7 @@
 		91B5BCD911DA0D327801A63A /* MedalComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */; };
 		97933F8A4AA6C63F9C8055AB /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = E6339CB62417D2D25F4DE9F7 /* MedalDomain */; };
 		A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */; };
+		A82843D21F468BE6D7628B17 /* test_medalCell_earned_dark.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB91B2DE8FEDB61C7FC14A9 /* test_medalCell_earned_dark.1.png */; };
 		B2FEBD4B6ABD5539DF79B72E /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D9AB664CBA0263C7F42768CC /* DesignSystem */; };
 		D344384D17BE30C4FF8FFDBC /* MedalCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541681D35A78770E153FEF6 /* MedalCaseUITests.swift */; };
 		D4D6739F8D9DE8BC91CF2B6A /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 49DF52DD49777758DB7E3C85 /* AchievementsFeature */; };
@@ -55,6 +56,7 @@
 		1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalComponentSnapshotTests.swift; sourceTree = "<group>"; };
 		301E0B6D6CF743A574824B13 /* MedalCaseSnapshotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MedalCaseSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3636B07008A9A8141ED056 /* MedalCase.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MedalCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EB91B2DE8FEDB61C7FC14A9 /* test_medalCell_earned_dark.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_medalCell_earned_dark.1.png; sourceTree = "<group>"; };
 		4541681D35A78770E153FEF6 /* MedalCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseUITests.swift; sourceTree = "<group>"; };
 		4934C9692268B8FA81555A0B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sectionHeader_noCount.1.png; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		42B5EE5D668E4E082FDF282A /* MedalComponentSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				3EB91B2DE8FEDB61C7FC14A9 /* test_medalCell_earned_dark.1.png */,
 				9E19E58F10EE28C33812E1A2 /* test_medalCell_earned.1.png */,
 				A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */,
 				5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */,
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F18C3474A5E7171E4DE60909 /* test_medalCell_earned.1.png in Resources */,
+				A82843D21F468BE6D7628B17 /* test_medalCell_earned_dark.1.png in Resources */,
 				78AE6DB0BCD1C6155BEB44A8 /* test_medalCell_locked.1.png in Resources */,
 				A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */,
 				4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */,
