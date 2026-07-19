@@ -12,14 +12,14 @@
 		3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 78929A2D9C663C7D6B93C690 /* MedalDomain */; };
 		6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C4C58FE88A872A5119417 /* MedalData */; };
 		8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 197C13B1C7123FE7C08A1FE2 /* DesignSystem */; };
-		BE382BADF0F9855E87CF4B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4004599DB1DC16A7D68AE436 /* ContentView.swift */; };
+		F19773B48A7FFC0C50D661C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934C9692268B8FA81555A0B /* RootView.swift */; };
 		FF23EBDADBFE556A00DAEF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		022206842C002B9B033C9E71 /* MedalDomain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalDomain; path = Modules/MedalDomain; sourceTree = SOURCE_ROOT; };
 		3A3636B07008A9A8141ED056 /* MedalCase.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MedalCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4004599DB1DC16A7D68AE436 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4934C9692268B8FA81555A0B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7BBD1894F9E75DE52CBD751A /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DesignSystem; path = Modules/DesignSystem; sourceTree = SOURCE_ROOT; };
 		CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseApp.swift; sourceTree = "<group>"; };
 		DAD1BB787459AD5DBB36BD1E /* AchievementsFeature */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AchievementsFeature; path = Modules/AchievementsFeature; sourceTree = SOURCE_ROOT; };
@@ -46,8 +46,8 @@
 			isa = PBXGroup;
 			children = (
 				FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */,
-				4004599DB1DC16A7D68AE436 /* ContentView.swift */,
 				CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */,
+				4934C9692268B8FA81555A0B /* RootView.swift */,
 			);
 			path = MedalCase;
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE382BADF0F9855E87CF4B05 /* ContentView.swift in Sources */,
 				1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */,
+				F19773B48A7FFC0C50D661C3 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

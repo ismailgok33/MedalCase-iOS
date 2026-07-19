@@ -39,7 +39,7 @@ place allowed to see concretes: standard composition-root exemption).
 | **DesignSystem** | color/typography/spacing tokens (the mock's hexes live **only** here), `MedalAsset` typed catalog, `SectionHeaderView`, `ViewState` + state views, ghosted-badge modifier | no domain/data imports |
 | **AchievementsFeature** | `AchievementsViewModel` (`@Observable @MainActor`, `ViewState<AchievementsCase>`), `AchievementsView` (ScrollView + `LazyVGrid`), `MedalCellView` | domain + design system only |
 | **MedalTestSupport** | `MockAchievementsRepository` (spy + stubbable), `AchievementFixtures` from the real fixture JSON | test targets only |
-| **App target** | `MedalCaseApp`, composition root, `UINavigationBarAppearance` for the teal bar, overflow demo menu | thin; no logic |
+| **App target** | `MedalCaseApp`, `RootView` composition root, scoped SwiftUI `.toolbarBackground` teal bar (+ high-contrast swap) | thin; no logic |
 
 Per-module contracts (public surface, dependencies, edge cases, `done = these tests`) live in
 [`modules/`](modules/): [medal-domain](modules/medal-domain.md) · [design-system](modules/design-system.md)

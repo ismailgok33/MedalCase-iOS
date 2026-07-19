@@ -33,7 +33,9 @@ so the production target never depends on `MedalTestSupport` (that stays a test-
   sets `.error` (R2.2). No raw error text; no silent failure; no infinite spinner.
 - `retry()` re-runs the `load()` path (R2.2).
 - The grid: a `ScrollView` of sections; each section = `SectionHeaderView(title:progress:)` +
-  `LazyVGrid` (2 fixed columns, `MedalCellView` per medal, data order — R1.1/R1.3). `progress` is
+  `LazyVGrid` (2 columns normally — matching the mock — reflowing to **1 column at accessibility text
+  sizes** via `dynamicTypeSize.isAccessibilitySize`, so cells grow instead of cramping; R4.3.
+  `MedalCellView` per medal, data order — R1.1/R1.3). `progress` is
   `(section.earnedCount, section.totalCount)` **only when** `section.showsProgressCount` (R1.2, ADR-0008)
   — the ViewModel/section supplies it, the view never counts.
 - `MedalCellView`: `MedalBadgeView(assetKey:isLocked:)` + title (`medalTitle` token) + value line.
