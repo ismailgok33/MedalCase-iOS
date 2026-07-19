@@ -33,3 +33,5 @@
 {"at":"2026-07-19T03:37:23Z","kind":"agent","name":"swift-reviewer","task":"M7 /ios-review: PASS (1 minor eval-aggregate arithmetic + dark snapshot, fixed)","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
 {"at":"2026-07-19T03:37:28Z","kind":"skill","name":"pre-commit-review","task":"M7 verify commit gate","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
 {"at":"2026-07-19T03:37:57Z","kind":"skill","name":"ios-review","task":"M7 push gate","verdict":"PASS","attempts":1,"head":"fd1c541","notes":""}
+{"at":"2026-07-19T03:49:52Z","kind":"skill","name":"sync-readme","task":"M8: generate README from specs/telemetry/git; fix /eval cadence line","verdict":"PASS","attempts":1,"head":"851a7e2","notes":""}
+{"at":"2026-07-19T03:49:52Z","kind":"milestone","name":"M8","task":"Document: README + roadmap","verdict":"PASS","attempts":1,"head":"851a7e2","notes":""}

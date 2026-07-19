@@ -90,7 +90,7 @@ can enforce it, so "did the review run" is never a matter of memory:
 | **`/pre-commit-review`** | every commit that stages Swift | `.githooks/pre-commit` requires fresh evidence |
 | **`/ios-review`** | before pushing a branch with Swift changes | `.githooks/pre-push` requires fresh evidence |
 | build + test | every PR | CI |
-| `/eval` | changes to `.claude/**`, `evals/**`, `CLAUDE.md`, or a model bump | CI, path-filtered (M7) |
+| `/eval` | changes to `.claude/**`, `evals/**`, `CLAUDE.md`, or a model bump | local + committed `evals/results/` (kept out of CI until the judge is pinned/calibrated — see `evals/README.md`) |
 | `/visual-eval` (advisory) | PRs touching UI or snapshot baselines | local, advisory — never blocks |
 
 Review evidence is content-addressed (staged-diff hash / HEAD sha) and auto-expires when the code
