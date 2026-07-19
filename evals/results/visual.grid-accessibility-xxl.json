@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "grid-accessibility-xxl",
+  "aggregate": 1.0,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Teal bar + inline title intact; 'Personal Records' + '5 of 6'; enlarged badges with titles/values present." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No truncation at accessibility XXL: 'Longest Run', 'Highest Elevation', 'Fastest 5K' wrap fully; nothing clipped or ellipsised." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Ghosted Marathon visible on scroll; earned badges full-color (state preserved at large sizes)." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' rendered at the enlarged size, correct." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Grid reflows to a SINGLE column so cells grow rather than cramp — the intended accessibility layout (R4.3)." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Colors unchanged; teal bar + section strip + text tokens hold at the large size." },
+    { "id": 7, "score": 1, "weight": 0.05, "evidence": "Large text remains legible; the ScaledFont tokens scaled the mock's point sizes (fonts are not fixed)." }
+  ]
+}

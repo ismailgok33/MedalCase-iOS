@@ -1,0 +1,7 @@
+{
+  "suites": {
+    "scaffold-module": { "pass_threshold": 0.85, "regression_tolerance": 0.05 },
+    "visual": { "pass_threshold": 0.9, "regression_tolerance": 0.05, "advisory": true }
+  },
+  "notes": "CI fails if a suite aggregate drops below pass_threshold, or regresses by more than regression_tolerance versus the last recorded baseline — except suites marked \"advisory\": true (visual, ADR-0009), which report findings but never block the merge. The scaffold-module suite includes an adversarial case expected to FAIL (blocker at 0); a run where that case passes is itself a regression in the rubric."
+}

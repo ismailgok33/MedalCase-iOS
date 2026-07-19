@@ -9,18 +9,62 @@
 /* Begin PBXBuildFile section */
 		0381F7593AC592D1D37BE57F /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = DF3A95E07F717C371AACB06D /* AchievementsFeature */; };
 		1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */; };
+		26E94943266A9A084B866304 /* MedalTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2D76D549EDA662B0E348FCDA /* MedalTestSupport */; };
+		287A89471233A429E009BB93 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E571F683ACE6450310176D69 /* DesignSystem */; };
 		3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 78929A2D9C663C7D6B93C690 /* MedalDomain */; };
+		4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */ = {isa = PBXBuildFile; fileRef = B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */; };
+		65FCAE869F50F78A6E83BF9C /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 7A8D1DD0F7CF2F1D97818C23 /* SnapshotTesting */; };
 		6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C4C58FE88A872A5119417 /* MedalData */; };
+		72178AD91D17504A5807BFDC /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 5D0409852CD419F399D73F4F /* MedalDomain */; };
+		78AE6DB0BCD1C6155BEB44A8 /* test_medalCell_locked.1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */; };
+		80EF5B685703B663DAE9C09F /* AppIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0705961432E4FA77C5E4E8 /* AppIntegrationTests.swift */; };
+		8B7B81B4E92707D65A34B3FE /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 44F083151E73FCE2495529C7 /* AchievementsFeature */; };
 		8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 197C13B1C7123FE7C08A1FE2 /* DesignSystem */; };
+		91B5BCD911DA0D327801A63A /* MedalComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */; };
+		97933F8A4AA6C63F9C8055AB /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = E6339CB62417D2D25F4DE9F7 /* MedalDomain */; };
+		A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */; };
+		B2FEBD4B6ABD5539DF79B72E /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D9AB664CBA0263C7F42768CC /* DesignSystem */; };
+		D344384D17BE30C4FF8FFDBC /* MedalCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541681D35A78770E153FEF6 /* MedalCaseUITests.swift */; };
+		D4D6739F8D9DE8BC91CF2B6A /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 49DF52DD49777758DB7E3C85 /* AchievementsFeature */; };
+		DE788D5ED11B9C877F78319F /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 3BBE892560193E2FAFB2D89E /* MedalData */; };
+		F18C3474A5E7171E4DE60909 /* test_medalCell_earned.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E19E58F10EE28C33812E1A2 /* test_medalCell_earned.1.png */; };
 		F19773B48A7FFC0C50D661C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934C9692268B8FA81555A0B /* RootView.swift */; };
 		FF23EBDADBFE556A00DAEF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		309C62579636B96BBE2E216F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9EE2254375995FCA691C820 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 664A5C6572E33D530A73B535;
+			remoteInfo = MedalCase;
+		};
+		B92FC67E9C582BF9C96BE094 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9EE2254375995FCA691C820 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 664A5C6572E33D530A73B535;
+			remoteInfo = MedalCase;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		022206842C002B9B033C9E71 /* MedalDomain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalDomain; path = Modules/MedalDomain; sourceTree = SOURCE_ROOT; };
+		16286A535C731B471D5445EE /* MedalTestSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalTestSupport; path = Modules/MedalTestSupport; sourceTree = SOURCE_ROOT; };
+		1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalComponentSnapshotTests.swift; sourceTree = "<group>"; };
+		301E0B6D6CF743A574824B13 /* MedalCaseSnapshotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MedalCaseSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3636B07008A9A8141ED056 /* MedalCase.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MedalCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4541681D35A78770E153FEF6 /* MedalCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseUITests.swift; sourceTree = "<group>"; };
 		4934C9692268B8FA81555A0B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sectionHeader_noCount.1.png; sourceTree = "<group>"; };
 		7BBD1894F9E75DE52CBD751A /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DesignSystem; path = Modules/DesignSystem; sourceTree = SOURCE_ROOT; };
+		9E19E58F10EE28C33812E1A2 /* test_medalCell_earned.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_medalCell_earned.1.png; sourceTree = "<group>"; };
+		9EBD07ECA87195D6B4A0DDC4 /* MedalCaseTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MedalCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_medalCell_locked.1.png; sourceTree = "<group>"; };
+		B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sectionHeader_withCount.1.png; sourceTree = "<group>"; };
+		B91DCEF3E8EB4E278B5B48D2 /* MedalCaseUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MedalCaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0705961432E4FA77C5E4E8 /* AppIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntegrationTests.swift; sourceTree = "<group>"; };
 		CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseApp.swift; sourceTree = "<group>"; };
 		DAD1BB787459AD5DBB36BD1E /* AchievementsFeature */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AchievementsFeature; path = Modules/AchievementsFeature; sourceTree = SOURCE_ROOT; };
 		DD05263F596B7201A42CCE3A /* MedalData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalData; path = Modules/MedalData; sourceTree = SOURCE_ROOT; };
@@ -28,6 +72,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D898864A0E6E9A85CE3AA1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72178AD91D17504A5807BFDC /* MedalDomain in Frameworks */,
+				DE788D5ED11B9C877F78319F /* MedalData in Frameworks */,
+				8B7B81B4E92707D65A34B3FE /* AchievementsFeature in Frameworks */,
+				B2FEBD4B6ABD5539DF79B72E /* DesignSystem in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96C2567B99E8DECF3E0F8C69 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -36,6 +91,18 @@
 				8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */,
 				6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */,
 				0381F7593AC592D1D37BE57F /* AchievementsFeature in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD70CC05E06F1CE3D837CD07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97933F8A4AA6C63F9C8055AB /* MedalDomain in Frameworks */,
+				287A89471233A429E009BB93 /* DesignSystem in Frameworks */,
+				D4D6739F8D9DE8BC91CF2B6A /* AchievementsFeature in Frameworks */,
+				26E94943266A9A084B866304 /* MedalTestSupport in Frameworks */,
+				65FCAE869F50F78A6E83BF9C /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				2091D4E4854BCCBF42358948 /* MedalCase */,
+				3C14715B15852B66AB15003E /* MedalCaseSnapshotTests */,
+				7E117B825211820354A739E6 /* MedalCaseTests */,
+				6D028EA4564AEF844BD8788F /* MedalCaseUITests */,
 				9E6CFBA475A47D0B82031BBB /* Packages */,
 				37CDF5951C91A8F38F2DB660 /* Products */,
 			);
@@ -65,8 +135,55 @@
 			isa = PBXGroup;
 			children = (
 				3A3636B07008A9A8141ED056 /* MedalCase.app */,
+				301E0B6D6CF743A574824B13 /* MedalCaseSnapshotTests.xctest */,
+				9EBD07ECA87195D6B4A0DDC4 /* MedalCaseTests.xctest */,
+				B91DCEF3E8EB4E278B5B48D2 /* MedalCaseUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3C14715B15852B66AB15003E /* MedalCaseSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */,
+				4E78D26CA02F2FCA1A61A23E /* __Snapshots__ */,
+			);
+			path = MedalCaseSnapshotTests;
+			sourceTree = "<group>";
+		};
+		42B5EE5D668E4E082FDF282A /* MedalComponentSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				9E19E58F10EE28C33812E1A2 /* test_medalCell_earned.1.png */,
+				A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */,
+				5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */,
+				B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */,
+			);
+			path = MedalComponentSnapshotTests;
+			sourceTree = "<group>";
+		};
+		4E78D26CA02F2FCA1A61A23E /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				42B5EE5D668E4E082FDF282A /* MedalComponentSnapshotTests */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		6D028EA4564AEF844BD8788F /* MedalCaseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4541681D35A78770E153FEF6 /* MedalCaseUITests.swift */,
+			);
+			path = MedalCaseUITests;
+			sourceTree = "<group>";
+		};
+		7E117B825211820354A739E6 /* MedalCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA0705961432E4FA77C5E4E8 /* AppIntegrationTests.swift */,
+			);
+			path = MedalCaseTests;
 			sourceTree = "<group>";
 		};
 		9E6CFBA475A47D0B82031BBB /* Packages */ = {
@@ -76,6 +193,7 @@
 				7BBD1894F9E75DE52CBD751A /* DesignSystem */,
 				DD05263F596B7201A42CCE3A /* MedalData */,
 				022206842C002B9B033C9E71 /* MedalDomain */,
+				16286A535C731B471D5445EE /* MedalTestSupport */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -83,6 +201,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5815684A39DEC9C4C1C3D371 /* MedalCaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07C665FD8F9DCD420A547DDC /* Build configuration list for PBXNativeTarget "MedalCaseTests" */;
+			buildPhases = (
+				2A733CF88D7938D847D4BAF2 /* Sources */,
+				4D898864A0E6E9A85CE3AA1D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9ADB9F5F604384FA0AAFC73 /* PBXTargetDependency */,
+			);
+			name = MedalCaseTests;
+			packageProductDependencies = (
+				5D0409852CD419F399D73F4F /* MedalDomain */,
+				3BBE892560193E2FAFB2D89E /* MedalData */,
+				44F083151E73FCE2495529C7 /* AchievementsFeature */,
+				D9AB664CBA0263C7F42768CC /* DesignSystem */,
+			);
+			productName = MedalCaseTests;
+			productReference = 9EBD07ECA87195D6B4A0DDC4 /* MedalCaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		664A5C6572E33D530A73B535 /* MedalCase */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F14C7C870A5EB85C2E55237 /* Build configuration list for PBXNativeTarget "MedalCase" */;
@@ -106,6 +247,48 @@
 			productReference = 3A3636B07008A9A8141ED056 /* MedalCase.app */;
 			productType = "com.apple.product-type.application";
 		};
+		697D126E86C09935E008AB6F /* MedalCaseSnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70686F611426F70E675DA46B /* Build configuration list for PBXNativeTarget "MedalCaseSnapshotTests" */;
+			buildPhases = (
+				58E2ED650ABB62818E992EDA /* Sources */,
+				1E7ABB2727A8F1C3D2D3BE08 /* Resources */,
+				FD70CC05E06F1CE3D837CD07 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MedalCaseSnapshotTests;
+			packageProductDependencies = (
+				E6339CB62417D2D25F4DE9F7 /* MedalDomain */,
+				E571F683ACE6450310176D69 /* DesignSystem */,
+				49DF52DD49777758DB7E3C85 /* AchievementsFeature */,
+				2D76D549EDA662B0E348FCDA /* MedalTestSupport */,
+				7A8D1DD0F7CF2F1D97818C23 /* SnapshotTesting */,
+			);
+			productName = MedalCaseSnapshotTests;
+			productReference = 301E0B6D6CF743A574824B13 /* MedalCaseSnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E70EA0CC34B20E53B1FFE0AD /* MedalCaseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AAA2C8CCD8DA1EA546EA65D /* Build configuration list for PBXNativeTarget "MedalCaseUITests" */;
+			buildPhases = (
+				E57549E8431690BC6E508770 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECD46BA5B5EDA72C259B3476 /* PBXTargetDependency */,
+			);
+			name = MedalCaseUITests;
+			packageProductDependencies = (
+			);
+			productName = MedalCaseUITests;
+			productReference = B91DCEF3E8EB4E278B5B48D2 /* MedalCaseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -115,6 +298,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					E70EA0CC34B20E53B1FFE0AD = {
+						TestTargetID = 664A5C6572E33D530A73B535;
+					};
 				};
 			};
 			buildConfigurationList = E4AD246370DB53D65E260F71 /* Build configuration list for PBXProject "MedalCase" */;
@@ -127,10 +313,12 @@
 			mainGroup = 2C99361E0E595308B535E561;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				5DD516926B4ECF3AC993325D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				7B0130CF62D9C3705195261D /* XCLocalSwiftPackageReference "Modules/AchievementsFeature" */,
 				4A3D63831A627BD6BF2A8AE3 /* XCLocalSwiftPackageReference "Modules/DesignSystem" */,
 				691C46B12BA7D599BCDD7F6E /* XCLocalSwiftPackageReference "Modules/MedalData" */,
 				EAA9DA2452732C140867F841 /* XCLocalSwiftPackageReference "Modules/MedalDomain" */,
+				E1B5D8F6EE4799A245F06ABC /* XCLocalSwiftPackageReference "Modules/MedalTestSupport" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 37CDF5951C91A8F38F2DB660 /* Products */;
@@ -138,6 +326,9 @@
 			projectRoot = "";
 			targets = (
 				664A5C6572E33D530A73B535 /* MedalCase */,
+				697D126E86C09935E008AB6F /* MedalCaseSnapshotTests */,
+				5815684A39DEC9C4C1C3D371 /* MedalCaseTests */,
+				E70EA0CC34B20E53B1FFE0AD /* MedalCaseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -151,9 +342,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1E7ABB2727A8F1C3D2D3BE08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F18C3474A5E7171E4DE60909 /* test_medalCell_earned.1.png in Resources */,
+				78AE6DB0BCD1C6155BEB44A8 /* test_medalCell_locked.1.png in Resources */,
+				A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */,
+				4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A733CF88D7938D847D4BAF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80EF5B685703B663DAE9C09F /* AppIntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B05E8FB728350A306C69113 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,7 +373,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		58E2ED650ABB62818E992EDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91B5BCD911DA0D327801A63A /* MedalComponentSnapshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E57549E8431690BC6E508770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344384D17BE30C4FF8FFDBC /* MedalCaseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ECD46BA5B5EDA72C259B3476 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 664A5C6572E33D530A73B535 /* MedalCase */;
+			targetProxy = 309C62579636B96BBE2E216F /* PBXContainerItemProxy */;
+		};
+		F9ADB9F5F604384FA0AAFC73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 664A5C6572E33D530A73B535 /* MedalCase */;
+			targetProxy = B92FC67E9C582BF9C96BE094 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0375D9DB6626839E87D3FDED /* Debug */ = {
@@ -182,6 +421,106 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCase;
 				PRODUCT_NAME = MedalCase;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05B0DC50D3E42B4C5E9AE8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MedalCase;
+			};
+			name = Debug;
+		};
+		1F97747DA67A056EC114482B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedalCase.app/MedalCase";
+			};
+			name = Debug;
+		};
+		373C5DB59E144D4DDAACD2EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MedalCase;
+			};
+			name = Release;
+		};
+		50A8DB203B847DEC6A50E8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseSnapshotTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		530CD15785B6B0B68BC55B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MedalCase.app/MedalCase";
+			};
+			name = Release;
+		};
+		6A5AE9B989E54460487958FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.runkeeper.MedalCaseSnapshotTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -336,11 +675,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		07C665FD8F9DCD420A547DDC /* Build configuration list for PBXNativeTarget "MedalCaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F97747DA67A056EC114482B /* Debug */,
+				530CD15785B6B0B68BC55B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		5F14C7C870A5EB85C2E55237 /* Build configuration list for PBXNativeTarget "MedalCase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0375D9DB6626839E87D3FDED /* Debug */,
 				FDC0B1CD361C150508F14B4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		70686F611426F70E675DA46B /* Build configuration list for PBXNativeTarget "MedalCaseSnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A5AE9B989E54460487958FA /* Debug */,
+				50A8DB203B847DEC6A50E8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8AAA2C8CCD8DA1EA546EA65D /* Build configuration list for PBXNativeTarget "MedalCaseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05B0DC50D3E42B4C5E9AE8E8 /* Debug */,
+				373C5DB59E144D4DDAACD2EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -369,28 +735,80 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/AchievementsFeature;
 		};
+		E1B5D8F6EE4799A245F06ABC /* XCLocalSwiftPackageReference "Modules/MedalTestSupport" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/MedalTestSupport;
+		};
 		EAA9DA2452732C140867F841 /* XCLocalSwiftPackageReference "Modules/MedalDomain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/MedalDomain;
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		5DD516926B4ECF3AC993325D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		197C13B1C7123FE7C08A1FE2 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
 		};
+		2D76D549EDA662B0E348FCDA /* MedalTestSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MedalTestSupport;
+		};
+		3BBE892560193E2FAFB2D89E /* MedalData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MedalData;
+		};
+		44F083151E73FCE2495529C7 /* AchievementsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AchievementsFeature;
+		};
+		49DF52DD49777758DB7E3C85 /* AchievementsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AchievementsFeature;
+		};
 		5B8C4C58FE88A872A5119417 /* MedalData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MedalData;
+		};
+		5D0409852CD419F399D73F4F /* MedalDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MedalDomain;
 		};
 		78929A2D9C663C7D6B93C690 /* MedalDomain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MedalDomain;
 		};
+		7A8D1DD0F7CF2F1D97818C23 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DD516926B4ECF3AC993325D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		D9AB664CBA0263C7F42768CC /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
 		DF3A95E07F717C371AACB06D /* AchievementsFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AchievementsFeature;
+		};
+		E571F683ACE6450310176D69 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		E6339CB62417D2D25F4DE9F7 /* MedalDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MedalDomain;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

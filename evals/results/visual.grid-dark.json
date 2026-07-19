@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "grid-dark",
+  "aggregate": 1.0,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Same content + layout as light: teal bar, headers, all medals with titles/values present." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No truncation; titles render fully on the dark surface." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Marathon stays ghosted and readable against the dark background; earned badges full-color." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' unchanged and correct." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Coherent 2-column layout preserved in dark mode." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Adaptive tokens: dark background + dark section strips + light text; teal bar + white title unchanged (brand-consistent)." },
+    { "id": 7, "score": 1, "weight": 0.05, "evidence": "Light text on dark surface is comfortably legible." }
+  ]
+}

@@ -21,6 +21,48 @@
                ReferencedContainer = "container:MedalCase.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "697D126E86C09935E008AB6F"
+               BuildableName = "MedalCaseSnapshotTests.xctest"
+               BlueprintName = "MedalCaseSnapshotTests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5815684A39DEC9C4C1C3D371"
+               BuildableName = "MedalCaseTests.xctest"
+               BlueprintName = "MedalCaseTests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E70EA0CC34B20E53B1FFE0AD"
+               BuildableName = "MedalCaseUITests.xctest"
+               BlueprintName = "MedalCaseUITests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -40,6 +82,39 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5815684A39DEC9C4C1C3D371"
+               BuildableName = "MedalCaseTests.xctest"
+               BlueprintName = "MedalCaseTests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "697D126E86C09935E008AB6F"
+               BuildableName = "MedalCaseSnapshotTests.xctest"
+               BlueprintName = "MedalCaseSnapshotTests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E70EA0CC34B20E53B1FFE0AD"
+               BuildableName = "MedalCaseUITests.xctest"
+               BlueprintName = "MedalCaseUITests"
+               ReferencedContainer = "container:MedalCase.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

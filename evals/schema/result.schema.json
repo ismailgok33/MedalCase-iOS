@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EvalResult",
+  "description": "Structured output of one LLM-as-judge eval run over a golden case.",
+  "type": "object",
+  "required": ["suite", "case", "aggregate", "pass", "criteria"],
+  "additionalProperties": false,
+  "properties": {
+    "suite": { "type": "string" },
+    "case": { "type": "string" },
+    "aggregate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "pass": { "type": "boolean" },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "score", "weight", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "integer" },
+          "score": { "enum": [0, 0.5, 1] },
+          "weight": { "type": "number" },
+          "blocker": { "type": "boolean" },
+          "evidence": { "type": "string" }
+        }
+      }
+    }
+  }
+}

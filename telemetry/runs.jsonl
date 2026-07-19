@@ -29,3 +29,6 @@
 {"at":"2026-07-19T03:07:54Z","kind":"agent","name":"swift-reviewer","task":"M6 /ios-review re-verify: PASS (all 4 spec-coherence fixes verified)","verdict":"PASS","attempts":2,"head":"f6aa8c0","notes":""}
 {"at":"2026-07-19T03:07:54Z","kind":"skill","name":"pre-commit-review","task":"M6 integrate commit gate","verdict":"PASS","attempts":1,"head":"f6aa8c0","notes":""}
 {"at":"2026-07-19T03:08:12Z","kind":"skill","name":"ios-review","task":"M6 push gate","verdict":"PASS","attempts":1,"head":"dab754b","notes":""}
+{"at":"2026-07-19T03:37:22Z","kind":"skill","name":"eval","task":"scaffold-module + visual suites (6 cases, 1 adversarial FAIL)","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
+{"at":"2026-07-19T03:37:23Z","kind":"agent","name":"swift-reviewer","task":"M7 /ios-review: PASS (1 minor eval-aggregate arithmetic + dark snapshot, fixed)","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
+{"at":"2026-07-19T03:37:28Z","kind":"skill","name":"pre-commit-review","task":"M7 verify commit gate","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
