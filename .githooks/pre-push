@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
 # Pre-push gate — require a fresh /ios-review for a branch that introduces Swift changes.
 # Bypass with:  git push --no-verify
-base="$(git merge-base origin/main HEAD 2>/dev/null || true)"
+#
+# Change set = diff vs merge-base with origin/main. On a bootstrap push (origin/main doesn't
+# exist yet) there is no base, so ALL tracked Swift counts as the change set — the very first
+# push still gets a review rather than a free pass or a confusing hard failure.
+if git rev-parse --verify -q origin/main >/dev/null 2>&1; then
+    base="$(git merge-base origin/main HEAD 2>/dev/null || true)"
+else
+    base=""
+fi
 if [ -n "$base" ]; then
     swift_changed="$(git diff --name-only --diff-filter=ACMR "$base" HEAD | grep -E '\.swift$' || true)"
-    [ -z "$swift_changed" ] && exit 0
+else
+    swift_changed="$(git ls-files -- '*.swift' || true)"
 fi
+[ -z "$swift_changed" ] && exit 0
 
 head="$(git rev-parse HEAD)"
 evidence="$(git rev-parse --show-toplevel)/.git/review-evidence/ios-review-$head.json"
