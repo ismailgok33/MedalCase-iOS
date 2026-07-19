@@ -26,6 +26,11 @@ rendering):
 SwiftUI `#Preview`s (loading/loaded/empty/error) use an **inline** DEBUG-only repository + sample data,
 so the production target never depends on `MedalTestSupport` (that stays a test-target dependency).
 
+- `medalCaseNavigationBar()` (View extension) — applies the mock's teal nav bar (inline title,
+  `toolbarBackground` + high-contrast swap), iOS-guarded. Lives here (not the App target) so the App
+  needn't depend on the resource-bearing `DesignSystem` package directly (ADR-0011). `AchievementsView`
+  applies it.
+
 ## Behavior
 
 - `load()` flips `state` to `.loading`, awaits `repository.achievements()`, then sets `.loaded` (has

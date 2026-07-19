@@ -60,9 +60,13 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
     dependencies:
       - package: MedalDomain
-      - package: DesignSystem
       - package: MedalData
       - package: AchievementsFeature
+      # NOTE: the App target deliberately does NOT depend on DesignSystem directly. DesignSystem ships
+      # resources (the asset catalog); an app target that *directly* depends on a resource-bearing local
+      # package that is *also* transitive (via AchievementsFeature) trips Xcode's package resolver with
+      # "Missing package product" in the GUI (xcodebuild tolerates it). The one app-level DesignSystem
+      # use (the teal nav bar) is routed through the feature's `medalCaseNavigationBar()`.
 
   # App-level integration tests: the one place the real MedalData + MedalDomain + feature meet
   # (composition verified against the bundled fixture, not a mock).

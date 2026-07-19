@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0381F7593AC592D1D37BE57F /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = DF3A95E07F717C371AACB06D /* AchievementsFeature */; };
 		1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */; };
 		26E94943266A9A084B866304 /* MedalTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2D76D549EDA662B0E348FCDA /* MedalTestSupport */; };
 		287A89471233A429E009BB93 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E571F683ACE6450310176D69 /* DesignSystem */; };
 		3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 78929A2D9C663C7D6B93C690 /* MedalDomain */; };
 		4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */ = {isa = PBXBuildFile; fileRef = B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */; };
 		65FCAE869F50F78A6E83BF9C /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 7A8D1DD0F7CF2F1D97818C23 /* SnapshotTesting */; };
-		6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C4C58FE88A872A5119417 /* MedalData */; };
+		6F2B3CDBC175E24840F673CE /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = DF3A95E07F717C371AACB06D /* AchievementsFeature */; };
 		72178AD91D17504A5807BFDC /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 5D0409852CD419F399D73F4F /* MedalDomain */; };
 		78AE6DB0BCD1C6155BEB44A8 /* test_medalCell_locked.1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */; };
 		80EF5B685703B663DAE9C09F /* AppIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0705961432E4FA77C5E4E8 /* AppIntegrationTests.swift */; };
 		8B7B81B4E92707D65A34B3FE /* AchievementsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 44F083151E73FCE2495529C7 /* AchievementsFeature */; };
-		8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 197C13B1C7123FE7C08A1FE2 /* DesignSystem */; };
+		8DA4C94668B1C154B9CCD737 /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C4C58FE88A872A5119417 /* MedalData */; };
 		91B5BCD911DA0D327801A63A /* MedalComponentSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */; };
 		97933F8A4AA6C63F9C8055AB /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = E6339CB62417D2D25F4DE9F7 /* MedalDomain */; };
 		A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */; };
@@ -90,9 +89,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */,
-				8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */,
-				6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */,
-				0381F7593AC592D1D37BE57F /* AchievementsFeature in Frameworks */,
+				8DA4C94668B1C154B9CCD737 /* MedalData in Frameworks */,
+				6F2B3CDBC175E24840F673CE /* AchievementsFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +240,6 @@
 			name = MedalCase;
 			packageProductDependencies = (
 				78929A2D9C663C7D6B93C690 /* MedalDomain */,
-				197C13B1C7123FE7C08A1FE2 /* DesignSystem */,
 				5B8C4C58FE88A872A5119417 /* MedalData */,
 				DF3A95E07F717C371AACB06D /* AchievementsFeature */,
 			);
@@ -761,10 +758,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		197C13B1C7123FE7C08A1FE2 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
-		};
 		2D76D549EDA662B0E348FCDA /* MedalTestSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MedalTestSupport;

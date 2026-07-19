@@ -24,6 +24,7 @@ public struct AchievementsView: View {
         content
             .navigationTitle("Achievements")
             .toolbar { demoMenu }
+            .medalCaseNavigationBar()
             .task { await viewModel.load() }
     }
 

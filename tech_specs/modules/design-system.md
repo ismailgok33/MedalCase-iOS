@@ -51,12 +51,12 @@ is the package.
     from the `UserFacingError`'s fields.
   - `AchievementsGridSkeleton(cellCount:)` — the loading state: redacted placeholder cells, not a bare
     spinner; collapses to one "Loading" VoiceOver label.
-- **Nav bar styling** is applied by the App's composition root using SwiftUI's **scoped**
-  `.toolbarBackground(SemanticColor.brandTeal, for: .navigationBar)` + `.toolbarColorScheme(.dark, …)`,
-  swapping to `brandTealHighContrast` under Increased Contrast — not a global
-  `UINavigationBar.appearance()` mutation. So DesignSystem exposes the teal *tokens* and the App does the
-  scoped styling; there is no UIKit appearance factory (an earlier one was removed as dead code once the
-  SwiftUI approach proved out). The module is now UIKit-free.
+- **Nav bar styling** uses SwiftUI's **scoped** `.toolbarBackground(SemanticColor.brandTeal, …)` +
+  `.toolbarColorScheme(.dark, …)`, swapping to `brandTealHighContrast` under Increased Contrast — not a
+  global `UINavigationBar.appearance()` mutation, and no UIKit appearance factory (the module is
+  UIKit-free). DesignSystem exposes the teal *tokens*; the styling is applied by **`AchievementsFeature`**
+  (`medalCaseNavigationBar()`), not the App target, so the App need not depend on DesignSystem directly
+  (ADR-0011).
 
 ## Behavior
 
