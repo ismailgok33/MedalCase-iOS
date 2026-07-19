@@ -7,11 +7,14 @@ import SwiftUI
 /// and applies the teal bar appearance (composition root); the feature owns its title and demo menu.
 public struct AchievementsView: View {
     @State private var viewModel: AchievementsViewModel
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    private let columns = [
-        GridItem(.flexible(), spacing: Spacing.columnSpacing),
-        GridItem(.flexible(), spacing: Spacing.columnSpacing)
-    ]
+    /// Two columns normally (matching the mock); a single column at accessibility text sizes so cells
+    /// grow rather than cramp — the reflow accessibility.md prescribes (R4.3).
+    private var columns: [GridItem] {
+        let count = dynamicTypeSize.isAccessibilitySize ? 1 : 2
+        return Array(repeating: GridItem(.flexible(), spacing: Spacing.columnSpacing), count: count)
+    }
 
     public init(viewModel: AchievementsViewModel) {
         _viewModel = State(initialValue: viewModel)

@@ -142,8 +142,9 @@ model (a pod can own a package; cross-pod conflict surface becomes structural, n
 - **MedalTestSupport**: `MockAchievementsRepository`, `AchievementFixtures` built from the real
   fixture JSON — mocks in dedicated files, never inline.
 
-**App target**: thin composition root — wires `DefaultAchievementsRepository` into the feature,
-owns `UINavigationBarAppearance` for the teal bar, hosts the `NavigationStack`.
+**App target**: thin composition root (`RootView`) — wires `DefaultAchievementsRepository` into the
+feature, hosts the `NavigationStack`, and styles the teal bar via scoped SwiftUI `.toolbarBackground`
+(with a high-contrast swap) rather than a global `UINavigationBar.appearance()` mutation.
 
 **Toolchain**: Swift 6, strict concurrency complete, deployment **iOS 17** (needs `@Observable`;
 current-minus-two policy, same ADR rationale as LocalSakeShop). Runtime third-party deps: **none**.

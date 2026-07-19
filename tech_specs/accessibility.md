@@ -22,10 +22,10 @@ plain scroll surface.
 
 - All fonts are tokens built with `Font.custom(_:size:relativeTo:)` (or `.system` text styles) so
   the mock's px sizes (L8) scale with the user's setting — **no fixed sizes**.
-- At accessibility sizes (`.accessibility1`+) the grid reflows to an adaptive column layout
-  (`GridItem(.adaptive(minimum:))` behavior) — cells grow rather than truncate.
-- Long titles ("Tokyo-Hakone Ekiden 2020", "Mizuno Singapore Ekiden 2015") wrap to multiple lines;
-  `lineLimit(nil)` in cells. **Truncation is a test failure**, not a style choice.
+- At accessibility sizes (`.accessibility1`+, `dynamicTypeSize.isAccessibilitySize`) the grid reflows
+  from 2 columns to **1 column** — cells grow rather than cramp or truncate.
+- Long titles ("Tokyo-Hakone Ekiden 2020", "Mizuno Singapore Ekiden 2015") wrap to multiple lines
+  (default `Text` wrapping, no line limit). **Truncation is a test failure**, not a style choice.
 
 ## Contrast audit (computed, WCAG 2.1 AA)
 
@@ -39,9 +39,10 @@ plain scroll surface.
 
 **The honest finding:** the mock's own nav bar fails WCAG contrast. Resolution: keep mock fidelity
 in the default appearance (it is the brief), and support **Increased Contrast** — when
-`colorSchemeContrast == .increased`, the bar swaps to a darkened teal token that clears 4.5:1
-against white. Both colors are DesignSystem tokens; the swap is one environment read. Documented
-in the README rather than silently claimed compliant.
+`colorSchemeContrast == .increased`, the composition root (`RootView`) swaps the bar's
+`.toolbarBackground` to the darkened `brandTealHighContrast` token that clears 4.5:1 against white.
+Both colors are DesignSystem tokens; the swap is one environment read. Documented in the README rather
+than silently claimed compliant.
 
 ## Other
 

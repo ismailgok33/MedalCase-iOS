@@ -1,8 +1,9 @@
 # Module: DesignSystem
 
-**Layer:** Design. **Depends on:** SwiftUI only (plus a guarded `UIKit` section for the nav-bar
-appearance helper). Domain-agnostic — no `MedalDomain` import, no data types. Owns every hex/size/space
-from the mock so **no magic value escapes this module** (CLAUDE.md rule 5).
+**Layer:** Design. **Depends on:** SwiftUI only — the module is **UIKit-free** (the nav bar is styled
+by the App via scoped SwiftUI toolbar modifiers, so no `UINavigationBarAppearance` helper lives here).
+Domain-agnostic — no `MedalDomain` import, no data types. Owns every hex/size/space from the mock so
+**no magic value escapes this module** (CLAUDE.md rule 5).
 
 ## Layout
 
@@ -50,9 +51,12 @@ is the package.
     from the `UserFacingError`'s fields.
   - `AchievementsGridSkeleton(cellCount:)` — the loading state: redacted placeholder cells, not a bare
     spinner; collapses to one "Loading" VoiceOver label.
-- **Appearance helper:** `NavigationBarAppearance.medalCase(highContrast:)` — a `UINavigationBarAppearance`
-  factory (teal background, white title) the App target applies. Guarded `UIKit` import; the only UIKit
-  in the module.
+- **Nav bar styling** is applied by the App's composition root using SwiftUI's **scoped**
+  `.toolbarBackground(SemanticColor.brandTeal, for: .navigationBar)` + `.toolbarColorScheme(.dark, …)`,
+  swapping to `brandTealHighContrast` under Increased Contrast — not a global
+  `UINavigationBar.appearance()` mutation. So DesignSystem exposes the teal *tokens* and the App does the
+  scoped styling; there is no UIKit appearance factory (an earlier one was removed as dead code once the
+  SwiftUI approach proved out). The module is now UIKit-free.
 
 ## Behavior
 

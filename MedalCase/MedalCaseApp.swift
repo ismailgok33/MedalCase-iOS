@@ -4,7 +4,7 @@ import SwiftUI
 struct MedalCaseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
