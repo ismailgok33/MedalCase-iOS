@@ -32,3 +32,4 @@
 {"at":"2026-07-19T03:37:22Z","kind":"skill","name":"eval","task":"scaffold-module + visual suites (6 cases, 1 adversarial FAIL)","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
 {"at":"2026-07-19T03:37:23Z","kind":"agent","name":"swift-reviewer","task":"M7 /ios-review: PASS (1 minor eval-aggregate arithmetic + dark snapshot, fixed)","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
 {"at":"2026-07-19T03:37:28Z","kind":"skill","name":"pre-commit-review","task":"M7 verify commit gate","verdict":"PASS","attempts":1,"head":"37b4dca","notes":""}
+{"at":"2026-07-19T03:37:57Z","kind":"skill","name":"ios-review","task":"M7 push gate","verdict":"PASS","attempts":1,"head":"fd1c541","notes":""}
