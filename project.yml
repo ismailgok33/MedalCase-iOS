@@ -34,6 +34,8 @@ packages:
     path: Modules/DesignSystem
   MedalData:
     path: Modules/MedalData
+  AchievementsFeature:
+    path: Modules/AchievementsFeature
 
 targets:
   MedalCase:
@@ -55,6 +57,7 @@ targets:
       - package: MedalDomain
       - package: DesignSystem
       - package: MedalData
+      - package: AchievementsFeature
 
 schemes:
   MedalCase:
