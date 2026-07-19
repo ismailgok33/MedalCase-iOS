@@ -32,6 +32,8 @@ packages:
     path: Modules/MedalDomain
   DesignSystem:
     path: Modules/DesignSystem
+  MedalData:
+    path: Modules/MedalData
 
 targets:
   MedalCase:
@@ -52,6 +54,7 @@ targets:
     dependencies:
       - package: MedalDomain
       - package: DesignSystem
+      - package: MedalData
 
 schemes:
   MedalCase:

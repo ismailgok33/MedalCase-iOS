@@ -67,17 +67,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: [MedalDomain, DesignSystem, MedalData, AchievementsFeature]
+        package: [MedalDomain, DesignSystem, MedalData, MedalTestSupport, AchievementsFeature]
     steps:
       - uses: actions/checkout@v5
       - name: Select latest stable Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
-      - name: swift test — ${{ matrix.package }}
+      - name: swift test/build — ${{ matrix.package }}
         run: |
-          if [ -d "Modules/${{ matrix.package }}" ]; then
-            swift test --package-path "Modules/${{ matrix.package }}"
+          PKG="Modules/${{ matrix.package }}"
+          if [ ! -d "$PKG" ]; then
+            echo "$PKG not yet created (lands in M3–M5) — skipping."
+            exit 0
+          fi
+          # Test-support packages carry no test target; compile-check them instead (ADR-0009).
+          if ls "$PKG"/Tests/*/ >/dev/null 2>&1; then
+            swift test --package-path "$PKG"
           else
-            echo "Modules/${{ matrix.package }} not yet created (lands in M3–M5) — skipping."
+            swift build --package-path "$PKG"
           fi

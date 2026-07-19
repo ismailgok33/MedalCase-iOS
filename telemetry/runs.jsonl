@@ -14,3 +14,8 @@
 {"at":"2026-07-19T01:53:55Z","kind":"skill","name":"pre-commit-review","task":"M3 foundation tier commit gate","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
 {"at":"2026-07-19T01:54:19Z","kind":"skill","name":"ios-review","task":"M3 push gate","verdict":"PASS","attempts":1,"head":"d1c51e9","notes":""}
 {"at":"2026-07-19T01:57:35Z","kind":"skill","name":"pre-commit-review","task":"fix CI lint drift: swiftformat 0.62.1 wrapIfStatementBodies","verdict":"PASS","attempts":1,"head":"da55ded","notes":""}
+{"at":"2026-07-19T02:19:18Z","kind":"agent","name":"test-author","task":"M4 MedalData: author policy tests (P1-P8, decode, repo, bundled)","verdict":"PASS","attempts":1,"head":"199298e","notes":""}
+{"at":"2026-07-19T02:19:18Z","kind":"agent","name":"swift-module-builder","task":"M4 MedalData+MedalTestSupport: DTOs, mapper, bundled repo, fixtures (16 tests)","verdict":"PASS","attempts":1,"head":"199298e","notes":""}
+{"at":"2026-07-19T02:19:18Z","kind":"agent","name":"swift-reviewer","task":"M4 /ios-review: PASS (1 minor fixture-type nit + cross-spec drift, both fixed)","verdict":"PASS","attempts":1,"head":"199298e","notes":""}
+{"at":"2026-07-19T02:19:36Z","kind":"skill","name":"pre-commit-review","task":"M4 data tier commit gate","verdict":"PASS","attempts":1,"head":"199298e","notes":""}
+{"at":"2026-07-19T02:19:59Z","kind":"skill","name":"ios-review","task":"M4 push gate","verdict":"PASS","attempts":1,"head":"673160e","notes":""}

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */; };
 		3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 78929A2D9C663C7D6B93C690 /* MedalDomain */; };
+		6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C4C58FE88A872A5119417 /* MedalData */; };
 		8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 197C13B1C7123FE7C08A1FE2 /* DesignSystem */; };
 		BE382BADF0F9855E87CF4B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4004599DB1DC16A7D68AE436 /* ContentView.swift */; };
 		FF23EBDADBFE556A00DAEF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		4004599DB1DC16A7D68AE436 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BBD1894F9E75DE52CBD751A /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DesignSystem; path = Modules/DesignSystem; sourceTree = SOURCE_ROOT; };
 		CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseApp.swift; sourceTree = "<group>"; };
+		DD05263F596B7201A42CCE3A /* MedalData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalData; path = Modules/MedalData; sourceTree = SOURCE_ROOT; };
 		FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,6 +32,7 @@
 			files = (
 				3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */,
 				8DA4C94668B1C154B9CCD737 /* DesignSystem in Frameworks */,
+				6F2B3CDBC175E24840F673CE /* MedalData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				7BBD1894F9E75DE52CBD751A /* DesignSystem */,
+				DD05263F596B7201A42CCE3A /* MedalData */,
 				022206842C002B9B033C9E71 /* MedalDomain */,
 			);
 			name = Packages;
@@ -91,6 +95,7 @@
 			packageProductDependencies = (
 				78929A2D9C663C7D6B93C690 /* MedalDomain */,
 				197C13B1C7123FE7C08A1FE2 /* DesignSystem */,
+				5B8C4C58FE88A872A5119417 /* MedalData */,
 			);
 			productName = MedalCase;
 			productReference = 3A3636B07008A9A8141ED056 /* MedalCase.app */;
@@ -118,6 +123,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4A3D63831A627BD6BF2A8AE3 /* XCLocalSwiftPackageReference "Modules/DesignSystem" */,
+				691C46B12BA7D599BCDD7F6E /* XCLocalSwiftPackageReference "Modules/MedalData" */,
 				EAA9DA2452732C140867F841 /* XCLocalSwiftPackageReference "Modules/MedalDomain" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -349,6 +355,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/DesignSystem;
 		};
+		691C46B12BA7D599BCDD7F6E /* XCLocalSwiftPackageReference "Modules/MedalData" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/MedalData;
+		};
 		EAA9DA2452732C140867F841 /* XCLocalSwiftPackageReference "Modules/MedalDomain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/MedalDomain;
@@ -359,6 +369,10 @@
 		197C13B1C7123FE7C08A1FE2 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
+		};
+		5B8C4C58FE88A872A5119417 /* MedalData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MedalData;
 		};
 		78929A2D9C663C7D6B93C690 /* MedalDomain */ = {
 			isa = XCSwiftPackageProductDependency;

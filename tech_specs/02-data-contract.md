@@ -74,8 +74,11 @@ Elevation `2095 ft` · Fastest 5K `00:00` (mm:ss) · 10K `00:00:00` (hh:mm:ss) �
 Tokyo-Hakone Ekiden 2020 `00:00:00` · Virtual 10K Race `00:00:00` · Hakone Ekiden `00:00:00` ·
 Mizuno Singapore Ekiden 2015 `00:00:00` · Virtual 5K Race `23:07` (mm:ss, 1387 s).
 
-*done =* `test_dto_decodesCanonicalFixture`, `test_mapper_malformedStructure_throwsDecoding`,
-`test_mapper_unknownType_keepsMedal`, `test_mapper_unknownValueKind_dropsValueKeepsMedal`,
-`test_mapper_unknownStatus_treatsAsLocked`, `test_mapper_lockedWithValue_ignoresValue`,
-`test_mapper_duplicateIds_keepsFirst`, `test_mapper_negativeValues_clampToZero`,
-`test_bundledFixture_matchesCanonicalFixture` (M4).
+*done =* (implemented in M4 — see [`modules/medal-data.md`](modules/medal-data.md) for the authoritative
+list) `test_dto_decodesCanonicalFixture`, `test_decode_malformedJSON_throwsDecoding` +
+`test_decode_missingRequiredKey_throwsDecoding` (P1, at the decode step — the mapper is total),
+`test_mapper_unknownType_keepsMedal` (P2), `test_mapper_unknownValueKind_mapsToEarnedNil` +
+`test_mapper_durationMissingStyle_mapsToEarnedNil` (P3), `test_mapper_unknownStatus_treatsAsLocked` (P4),
+`test_mapper_lockedWithValue_dropsValue` (P6), `test_mapper_duplicateIds_keepsFirst` +
+`test_mapper_duplicateSectionIds_keepsFirst` (P7), `test_mapper_negativeValues_clampToZero` +
+`test_mapper_negativeElevation_clampToZero` (P8), `test_bundledResource_matchesCanonicalFixture`.
