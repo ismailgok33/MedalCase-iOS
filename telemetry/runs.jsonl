@@ -13,3 +13,4 @@
 {"at":"2026-07-19T01:53:36Z","kind":"agent","name":"swift-reviewer","task":"M3 /ios-review re-verify: PASS (all 4 findings resolved, 1 doc nit fixed)","verdict":"PASS","attempts":2,"head":"77d4ed1","notes":""}
 {"at":"2026-07-19T01:53:55Z","kind":"skill","name":"pre-commit-review","task":"M3 foundation tier commit gate","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
 {"at":"2026-07-19T01:54:19Z","kind":"skill","name":"ios-review","task":"M3 push gate","verdict":"PASS","attempts":1,"head":"d1c51e9","notes":""}
+{"at":"2026-07-19T01:57:35Z","kind":"skill","name":"pre-commit-review","task":"fix CI lint drift: swiftformat 0.62.1 wrapIfStatementBodies","verdict":"PASS","attempts":1,"head":"da55ded","notes":""}

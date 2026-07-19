@@ -17,7 +17,9 @@ public struct Achievement: Identifiable, Equatable, Sendable {
 
     /// True when the medal has been earned (regardless of whether it carries a value).
     public var isEarned: Bool {
-        if case .earned = status { return true }
+        if case .earned = status {
+            return true
+        }
         return false
     }
 }
