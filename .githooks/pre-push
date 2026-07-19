@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Pre-push gate — require a fresh /ios-review for a branch that introduces Swift changes.
+# Bypass with:  git push --no-verify
+base="$(git merge-base origin/main HEAD 2>/dev/null || true)"
+if [ -n "$base" ]; then
+    swift_changed="$(git diff --name-only --diff-filter=ACMR "$base" HEAD | grep -E '\.swift$' || true)"
+    [ -z "$swift_changed" ] && exit 0
+fi
+
+head="$(git rev-parse HEAD)"
+evidence="$(git rev-parse --show-toplevel)/.git/review-evidence/ios-review-$head.json"
+if [ ! -f "$evidence" ] || ! grep -q '"verdict":"PASS"' "$evidence"; then
+    echo "✗ /ios-review not recorded for HEAD (${head:0:12})."
+    echo "  → run /ios-review on this branch, then: .githooks/record-review.sh ios-review PASS \"<summary>\""
+    echo "  (bypass: git push --no-verify)"
+    exit 1
+fi
+echo "✓ /ios-review evidence present for HEAD"
+exit 0

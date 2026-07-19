@@ -1,0 +1,83 @@
+# Deterministic CI — runs on every PR (and pushes to main). No secrets required.
+# Claude-powered reviews (/eval etc.) stay local via the evidence-gated hooks until
+# calibrated (cadence table: CLAUDE.md).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build (iOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Select latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Toolchain versions
+        run: xcodebuild -version && swift --version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen xcbeautify
+
+      - name: Generate project (project.yml is the source of truth — ADR-0001)
+        run: xcodegen generate
+
+      # TODO(M7): flip `build` → `test` once the app test targets land (M5–M7).
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project MedalCase.xcodeproj \
+            -scheme MedalCase \
+            -destination 'generic/platform=iOS Simulator' \
+            | xcbeautify --renderer github-actions
+
+  lint:
+    name: Lint & format
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install tools
+        run: brew install swiftlint swiftformat
+      - name: SwiftFormat (lint mode)
+        run: swiftformat --lint .
+      - name: SwiftLint (strict)
+        run: swiftlint --strict
+
+  package-tests:
+    # The app scheme's xcodebuild covers the app target; the package-level unit tests
+    # (domain/data/design/feature logic) live in the SPM packages and run via `swift test`.
+    # Packages land per milestone (M3–M5); the guard keeps CI green until each exists.
+    name: Package tests
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [MedalDomain, DesignSystem, MedalData, AchievementsFeature]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Select latest stable Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: swift test — ${{ matrix.package }}
+        run: |
+          if [ -d "Modules/${{ matrix.package }}" ]; then
+            swift test --package-path "Modules/${{ matrix.package }}"
+          else
+            echo "Modules/${{ matrix.package }} not yet created (lands in M3–M5) — skipping."
+          fi

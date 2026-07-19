@@ -1,0 +1,54 @@
+# SwiftLint — enforces the CLAUDE.md golden rules. Run: swiftlint --strict
+included:
+  - MedalCase
+  - Modules
+excluded:
+  - "**/.build"
+  - "**/Generated"
+  - "**/*.generated.swift"
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - empty_count
+  - first_where
+  - contains_over_first_not_nil
+  - redundant_nil_coalescing
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - prohibited_super_call
+  - fatal_error_message
+  - vertical_whitespace_closing_braces
+  - unneeded_parentheses_in_closure_argument
+
+disabled_rules:
+  - todo # tracked in tech_specs / issues, not flagged inline
+
+# CLAUDE.md rule 4 — these are hard errors, not warnings.
+force_cast: error
+force_try: error
+force_unwrapping: error
+
+type_name:
+  min_length: 3
+  max_length: 50
+identifier_name:
+  min_length: 2
+  excluded: [id, x, y, to, vm]
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_comments: true
+
+file_length:
+  warning: 300
+  error: 500
+
+custom_rules:
+  no_print:
+    name: "No print()"
+    regex: '(?<!\w)print\('
+    message: "Use a logger, not print()."
+    severity: warning

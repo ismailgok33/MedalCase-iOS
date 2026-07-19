@@ -1,0 +1,25 @@
+# ── macOS ─────────────────────────────────
+.DS_Store
+
+# ── Xcode ─────────────────────────────────
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcresult
+
+# ── Swift Package Manager ─────────────────
+.build/
+.swiftpm/
+# Package.resolved is intentionally committed for reproducible app builds.
+
+# ── Testing artifacts ─────────────────────
+# Snapshot baselines (__Snapshots__/) are committed as evidence; failure diffs are not.
+**/FailureDiffs/
+
+# ── Tooling / personal ────────────────────
+.claude/settings.local.json
+*.log

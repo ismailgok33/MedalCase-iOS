@@ -1,0 +1,1 @@
+{"at":"2026-07-19T00:58:33Z","kind":"milestone","name":"M0","task":"Govern: pipeline port + CLAUDE.md + XcodeGen + hooks + CI","verdict":"PASS","attempts":1,"head":"7803af4","notes":"app builds; scheme shared"}

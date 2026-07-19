@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Pre-commit gate. Enable once per clone:  git config core.hooksPath .githooks
+# Runs only when Swift files are staged. Bypass everything with:  git commit --no-verify
+changed="$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.swift$' || true)"
+[ -z "$changed" ] && exit 0
+fail=0
+
+# 1. Deterministic gates: format + lint the staged Swift.
+if command -v swiftformat >/dev/null 2>&1; then
+    printf '%s\n' "$changed" | xargs swiftformat --lint >/dev/null 2>&1 \
+        || { echo "✗ SwiftFormat: run 'swiftformat .' then re-stage"; fail=1; }
+else
+    echo "ℹ swiftformat not installed — skipping format check"
+fi
+if command -v swiftlint >/dev/null 2>&1; then
+    printf '%s\n' "$changed" | xargs swiftlint lint --quiet --strict >/dev/null 2>&1 \
+        || { echo "✗ SwiftLint violations — run 'swiftlint' to see them"; fail=1; }
+else
+    echo "ℹ swiftlint not installed — skipping lint check"
+fi
+
+# 2. Judgment gate: require a fresh /pre-commit-review for the staged change.
+key="$(git diff --cached | shasum -a 256 | awk '{print $1}')"
+evidence="$(git rev-parse --show-toplevel)/.git/review-evidence/pre-commit-$key.json"
+if [ ! -f "$evidence" ] || ! grep -q '"verdict":"PASS"' "$evidence"; then
+    echo "✗ /pre-commit-review not recorded for the staged change."
+    echo "  → run /pre-commit-review, then: .githooks/record-review.sh pre-commit PASS \"<summary>\""
+    echo "  (bypass: git commit --no-verify)"
+    fail=1
+fi
+
+[ "$fail" -eq 0 ] && echo "✓ pre-commit checks passed"
+exit "$fail"

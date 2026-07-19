@@ -1,0 +1,16 @@
+# SwiftFormat — see CLAUDE.md. Run: swiftformat .
+--swiftversion 6.0
+
+--indent 4
+--maxwidth 120
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--self remove
+--importgrouping testable-bottom
+--commas inline
+--semicolons never
+--header strip
+# swiftTestingTestCaseNames rewrites `test_foo_bar` into backtick sentences, which fights the
+# CLAUDE.md `test_subject_condition_expectation` convention and the specs' `done = these tests` ids.
+--disable wrapMultilineStatementBraces,swiftTestingTestCaseNames
