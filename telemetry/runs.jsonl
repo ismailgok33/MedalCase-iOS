@@ -35,3 +35,5 @@
 {"at":"2026-07-19T03:37:57Z","kind":"skill","name":"ios-review","task":"M7 push gate","verdict":"PASS","attempts":1,"head":"fd1c541","notes":""}
 {"at":"2026-07-19T03:49:52Z","kind":"skill","name":"sync-readme","task":"M8: generate README from specs/telemetry/git; fix /eval cadence line","verdict":"PASS","attempts":1,"head":"851a7e2","notes":""}
 {"at":"2026-07-19T03:49:52Z","kind":"milestone","name":"M8","task":"Document: README + roadmap","verdict":"PASS","attempts":1,"head":"851a7e2","notes":""}
+{"at":"2026-07-19T05:00:02Z","kind":"skill","name":"ios-review","task":"fix: app-target resource-package dep (DesignSystem out of app; nav bar → feature)","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
+{"at":"2026-07-19T05:00:02Z","kind":"skill","name":"pre-commit-review","task":"resource-package fix gate","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
