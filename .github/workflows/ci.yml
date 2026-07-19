@@ -50,9 +50,10 @@ jobs:
           echo "Using simulator $UDID"
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
 
-      # App integration + XCUITest run in CI. Snapshots are renderer-pinned (ADR-0009) — skipped here,
-      # run locally + in the pre-push gate.
-      - name: Build & test (app integration + UI; snapshots skipped)
+      # App integration + the XCUITest smoke run in CI. Snapshots are renderer-pinned (ADR-0009) and the
+      # launch-performance measurement (5 rapid app launches — flaky "background assertion" timeouts on
+      # CI simulators, and perf numbers are noisy in CI anyway) are skipped here; both run locally.
+      - name: Build & test (app integration + UI smoke; snapshots + perf skipped)
         run: |
           set -o pipefail
           xcodebuild test \
@@ -60,6 +61,7 @@ jobs:
             -scheme MedalCase \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -skip-testing:MedalCaseSnapshotTests \
+            -skip-testing:MedalCaseUITests/MedalCaseUITests/test_launchPerformance \
             -resultBundlePath TestResults.xcresult \
             | xcbeautify --renderer github-actions
 
