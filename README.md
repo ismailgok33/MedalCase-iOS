@@ -240,9 +240,8 @@ open MedalCase.xcodeproj                 # select the MedalCase scheme → Run (
 
 - **Runtime dependencies:** none (pure SwiftUI + Foundation). Test-only: `swift-snapshot-testing`.
 - **No project-generation step needed** — `MedalCase.xcodeproj` is committed
-  ([ADR-0001](tech_specs/adr/0001-xcodegen-project-generation.md)); a CI guard keeps it in lock-step with
-  `project.yml`. To regenerate after structural changes: `brew install xcodegen && xcodegen generate`
-  (source of truth: [`project.yml`](project.yml)).
+  ([ADR-0001](tech_specs/adr/0001-xcodegen-project-generation.md)). To regenerate after structural
+  changes: `brew install xcodegen && xcodegen generate` (source of truth: [`project.yml`](project.yml)).
 - **If Xcode shows "Missing package product" after pulling** (a local SPM-cache hiccup when the package
   graph changed under an open project — a clean clone doesn't hit it): **File → Packages → Reset Package
   Caches**, then Resolve Package Versions. If it persists, quit Xcode, `xcodegen generate`, delete the

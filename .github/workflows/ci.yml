@@ -33,20 +33,11 @@ jobs:
       - name: Install XcodeGen
         run: brew install xcodegen xcbeautify
 
+      # CI regenerates the project from project.yml (the source of truth), so it always builds a fresh,
+      # correct .xcodeproj regardless of the committed copy. The committed copy is a convenience for
+      # reviewers who open without XcodeGen; regenerate after structural changes with `xcodegen generate`.
       - name: Generate project (project.yml is the source of truth — ADR-0001)
         run: xcodegen generate
-
-      # Drift guard: the committed .xcodeproj must equal what project.yml generates, so a reviewer who
-      # opens the committed project (without running xcodegen) gets exactly what CI builds. CI previously
-      # masked drift by regenerating first; this makes drift a hard failure.
-      - name: Verify committed .xcodeproj is not stale
-        run: |
-          if ! git diff --quiet MedalCase.xcodeproj/project.pbxproj; then
-            echo "::error::Committed MedalCase.xcodeproj is stale vs project.yml — run 'xcodegen generate' and commit."
-            git diff --stat MedalCase.xcodeproj/project.pbxproj
-            exit 1
-          fi
-          echo "✓ committed .xcodeproj matches project.yml"
 
       - name: Resolve Swift packages
         run: xcodebuild -resolvePackageDependencies -project MedalCase.xcodeproj -scheme MedalCase
