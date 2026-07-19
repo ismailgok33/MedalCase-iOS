@@ -11,3 +11,4 @@
 {"at":"2026-07-19T01:50:19Z","kind":"agent","name":"swiftui-component-builder","task":"M3 DesignSystem: tokens+assets+components (4 tests)","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
 {"at":"2026-07-19T01:50:19Z","kind":"agent","name":"swift-reviewer","task":"M3 /ios-review: FAIL (2 major, 2 minor) → repaired","verdict":"FAIL","attempts":1,"head":"77d4ed1","notes":"MedalAsset surface/spec coherence; repaired in attempt 1"}
 {"at":"2026-07-19T01:53:36Z","kind":"agent","name":"swift-reviewer","task":"M3 /ios-review re-verify: PASS (all 4 findings resolved, 1 doc nit fixed)","verdict":"PASS","attempts":2,"head":"77d4ed1","notes":""}
+{"at":"2026-07-19T01:53:55Z","kind":"skill","name":"pre-commit-review","task":"M3 foundation tier commit gate","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
