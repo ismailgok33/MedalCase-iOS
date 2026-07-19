@@ -61,16 +61,31 @@ public struct AchievementsView: View {
         .background(SemanticColor.surface)
     }
 
+    /// SF Symbols has no bare vertical ellipsis (only bubbled/circled variants), so the mock's ⋮ is
+    /// the horizontal `ellipsis` rotated 90° — keeping SF Symbol weight-matching and scaling.
+    private static let verticalEllipsisAngle = Angle.degrees(90)
+
     @ToolbarContentBuilder
     private var demoMenu: some ToolbarContent {
-        ToolbarItem(placement: .primaryAction) {
-            Menu {
-                Button("Toggle Marathon (demo)") { viewModel.toggleMarathonDemo() }
-                Button("Reset") { Task { await viewModel.reset() } }
-            } label: {
-                Image(systemName: "ellipsis")
-                    .accessibilityLabel("More options")
-            }
+        // iOS 26's Liquid Glass wraps toolbar buttons in a capsule the mock doesn't have; hide it so
+        // the glyph sits bare on the teal bar. Pre-26 systems render the bare glyph already.
+        if #available(iOS 26.0, macOS 26.0, *) {
+            ToolbarItem(placement: .primaryAction) { demoMenuButton }
+                .sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .primaryAction) { demoMenuButton }
+        }
+    }
+
+    private var demoMenuButton: some View {
+        Menu {
+            Button("Toggle Marathon (demo)") { viewModel.toggleMarathonDemo() }
+            Button("Reset") { Task { await viewModel.reset() } }
+        } label: {
+            Image(systemName: "ellipsis")
+                .rotationEffect(Self.verticalEllipsisAngle)
+                .foregroundStyle(SemanticColor.navTitle)
+                .accessibilityLabel("More options")
         }
     }
 }

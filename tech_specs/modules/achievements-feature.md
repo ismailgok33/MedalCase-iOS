@@ -8,7 +8,10 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
 - `@Observable @MainActor final class AchievementsViewModel` —
   `init(repository: AchievementsRepository)`; `private(set) var state: ViewState<AchievementsCase>`;
   `func load() async`; `func retry() async`; `func toggleMarathonDemo()` / `func reset()` (the
-  overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence).
+  overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence). The overflow
+  glyph matches the mock's bare white **vertical** ⋮: SF Symbols has no bare vertical ellipsis, so it
+  is `ellipsis` rotated 90° (named `verticalEllipsisAngle` constant), tinted `navTitle`, with iOS 26's
+  Liquid Glass capsule hidden via `sharedBackgroundVisibility(.hidden)` (bare glyph pre-26 already).
 - `struct AchievementsView: View` — `init(viewModel: AchievementsViewModel)`. A dumb `switch` over
   `state`: loading → `AchievementsGridSkeleton`, loaded → the grid, empty → `EmptyStateView`, error →
   `ErrorStateView(retry:)`.
