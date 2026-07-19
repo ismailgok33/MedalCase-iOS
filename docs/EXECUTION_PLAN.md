@@ -85,7 +85,7 @@ ADR where structural.
 
 | # | Landmine | Decision (recommended) |
 |---|---|---|
-| L1 | Header says **"4 of 6"** but **5** PR cells render colored with values; only Marathon is "Not Yet" | The count is **computed from data, never hardcoded**. Fixture marks 4 records `earned` to honor the mock's count, and the README calls out the mock's own inconsistency + our rule (`ADR: mock-fidelity vs data-driven`) |
+| L1 | Header says **"4 of 6"** but **5** PR cells render colored with values; only Marathon is "Not Yet" | The count is **computed from data, never hardcoded**. The mock is internally unsatisfiable (5 colored cells can't yield "4 of 6"), so **visual states win**: the fixture mirrors 5 earned + 1 locked and the header renders "5 of 6" (ADR-0008). If product data said 4 earned, it would render "4 of 6" |
 | L2 | Value formats are inconsistent: `00:00` (mm:ss), `00:00:00` (hh:mm:ss), `23:07`, `2095 ft` | Model values as a **typed enum** (`duration`, `elevation`, `none`), render via a single `MedalValueFormatter` with an explicit per-medal display style carried in data — mock-exact output, unit-tested |
 | L3 | No "locked" variant asset for Marathon | Derive locked rendering from the earned asset: `saturation(0)` + reduced opacity — one asset, both states (ADR) |
 | L4 | 7 virtual-race assets vs 6 in mock | Grid is data-driven; the extra asset stays in the catalog unreferenced by fixture. Proves UI doesn't hardcode cells |
@@ -128,7 +128,8 @@ model (a pod can own a package; cross-pod conflict surface becomes structural, n
 - **MedalDomain** (pure Swift, imports nothing): `Achievement`, `AchievementSection`,
   `AchievementStatus` (`earned(value)` / `locked`), `MedalValue` (typed: duration / elevation),
   `MedalValueFormatter`, `AchievementsCase` (sections + computed `earnedCount/totalCount`),
-  `AchievementsRepository` protocol, `GetAchievements` use case.
+  `AchievementsRepository` protocol (the seam — deliberately **no** pass-through use-case layer;
+  see `tech_specs/01-architecture.md`).
 - **MedalData**: `AchievementDTO` + custom decoding, `AchievementMapper` (validation: unknown
   medal type, negative values, malformed durations → typed `MedalError`), `BundledAchievementsDataSource`
   (JSON as package resource), `DefaultAchievementsRepository` (async — the seam where a remote
@@ -270,7 +271,7 @@ Runkeeper context alone.**
 
 | # | Decision | Resolution |
 |---|---|---|
-| D1 | "4 of 6" vs 5 colored medals (L1) | Data-driven count; fixture honors the mock's "4 of 6"; discrepancy documented in README + ADR |
+| D1 | "4 of 6" vs 5 colored medals (L1) | Data-driven count; visual states win (5 earned + 1 locked → "5 of 6"); the unsatisfiable annotation documented in README + ADR-0008 |
 | D2 | Keep hand-made `.xcodeproj` vs **adopt XcodeGen** | **XcodeGen** (`project.yml` source of truth, generated project still committed → reviewer needs no tool; fixes scheme-sharing structurally; proven in LocalSakeShop, ~20 min) |
 | D3 | Networking layer in scope? | **No** — brief has no data feed; ship bundled JSON behind the async repository seam; remote is a stretch/`more-time` item. Avoids speculative code in an 8h cap |
 | D4 | Dark mode | **Yes** — adaptive tokens from day one; mock parity verified in light |
