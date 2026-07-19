@@ -17,8 +17,12 @@ Reviewers need no tooling. Project structure is reviewable as a ~60-line YAML di
 noise. Packages/test targets are added per milestone by editing one file. Cost: one dev-machine
 dependency (`brew install xcodegen`), not needed to open or run the app.
 
-**Drift guard.** Because the generated `.xcodeproj` is committed *and* CI regenerates it, a stale commit
-could pass CI while a reviewer who opens the committed project gets something different. CI therefore
-runs `xcodegen generate` and **fails if the committed `.xcodeproj` differs** — so the two can never
-silently diverge. (A local "Missing package product" after pulling is a separate Xcode SPM-cache issue,
-not project drift — see the README's setup note.)
+**Freshness.** CI regenerates the project from `project.yml` on every run, so it always builds a fresh,
+correct project — the committed `.xcodeproj` is a convenience for reviewers who open without XcodeGen.
+Regenerate after any structural change (`xcodegen generate`) so the committed copy stays current.
+(A local "Missing package product" after pulling is a *separate* Xcode SPM-cache issue — the project is
+fine; Xcode's DerivedData resolution is stale. Full fix in the README's setup note.)
+
+*Trade-off considered:* a CI drift-guard (fail if the committed project differs from a fresh generate)
+was tried and removed — it couples the committed bytes to CI's exact XcodeGen version, so a routine
+`brew` bump (2.45→2.46) breaks the build over cosmetic diffs. Regenerating fresh is simpler and robust.
