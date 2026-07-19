@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  MedalCase
-//
-//  Created by Ismail Gok on 2026-07-18.
-//
-
 import SwiftUI
 
 struct ContentView: View {
