@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "locked-cell-fr",
+  "aggregate": 0.975,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Badge, title 'Marathon', and value line all present in the committed FR baseline." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "'Marathon' and 'Pas encore' fully visible, centered, no clipping." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Ghost treatment identical to the EN locked cell — desaturated grey badge, dimmed 26.2." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "No count applies to a single-cell baseline (intent scope); the value line correctly shows the FR locked string, not a duration." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Badge over title over value, centered — matches the EN baseline layout exactly." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Same token colors as EN: ghost grey, black title, grey value on white surface." },
+    { "id": 7, "score": 0.5, "weight": 0.05, "evidence": "'Pas encore' in medalValue grey on white ≈5.7:1 (AA); the dimmed badge numeral is the intentional locked affordance, as in the EN case." }
+  ]
+}

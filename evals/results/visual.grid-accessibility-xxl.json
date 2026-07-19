@@ -1,15 +1,15 @@
 {
   "suite": "visual",
   "case": "grid-accessibility-xxl",
-  "aggregate": 1.0,
+  "aggregate": 0.975,
   "pass": true,
   "criteria": [
-    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Teal bar + inline title intact; 'Personal Records' + '5 of 6'; enlarged badges with titles/values present." },
-    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No truncation at accessibility XXL: 'Longest Run', 'Highest Elevation', 'Fastest 5K' wrap fully; nothing clipped or ellipsised." },
-    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Ghosted Marathon visible on scroll; earned badges full-color (state preserved at large sizes)." },
-    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' rendered at the enlarged size, correct." },
-    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Grid reflows to a SINGLE column so cells grow rather than cramp — the intended accessibility layout (R4.3)." },
-    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Colors unchanged; teal bar + section strip + text tokens hold at the large size." },
-    { "id": 7, "score": 1, "weight": 0.05, "evidence": "Large text remains legible; the ScaledFont tokens scaled the mock's point sizes (fonts are not fixed)." }
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Bar + title + ⋮, the Personal Records header with count, and the first cells render at accessibility XXL; later cells are below the fold as expected at this size." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "Nothing clips: 'Personal Records' wraps to two lines on the strip rather than truncating; 'Longest Run' / 'Highest Elevation' fully visible at huge type." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Locked cell is below the fold in this capture; locked rendering is asserted by grid-light/locked-cell. Nothing visible contradicts it." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' rendered beside the wrapped header." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Grid reflows to one column at accessibility sizes (the R4.3 behavior) — cells grow instead of cramping." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Token colors unchanged at scale." },
+    { "id": 7, "score": 0.5, "weight": 0.05, "evidence": "Giant type is highly legible; the white-on-teal title remains the documented exception (consistent scoring with locked-cell)." }
   ]
 }

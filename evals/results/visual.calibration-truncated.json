@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "calibration-truncated",
+  "aggregate": 0.425,
+  "pass": false,
+  "criteria": [
+    { "id": 1, "score": 0.5, "weight": 0.25, "blocker": true, "evidence": "EXPECTED-FAIL calibration case (evals/calibration/truncated-xxl.png). The overflow ⋮ control and the count are absent from the frame; other elements present." },
+    { "id": 2, "score": 0, "weight": 0.2, "blocker": true, "evidence": "Severe truncation: 'Achievements' clipped at the right edge; 'Longest Ru…', 'Highest Eleva…', 'Fastest 5…' all cut off. Blocker at 0 → case fails regardless of aggregate." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "No locked cell visible; nothing contradicts the ghost treatment." },
+    { "id": 4, "score": 0, "weight": 0.15, "evidence": "The intent requires a right-aligned count; it has been clipped out of frame entirely." },
+    { "id": 5, "score": 0, "weight": 0.1, "evidence": "Composition is broken — content runs off the right edge; badges and titles are misaligned relative to the visible canvas." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "The colors that remain visible match the tokens." },
+    { "id": 7, "score": 1, "weight": 0.05, "evidence": "Visible text is legible; the failure is truncation, not contrast." }
+  ]
+}
