@@ -2,3 +2,4 @@
 {"at":"2026-07-19T01:05:48Z","kind":"skill","name":"ios-review","task":"bootstrap review of template Swift + M0 tooling","verdict":"PASS","attempts":1,"head":"224bb3c","notes":"1 minor tracked finding"}
 {"at":"2026-07-19T01:11:04Z","kind":"skill","name":"spec","task":"M1: 00-requirements, 01-architecture, 02-data-contract, accessibility, performance-battery, 10 ADRs, canonical fixture","verdict":"PASS","attempts":1,"head":"224bb3c","notes":""}
 {"at":"2026-07-19T01:11:04Z","kind":"milestone","name":"M1","task":"Specify: tech_specs + ADRs + fixture","verdict":"PASS","attempts":1,"head":"224bb3c","notes":""}
+{"at":"2026-07-19T01:16:44Z","kind":"skill","name":"pre-commit-review","task":"strip template headers (2 files)","verdict":"PASS","attempts":1,"head":"4e37c94","notes":""}
