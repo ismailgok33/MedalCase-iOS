@@ -24,6 +24,15 @@ settings:
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
 
+# Local SPM packages under Modules/ (ADR-0003). Added per milestone as they land: M3 → MedalDomain +
+# DesignSystem. The App target links them so the iOS build (incl. the DesignSystem asset catalog) is
+# validated in CI; feature wiring into the composition root happens in M6.
+packages:
+  MedalDomain:
+    path: Modules/MedalDomain
+  DesignSystem:
+    path: Modules/DesignSystem
+
 targets:
   MedalCase:
     type: application
@@ -40,6 +49,9 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         # The medal case is a portrait screen (per the mock); Runkeeper is portrait-primary.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+    dependencies:
+      - package: MedalDomain
+      - package: DesignSystem
 
 schemes:
   MedalCase:

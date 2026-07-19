@@ -6,3 +6,8 @@
 {"at":"2026-07-19T01:17:00Z","kind":"skill","name":"ios-review","task":"m1-specify branch: header-strip diff","verdict":"PASS","attempts":1,"head":"634da11","notes":""}
 {"at":"2026-07-19T01:22:46Z","kind":"skill","name":"spec","task":"M2: 5 module contracts (medal-domain, design-system, medal-data, achievements-feature, medal-test-support)","verdict":"PASS","attempts":1,"head":"894d880","notes":""}
 {"at":"2026-07-19T01:22:46Z","kind":"milestone","name":"M2","task":"Decompose: per-module contracts","verdict":"PASS","attempts":1,"head":"894d880","notes":""}
+{"at":"2026-07-19T01:50:19Z","kind":"agent","name":"test-author","task":"M3 MedalDomain+DesignSystem: author failing tests from contracts","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
+{"at":"2026-07-19T01:50:19Z","kind":"agent","name":"swift-module-builder","task":"M3 MedalDomain: implement to green (16 tests)","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
+{"at":"2026-07-19T01:50:19Z","kind":"agent","name":"swiftui-component-builder","task":"M3 DesignSystem: tokens+assets+components (4 tests)","verdict":"PASS","attempts":1,"head":"77d4ed1","notes":""}
+{"at":"2026-07-19T01:50:19Z","kind":"agent","name":"swift-reviewer","task":"M3 /ios-review: FAIL (2 major, 2 minor) → repaired","verdict":"FAIL","attempts":1,"head":"77d4ed1","notes":"MedalAsset surface/spec coherence; repaired in attempt 1"}
+{"at":"2026-07-19T01:53:36Z","kind":"agent","name":"swift-reviewer","task":"M3 /ios-review re-verify: PASS (all 4 findings resolved, 1 doc nit fixed)","verdict":"PASS","attempts":2,"head":"77d4ed1","notes":""}

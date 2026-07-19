@@ -20,17 +20,23 @@ is the package.
     `surface` (`#FFFFFF`). All **adaptive** for light/dark (dark values in the asset catalog's
     colorset), so contrast holds in both modes.
   - `Typography`: `navTitle` (16), `sectionTitle` (14), `sectionCount` (14), `medalTitle` (12),
-    `medalValue` (12) — each built with `Font.custom`/`.system(size:relativeTo:)` so px→pt scales with
-    Dynamic Type (L8). No fixed sizes escape.
+    `medalValue` (12) — `TypographyToken`s (size + `relativeTo` text style + weight) applied via the
+    `.medalFont(_:)` modifier, which uses `@ScaledMetric` so the mock's exact px→pt sizes still scale
+    with Dynamic Type (L8). No fixed sizes escape.
   - `Spacing`, `Radius` — grid gutter, cell padding, badge size, corner radii.
+  - `Opacity` — `ghosted` (the locked-medal ghost opacity, tuned against the mock — ADR-0007).
 - **Assets:**
-  - `MedalAsset` — a typed accessor mapping the contract's `assetKey` → an `Image`. `image(for:)`
-    returns the catalog image or a `placeholder` badge for an unknown key (policy P5). All 13 PDFs
-    imported Single Scale + Preserve Vector Data (ADR-0006); the unused `race_virtual_marathon` ships
-    but is unreferenced by the fixture (L4).
+  - `MedalAsset` — a typed accessor mapping the contract's `assetKey` → an `Image`. The only public
+    member is `image(for:)`, which returns the catalog image or a placeholder SF Symbol for an unknown
+    key (policy P5). A pure `internal` `resolution(for:) -> Resolution` (`.catalog(name)` | `.placeholder`)
+    is the testable seam that `image(for:)` renders, and `internal knownKeys` is the catalog's source of
+    truth (both `internal`, reached by tests via `@testable`). All 13 PDFs imported Single Scale +
+    Preserve Vector Data (ADR-0006); the unused `race_virtual_marathon` ships but is unreferenced by the
+    fixture (L4).
 - **State:** `ViewState<Value>` (`loading`/`loaded(Value)`/`empty`/`error(UserFacingError)`) +
-  `UserFacingError` (localized `message` + `isRetryable`). Domain-agnostic; the feature maps
-  `MedalError → UserFacingError`.
+  `UserFacingError` (`message: LocalizedStringResource` + `isRetryable`). `LocalizedStringResource`,
+  not `LocalizedStringKey`, because the error crosses the `@MainActor` ViewModel → View boundary inside
+  `ViewState` and must be `Sendable`. Domain-agnostic; the feature maps `MedalError → UserFacingError`.
 - **Components:**
   - `SectionHeaderView(title:progress:)` — the `#F7F7F7` strip: leading title, optional trailing
     "N of M" (`progress: (earned: Int, total: Int)?`, shown only when non-nil — R1.2). Carries the
@@ -38,8 +44,10 @@ is the package.
   - `MedalBadgeView(assetKey:isLocked:)` — renders the badge via `MedalAsset`; when `isLocked`, applies
     the **ghosting modifier** (`saturation(0)` + reduced opacity — ADR-0007). Decorative
     (`accessibilityHidden`); the cell owns the label.
-  - `LoadingView`, `EmptyStateView(message:)`, `ErrorStateView(message:retry:)` — the three state
-    surfaces (R2).
+  - `LoadingView`, `EmptyStateView(message:)`, `ErrorStateView(message:isRetryable:retry:)` — the three
+    state surfaces (R2). `ErrorStateView` takes `message: LocalizedStringResource` + `isRetryable`
+    (defaulted true; hides the Retry button when false) + the `retry` action, so the feature drives it
+    from the `UserFacingError`'s fields.
   - `AchievementsGridSkeleton(cellCount:)` — the loading state: redacted placeholder cells, not a bare
     spinner; collapses to one "Loading" VoiceOver label.
 - **Appearance helper:** `NavigationBarAppearance.medalCase(highContrast:)` — a `UINavigationBarAppearance`
