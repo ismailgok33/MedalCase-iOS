@@ -14,6 +14,18 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
   `ErrorStateView(retry:)`.
 - `struct MedalCellView: View` — one grid cell (badge + title + value line); the atom the grid repeats.
 
+Internal testable seams (reached via `@testable`, so the logic behind the views is unit-tested without
+rendering):
+- `enum SectionProgress` — `value(for:) -> (earned, total)?`, returning the count only when the section
+  declares it (R1.2, ADR-0008). The grid renders whatever this returns; it never counts inline.
+- `enum MedalAccessibility` — `label(for:) -> LocalizedStringResource`, the cell's single VoiceOver
+  label ("«title», «value»" / "«title», not yet earned" / just the title). `LocalizedStringResource`
+  so the phrase localizes and tests can resolve it via `String(localized:)`.
+- `AchievementsViewModel.marathonDemoID` — the id (`"pr_marathon"`) the demo toggle targets.
+
+SwiftUI `#Preview`s (loading/loaded/empty/error) use an **inline** DEBUG-only repository + sample data,
+so the production target never depends on `MedalTestSupport` (that stays a test-target dependency).
+
 ## Behavior
 
 - `load()` flips `state` to `.loading`, awaits `repository.achievements()`, then sets `.loaded` (has
