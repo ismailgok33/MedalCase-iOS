@@ -1,0 +1,12 @@
+/* Per-locale .strings (not .xcstrings): SwiftPM's CLI build copies String Catalogs verbatim without
+   compiling them, so `swift test` would see no localization tables — classic lproj tables work under
+   every build system (ADR-0012). SwiftPM auto-detects lproj dirs when defaultLocalization is set. */
+
+/* Error-state retry affordance (R2.2) */
+"Retry" = "Retry";
+
+/* Section header progress count, e.g. "5 of 6" (R1.2) */
+"%lld of %lld" = "%lld of %lld";
+
+/* Loading-state accessibility label (R2.1) */
+"Loading" = "Loading";

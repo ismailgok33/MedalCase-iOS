@@ -1,0 +1,10 @@
+/* Français (CA). Translations authored in-repo; production would route these through native review. */
+
+/* Error-state retry affordance (R2.2) */
+"Retry" = "Réessayer";
+
+/* Section header progress count, e.g. "5 sur 6" (R1.2) */
+"%lld of %lld" = "%lld sur %lld";
+
+/* Loading-state accessibility label (R2.1) */
+"Loading" = "Chargement";

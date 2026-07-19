@@ -7,6 +7,6 @@ public struct LoadingView: View {
 
     public var body: some View {
         ProgressView()
-            .accessibilityLabel("Loading")
+            .accessibilityLabel(Text("Loading", bundle: .module))
     }
 }

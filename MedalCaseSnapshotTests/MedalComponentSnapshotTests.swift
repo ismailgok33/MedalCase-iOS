@@ -38,6 +38,14 @@ final class MedalComponentSnapshotTests: XCTestCase {
         assertSnapshot(of: card(MedalCellView(medal: AchievementFixtures.lockedMarathon()), size: cellSize), as: .image)
     }
 
+    func test_medalCell_locked_fr() {
+        // Also the runtime proof that `.environment(\.locale)` re-resolves catalog strings (ADR-0012):
+        // the locked value line must render "Pas encore", not "Not Yet".
+        let cell = MedalCellView(medal: AchievementFixtures.lockedMarathon())
+            .environment(\.locale, Locale(identifier: "fr"))
+        assertSnapshot(of: card(cell, size: cellSize), as: .image)
+    }
+
     func test_medalCell_earned_dark() {
         let medal = AchievementFixtures.earnedDuration(title: "Fastest 5K", assetKey: "pr_fastest_5k")
         assertSnapshot(of: card(MedalCellView(medal: medal), size: cellSize, colorScheme: .dark), as: .image)

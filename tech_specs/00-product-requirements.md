@@ -31,8 +31,8 @@ contract ports to Kotlin/Compose unchanged.
   "Not Yet".
 - **R1.6 (Ubiquitous)** The screen shall render Runkeeper-style chrome: a teal navigation bar
   titled "Achievements", a back affordance, and an overflow menu hosting demo actions
-  (toggle the Marathon medal's earned state; reset fixture data) so the chrome is functional,
-  not painted.
+  (an EN/FR **language switcher** — ADR-0012; toggle the Marathon medal's earned state; reset
+  fixture data) so the chrome is functional, not painted.
 
 *Acceptance (R1.2):* Given the fixture (5 earned + 1 locked personal records), when the grid
 renders, then the Personal Records header reads "5 of 6"; given data with 4 earned, it reads
@@ -83,9 +83,18 @@ desaturated/ghosted and its value line reads "Not Yet".
   shall be announced as "N of M earned".
 - **R4.3 (Ubiquitous)** All UI shall support Dynamic Type to accessibility XXL without truncation
   (including "Tokyo-Hakone Ekiden 2020"); the grid may reflow to fewer columns at accessibility sizes.
-- **R4.4 (Ubiquitous)** All user-facing *chrome/state* strings shall come from the String Catalog;
-  medal titles/section titles come from data (server-localized in production — noted in
-  [`02-data-contract.md`](02-data-contract.md)).
+- **R4.4 (Ubiquitous)** All user-facing *chrome/state* strings shall come from localization tables
+  (**EN + FR**, per-package `.lproj` `.strings` — ADR-0012), resolved against each package's own
+  bundle (`bundle: .module`); the in-app switcher (R1.6) shall re-resolve them live via
+  `\.locale`. Medal titles/section titles come from data (server-localized in production — noted in
+  [`02-data-contract.md`](02-data-contract.md)); numeric value glyphs (23:07, 2095 ft) are verbatim.
+
+*done (R4.4) =* `test_localization_frenchCatalog_resolvesNotYet`,
+`test_localization_frenchCatalog_resolvesTitle`,
+`test_localization_frenchCatalog_resolvesLockedAccessibilityFormat`,
+`test_localization_frenchCatalog_resolvesRetry`,
+`test_localization_frenchCatalog_resolvesProgressCountFormat`, snapshot `test_medalCell_locked_fr`,
+UI `test_languageSwitcher_switchesChromeToFrench`.
 
 *done =* `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked`,
 `test_sectionHeader_isAccessibilityHeading`, snapshot `achievements-grid-xxl`.

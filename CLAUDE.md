@@ -27,8 +27,10 @@ current OS + the two prior majors — ADR-0005.)
 4. **No force-unwrap, force-try, or implicitly-unwrapped optionals** in non-test code
    (`!`, `try!`, `as!`, `T!`). Use `guard let`/`if let`, typed `throws`, or `assertionFailure` with a
    safe fallback. Tests may use `#require`.
-5. **No hardcoded user-facing strings or magic values.** User text → String Catalog
-   (`Localizable.xcstrings`). Spacing/size/color/radius → DesignSystem tokens. **The mock's hex
+5. **No hardcoded user-facing strings or magic values.** User text → localization tables (EN + FR):
+   inside SPM packages these are per-locale `.lproj/Localizable.strings` (not `.xcstrings` — the
+   SwiftPM CLI copies String Catalogs verbatim without compiling them, ADR-0012), always resolved
+   with `bundle: .module`. Spacing/size/color/radius → DesignSystem tokens. **The mock's hex
    values (`#63C6D4` etc.) exist in exactly one place: DesignSystem.** No literal numbers in views
    beyond `0`/`1`.
 6. **Constructor dependency injection.** Inject dependencies as protocols through initializers. No

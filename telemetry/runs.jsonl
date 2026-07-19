@@ -38,3 +38,4 @@
 {"at":"2026-07-19T05:00:02Z","kind":"skill","name":"ios-review","task":"fix: app-target resource-package dep (DesignSystem out of app; nav bar → feature)","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
 {"at":"2026-07-19T05:00:02Z","kind":"skill","name":"pre-commit-review","task":"resource-package fix gate","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
 {"at":"2026-07-19T23:10:49Z","kind":"skill","name":"pre-commit-review","task":"ui-polish: vertical ellipsis","verdict":"PASS","attempts":1,"head":"049747b","notes":""}
+{"at":"2026-07-19T23:46:57Z","kind":"skill","name":"pre-commit-review","task":"ui-polish: EN+FR localization + switcher","verdict":"PASS","attempts":1,"head":"07a0a63","notes":""}

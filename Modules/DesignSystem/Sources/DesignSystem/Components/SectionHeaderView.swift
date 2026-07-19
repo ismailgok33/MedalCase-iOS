@@ -19,7 +19,7 @@ public struct SectionHeaderView: View {
                 .foregroundStyle(SemanticColor.sectionTitle)
             Spacer()
             if let progress {
-                Text("\(progress.earned) of \(progress.total)")
+                Text("\(progress.earned) of \(progress.total)", bundle: .module)
                     .medalFont(Typography.sectionCount)
                     .foregroundStyle(SemanticColor.sectionCount)
             }

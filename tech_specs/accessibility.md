@@ -51,7 +51,11 @@ than silently claimed compliant.
 - **Dark mode:** adaptive tokens (surface/strip/text) with the same contrast targets; badge assets
   render on the adaptive surface unchanged.
 - **Localization:** chrome/state strings ("Achievements", "Not Yet", "not yet earned", error/empty
-  copy) live in the String Catalog. Medal/section titles arrive from data (server-localized in
+  copy) live in the per-package localization tables (EN + FR — ADR-0012). **Language stance:**
+  visible text follows the in-app language override; accessibility *labels* deliberately follow the
+  device language (VoiceOver speaks in the system voice/language — reading French labels with an
+  English voice would be worse than consistent system-language labels). FR strings exist for both
+  paths, so a French *device* gets fully French VoiceOver. Medal/section titles arrive from data (server-localized in
   production — [`02-data-contract.md`](02-data-contract.md)).
 
 *done =* `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked`,

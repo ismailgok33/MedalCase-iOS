@@ -14,9 +14,30 @@ final class MedalCaseUITests: XCTestCase {
         app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", text)).firstMatch
     }
 
+    /// Taps only after the element's frame stops moving: menu/submenu rows animate in, and a tap
+    /// computed from a mid-animation frame can land beside the row and dismiss the menu without
+    /// selecting (observed on iOS 26 — the failure hierarchy showed a closed menu and no commit).
+    private func tapWhenSettled(_ element: XCUIElement, timeout: TimeInterval = 3) {
+        XCTAssertTrue(element.waitForExistence(timeout: timeout))
+        var previousFrame = CGRect.null
+        let deadline = Date().addingTimeInterval(timeout)
+        while Date() < deadline {
+            let frame = element.frame
+            if frame == previousFrame {
+                break
+            }
+            previousFrame = frame
+            RunLoop.current.run(until: Date().addingTimeInterval(0.15))
+        }
+        element.tap()
+    }
+
     @MainActor
     func test_launch_showsAchievementsGrid() {
         let app = XCUIApplication()
+        // Hermetic: the language-switcher test persists "fr" on this simulator; pin EN explicitly so
+        // test order can never change what this test sees.
+        app.launchArguments += ["-app_language", "en"]
         app.launch()
 
         // The grid loaded: an earned medal cell exposes its combined "«title», «value»" label (R4.1).
@@ -36,6 +57,39 @@ final class MedalCaseUITests: XCTestCase {
             attempts += 1
         }
         XCTAssertTrue(race.exists)
+    }
+
+    /// The in-app language switcher (R1.6, ADR-0012): round-trip EN → FR through the overflow menu and
+    /// the visible chrome re-resolves live — no relaunch.
+    ///
+    /// Deliberately launches with NO language argument: `-app_language X` would register in
+    /// `NSArgumentDomain`, which shadows every AppStorage write and makes the switch unobservable —
+    /// the launch-arg "hermeticity" of this test's first version was exactly what broke it. Instead it
+    /// pins its EN baseline through the UI, addressing rows by language-independent
+    /// `accessibilityIdentifier`s. (Cell text can't be asserted directly: cells are single combined
+    /// accessibility elements per R4.1 — the FR cell rendering is locked by the
+    /// `test_medalCell_locked_fr` snapshot instead.)
+    @MainActor
+    func test_languageSwitcher_switchesChromeToFrench() {
+        let app = XCUIApplication()
+        app.launch()
+
+        XCTAssertTrue(app.navigationBars.firstMatch.waitForExistence(timeout: 10))
+
+        // Pin the EN baseline through the switcher itself (also exercises the EN direction).
+        tapWhenSettled(app.buttons["overflow-menu"])
+        tapWhenSettled(app.buttons["language-menu"])
+        tapWhenSettled(app.buttons["language-en"])
+        XCTAssertTrue(app.staticTexts["Achievements"].waitForExistence(timeout: 8))
+
+        // Flip to Français: title and menu items re-resolve live.
+        tapWhenSettled(app.buttons["overflow-menu"])
+        tapWhenSettled(app.buttons["language-menu"])
+        tapWhenSettled(app.buttons["language-fr"])
+        XCTAssertTrue(app.staticTexts["Réalisations"].waitForExistence(timeout: 8))
+
+        tapWhenSettled(app.buttons["overflow-menu"])
+        XCTAssertTrue(app.buttons["Réinitialiser"].waitForExistence(timeout: 3))
     }
 
     /// Cold-launch time to first frame (rule 8 / performance-battery.md). Reproducible number for the

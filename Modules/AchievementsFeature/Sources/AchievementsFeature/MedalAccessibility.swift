@@ -14,7 +14,12 @@ enum MedalAccessibility {
             }
             return "\(medal.title)"
         case .locked:
-            return "\(medal.title), not yet earned"
+            // Explicit bundle so "not yet earned" resolves against this package's String Catalog
+            // (interpolated LocalizedStringResource literals default to the app's main bundle).
+            return LocalizedStringResource(
+                "\(medal.title), not yet earned",
+                bundle: .atURL(Bundle.module.bundleURL)
+            )
         }
     }
 }

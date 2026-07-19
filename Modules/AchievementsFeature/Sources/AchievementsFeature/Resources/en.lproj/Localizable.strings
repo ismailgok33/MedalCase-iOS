@@ -1,0 +1,28 @@
+/* Per-locale .strings (not .xcstrings): SwiftPM's CLI build copies String Catalogs verbatim without
+   compiling them, so `swift test` would see no localization tables — classic lproj tables work under
+   every build system (ADR-0012). SwiftPM auto-detects lproj dirs when defaultLocalization is set. */
+
+/* Navigation bar title (R1.6) */
+"Achievements" = "Achievements";
+
+/* Locked medal value line (R1.5) */
+"Not Yet" = "Not Yet";
+
+/* Overflow menu demo actions (R1.6) */
+"Toggle Marathon (demo)" = "Toggle Marathon (demo)";
+"Reset" = "Reset";
+
+/* Overflow menu accessibility label */
+"More options" = "More options";
+
+/* Language switcher submenu label (ADR-0012) */
+"Language" = "Language";
+
+/* Error state message (R2.2) */
+"We couldn't load your medals. Please try again." = "We couldn't load your medals. Please try again.";
+
+/* Empty state message (R2.3) */
+"You haven't earned any medals yet." = "You haven't earned any medals yet.";
+
+/* Locked medal combined accessibility label, %@ = medal title (R4.1) */
+"%@, not yet earned" = "%@, not yet earned";

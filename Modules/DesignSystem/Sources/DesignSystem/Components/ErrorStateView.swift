@@ -23,7 +23,7 @@ public struct ErrorStateView: View {
                 .foregroundStyle(SemanticColor.medalValue)
                 .multilineTextAlignment(.center)
             if isRetryable {
-                Button("Retry", action: retry)
+                Button(action: retry) { Text("Retry", bundle: .module) }
                     .buttonStyle(.borderedProminent)
             }
         }

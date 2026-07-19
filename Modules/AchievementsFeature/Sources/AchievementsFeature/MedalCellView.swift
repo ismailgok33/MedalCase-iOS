@@ -36,7 +36,7 @@ public struct MedalCellView: View {
             // Value glyphs (23:07, 2095 ft) are numeric, not prose → verbatim, never localized.
             Text(verbatim: MedalValueFormatter.string(for: value) ?? " ")
         case .locked:
-            Text("Not Yet")
+            Text("Not Yet", bundle: .module)
         }
     }
 }
