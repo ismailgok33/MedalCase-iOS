@@ -41,6 +41,11 @@ place allowed to see concretes: standard composition-root exemption).
 | **MedalTestSupport** | `MockAchievementsRepository` (spy + stubbable), `AchievementFixtures` from the real fixture JSON | test targets only |
 | **App target** | `MedalCaseApp`, composition root, `UINavigationBarAppearance` for the teal bar, overflow demo menu | thin; no logic |
 
+Per-module contracts (public surface, dependencies, edge cases, `done = these tests`) live in
+[`modules/`](modules/): [medal-domain](modules/medal-domain.md) · [design-system](modules/design-system.md)
+· [medal-data](modules/medal-data.md) · [achievements-feature](modules/achievements-feature.md) ·
+[medal-test-support](modules/medal-test-support.md). They are the build order for M3–M5.
+
 ## Decisions that shape the graph
 
 - **Async repository seam, no networking stack ([ADR-0004](adr/0004-bundled-data-repository-seam.md)).**

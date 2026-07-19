@@ -3,3 +3,6 @@
 {"at":"2026-07-19T01:11:04Z","kind":"skill","name":"spec","task":"M1: 00-requirements, 01-architecture, 02-data-contract, accessibility, performance-battery, 10 ADRs, canonical fixture","verdict":"PASS","attempts":1,"head":"224bb3c","notes":""}
 {"at":"2026-07-19T01:11:04Z","kind":"milestone","name":"M1","task":"Specify: tech_specs + ADRs + fixture","verdict":"PASS","attempts":1,"head":"224bb3c","notes":""}
 {"at":"2026-07-19T01:16:44Z","kind":"skill","name":"pre-commit-review","task":"strip template headers (2 files)","verdict":"PASS","attempts":1,"head":"4e37c94","notes":""}
+{"at":"2026-07-19T01:17:00Z","kind":"skill","name":"ios-review","task":"m1-specify branch: header-strip diff","verdict":"PASS","attempts":1,"head":"634da11","notes":""}
+{"at":"2026-07-19T01:22:46Z","kind":"skill","name":"spec","task":"M2: 5 module contracts (medal-domain, design-system, medal-data, achievements-feature, medal-test-support)","verdict":"PASS","attempts":1,"head":"894d880","notes":""}
+{"at":"2026-07-19T01:22:46Z","kind":"milestone","name":"M2","task":"Decompose: per-module contracts","verdict":"PASS","attempts":1,"head":"894d880","notes":""}
