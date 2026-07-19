@@ -28,3 +28,4 @@
 {"at":"2026-07-19T03:07:00Z","kind":"agent","name":"swift-reviewer","task":"M6 /ios-review: FAIL (spec coherence — 2 major stale spec lines) → repaired","verdict":"FAIL","attempts":1,"head":"f6aa8c0","notes":"code clean; specs contradicted deleted UINavigationBarAppearance + column mechanism"}
 {"at":"2026-07-19T03:07:54Z","kind":"agent","name":"swift-reviewer","task":"M6 /ios-review re-verify: PASS (all 4 spec-coherence fixes verified)","verdict":"PASS","attempts":2,"head":"f6aa8c0","notes":""}
 {"at":"2026-07-19T03:07:54Z","kind":"skill","name":"pre-commit-review","task":"M6 integrate commit gate","verdict":"PASS","attempts":1,"head":"f6aa8c0","notes":""}
+{"at":"2026-07-19T03:08:12Z","kind":"skill","name":"ios-review","task":"M6 push gate","verdict":"PASS","attempts":1,"head":"dab754b","notes":""}
