@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "grid-light",
+  "aggregate": 1.0,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Teal bar + centered white 'Achievements' + trailing ⋮ present; 'Personal Records' header with '5 of 6'; all six PR badges with titles+values; 'Virtual Races' header with hexagonal medals visible." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No title or value is clipped/ellipsised; 'Highest Elevation' and 'Virtual Half Marathon Race' render fully." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "The Marathon badge is ghosted (grey 26.2) with 'Not Yet'; the other five PR badges are full-color — locked vs earned visually distinct." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' matches the visible 5 earned + 1 locked Personal Records medals (data-driven)." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Clean 2-column grid, even gutters, badges centered over their labels; no overlap." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Teal nav (#63C6D4), light-grey section strips, black titles, grey values — matches the mock's annotated hexes." },
+    { "id": 7, "score": 1, "weight": 0.05, "evidence": "All text comfortably legible against white surface / light strips." }
+  ]
+}

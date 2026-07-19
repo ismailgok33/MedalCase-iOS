@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "locked-cell",
+  "aggregate": 0.975,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "The Marathon cell shows a badge, the title 'Marathon', and a value line — all present." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "'Marathon' and 'Not Yet' are fully visible, not clipped." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "The badge is desaturated (grey 26.2) and dimmed vs the full-color earned shields — the ghost treatment (ADR-0007) reads clearly." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "Its value line reads 'Not Yet' (not a duration), consistent with the locked status." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "The cell aligns with the grid; badge centered over title over value." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "The ghosted grey is visually distinct from the earned navy/teal badges." },
+    { "id": 7, "score": 0.5, "weight": 0.05, "evidence": "The dimmed '26.2' inside the ghosted badge is intentionally low-contrast (it is a locked/unavailable affordance); the title and 'Not Yet' below remain fully legible." }
+  ]
+}

@@ -36,6 +36,11 @@ packages:
     path: Modules/MedalData
   AchievementsFeature:
     path: Modules/AchievementsFeature
+  MedalTestSupport:
+    path: Modules/MedalTestSupport
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing
+    from: "1.17.0"
 
 targets:
   MedalCase:
@@ -59,16 +64,69 @@ targets:
       - package: MedalData
       - package: AchievementsFeature
 
+  # App-level integration tests: the one place the real MedalData + MedalDomain + feature meet
+  # (composition verified against the bundled fixture, not a mock).
+  MedalCaseTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MedalCaseTests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: MedalCase
+      - package: MedalDomain
+      - package: MedalData
+      - package: AchievementsFeature
+      - package: DesignSystem
+
+  # Snapshot baselines (swift-snapshot-testing). Renderer-pinned to the dev simulator (ADR-0009), so
+  # CI skips this target; it runs locally + in the pre-push gate.
+  MedalCaseSnapshotTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MedalCaseSnapshotTests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - package: MedalDomain
+      - package: DesignSystem
+      - package: AchievementsFeature
+      - package: MedalTestSupport
+      - package: SnapshotTesting
+        product: SnapshotTesting
+
+  MedalCaseUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: MedalCaseUITests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: MedalCase
+
 schemes:
   MedalCase:
     build:
       targets:
         MedalCase: all
+        MedalCaseTests: [test]
+        MedalCaseSnapshotTests: [test]
+        MedalCaseUITests: [test]
     run:
       config: Debug
     test:
       config: Debug
       gatherCoverageData: true
+      targets:
+        - MedalCaseTests
+        - MedalCaseSnapshotTests
+        - MedalCaseUITests
     profile:
       config: Release
     analyze:

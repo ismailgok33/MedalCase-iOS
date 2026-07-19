@@ -1,0 +1,17 @@
+{
+  "suite": "scaffold-module",
+  "case": "MedalDomain",
+  "aggregate": 1.0,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.2, "blocker": true, "evidence": "grep of Modules/MedalDomain/Sources shows ZERO import statements — not even Foundation. MedalValueFormatter.swift:24-30 zero-pads with a manual pad2 helper instead of String(format:), keeping the domain framework-free and Kotlin-portable." },
+    { "id": 2, "score": 1, "weight": 0.1, "evidence": "Achievement / AchievementSection / AchievementsCase / AchievementStatus / MedalValue / DurationStyle / MedalError / AchievementsRepository / MedalValueFormatter each in a file named after the type." },
+    { "id": 3, "score": 1, "weight": 0.15, "blocker": true, "evidence": "No force-unwrap/try!/as!/IUO in Sources/. MedalValueFormatter.string(for:) is total (guard let + max(0,·)); the async seam tests use #require (sanctioned)." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "AchievementsRepository is a protocol; the domain exposes it as the injection seam — the ViewModel (downstream) depends on it, never a concrete." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Tests/MedalDomainTests/Doubles/StubAchievementsRepository.swift is a dedicated LOCAL double — deliberately not the shared MedalTestSupport mock, avoiding a MedalDomain<->MedalTestSupport package cycle (documented in the file)." },
+    { "id": 6, "score": 1, "weight": 0.15, "blocker": true, "evidence": "16 @Test cases across 4 suites cover the spec's done= list: the full formatter matrix (00:00 / 00:00:00 / 23:07 / 2095 ft / nil / negative), earnedCount, isEarned, hasNoMedals, and the async repository seam." },
+    { "id": 7, "score": 1, "weight": 0.05, "evidence": "No user-facing strings in the domain (the 'Not Yet' catalog string lives in the feature). The only literals are intrinsic time-math constants (60, 10) in the formatter — not UI magic values that belong in a token." },
+    { "id": 8, "score": 1, "weight": 0.05, "evidence": "Public surface matches medal-domain.md exactly; no over-exposure (the pad2 helper is private)." },
+    { "id": 9, "score": 1, "weight": 0.05, "evidence": "Every type is a Sendable value type; no @unchecked, no @MainActor needed (pure value layer)." }
+  ]
+}
