@@ -7,7 +7,10 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
 
 - `@Observable @MainActor final class AchievementsViewModel` —
   `init(repository: AchievementsRepository)`; `private(set) var state: ViewState<AchievementsCase>`;
-  `func load() async`; `func retry() async`; `func toggleMarathonDemo()` / `func reset()` (the
+  `func load() async`; `func retry() async`; `func refreshContent() async` (the ADR-0013
+  language-change re-fetch: replaces loaded content in place with no `.loading` flip, keeps current
+  content on failure, degrades to `load()` from non-loaded states — `AchievementsView` calls it from
+  `.onChange(of: appLanguage)`); `func toggleMarathonDemo()` / `func reset()` (the
   overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence). The overflow
   glyph matches the mock's bare white **vertical** ⋮: SF Symbols has no bare vertical ellipsis, so it
   is `ellipsis` rotated 90° (named `verticalEllipsisAngle` constant), tinted `navTitle`, with iOS 26's
@@ -15,10 +18,12 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
   The menu's first entry is the EN/FR **language switcher** (ADR-0012): a "Language" submenu of
   buttons with a checkmark on the current selection, each row carrying a stable
   `accessibilityIdentifier` (`language-en`/`language-fr`; the menu itself `overflow-menu` /
-  `language-menu`) so UI tests address them language-independently. `AppLanguage` (enum: `en`/`fr`,
-  `storageKey`, verbatim self-named `displayName`) backs it; `AchievementsView` persists the choice
-  via `AppStorage` and applies `.environment(\.locale, …)` outermost plus `.id(appLanguage)` so the
-  whole subtree — including UIKit-bridged toolbar content — re-creates on switch.
+  `language-menu`) so UI tests address them language-independently. `AppLanguage` (**public** enum:
+  `en`/`fr`, `storageKey`, `systemDefault`, verbatim self-named `displayName` — public because the
+  composition root reads the same stored value for the repository's language provider, ADR-0013)
+  backs it; `AchievementsView` persists the choice via `AppStorage` and applies
+  `.environment(\.locale, …)` outermost plus `.id(appLanguage)` so the whole subtree — including
+  UIKit-bridged toolbar content — re-creates on switch, and re-fetches content via `refreshContent()`.
 - **The bar title is a `principal` toolbar item, not `navigationTitle`** — a navigationTitle Text is
   hoisted into the UIKit bar and resolves against the app's system language, escaping the SwiftUI
   locale environment (it would ignore the in-app switch; ADR-0012). The principal item re-resolves
@@ -82,16 +87,23 @@ so the production target never depends on `MedalTestSupport` (that stays a test-
   `test_appLanguage_coversEnglishAndFrench`, `test_appLanguage_default_frenchSystem_isFrench`,
   `test_appLanguage_default_englishSystem_isEnglish`,
   `test_appLanguage_default_unsupportedSystem_fallsBackToEnglish`.
+- Content refresh (ADR-0013): `test_refreshContent_loaded_replacesContentInPlace`,
+  `test_refreshContent_failure_keepsCurrentContent`, `test_refreshContent_fromErrorState_performsFullLoad`.
 - Snapshots: `achievements-grid-light`, `-dark`, `-xxl`, plus `medal-cell-earned` / `medal-cell-locked`
   / `test_medalCell_locked_fr` (simulator + pre-push; ADR-0009). UI:
-  `test_languageSwitcher_switchesChromeToFrench` (round-trip, identifier-addressed).
+  `test_languageSwitcher_switchesChromeAndContentToFrench` (round-trip, identifier-addressed; also
+  asserts the ADR-0013 content refresh via the French payload titles).
 
 ## Known corner
 
-- The `UserFacingError` message is a `LocalizedStringResource` created at load-failure time, so it
-  resolves at the **device** language rather than the in-app override — the error surface can lag
-  the switcher (ADR-0012 Consequences). Bounded to the rare error state; a dedicated pass would
-  thread the override locale into the mapping.
+- The `UserFacingError` message is a `LocalizedStringResource` created at load-failure time, but it is
+  *rendered* by `ErrorStateView` through SwiftUI `Text` inside the `\.locale` environment — the same
+  mechanism the switcher UI test proved re-resolves resources per the in-app language (the combined
+  header label; see `accessibility.md`). The expectation is therefore that the error surface follows
+  the switcher too. Flagged rather than asserted: the error path isn't exercised by the switcher test
+  (it would need failure injection into the composed app), so this corner is mechanism-verified, not
+  UI-test-pinned. *(An earlier revision claimed the opposite — device-language resolution — from the
+  resource's `.current` capture; the probe disproved that model.)*
 
 ## Test double
 

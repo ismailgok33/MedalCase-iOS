@@ -14,7 +14,13 @@ struct RootView: View {
     var body: some View {
         NavigationStack {
             AchievementsView(
-                viewModel: AchievementsViewModel(repository: DefaultAchievementsRepository())
+                viewModel: AchievementsViewModel(repository: DefaultAchievementsRepository(languageCode: {
+                    // Same resolution the switcher UI uses (AppStorage value, else the system seed), so
+                    // content and chrome can never disagree about the language (ADR-0013). Read per
+                    // call: the repository serves whichever language is current at fetch time.
+                    UserDefaults.standard.string(forKey: AppLanguage.storageKey)
+                        ?? AppLanguage.systemDefault.rawValue
+                }))
             )
         }
     }

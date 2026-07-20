@@ -52,13 +52,17 @@ than silently claimed compliant.
   render on the adaptive surface unchanged.
 - **Localization:** chrome/state strings ("Achievements", "Not Yet", "not yet earned", error/empty
   copy) live in the per-package localization tables (EN + FR — ADR-0012). **Language stance:**
-  visible text follows the in-app language override; accessibility *labels* uniformly resolve as
-  `LocalizedStringResource`s at the **device** language (`MedalAccessibility`, the section-header
-  combined label, the overflow control) — VoiceOver speaks in the system voice/language, and reading
-  French labels with an English voice would be worse than consistent system-language labels. FR
-  strings exist for both paths (including the header's `%@, %lld of %lld earned` format), so a
-  French *device* gets fully French VoiceOver. Medal/section titles arrive from data (server-localized in
-  production — [`02-data-contract.md`](02-data-contract.md)).
+  visible text and accessibility *labels* follow the **app's effective language** — including the
+  in-app override — because every label (`MedalAccessibility`, the section-header combined label, the
+  overflow control) renders through SwiftUI `Text` inside the `\.locale` environment, which re-resolves
+  `LocalizedStringResource`s exactly like keyed `Text`. *(Empirically pinned, not assumed: the switcher
+  UI test asserts the fully-French combined header "Records personnels, 5 sur 6 obtenues" — an earlier
+  revision of this file claimed labels stick to the device language, and the test disproved it.)*
+  Labels are therefore always internally consistent — format and payload title in the same language
+  (ADR-0013 serves content per-language). The one honest cost of the *demo* override: VoiceOver may
+  speak French labels with an English system voice when the override differs from the device language;
+  in production, iOS's per-app language setting keeps them aligned, and FR strings exist for every
+  label format either way.
 
 *done =* `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked`,
 `test_sectionHeader_isAccessibilityHeading`, `test_navBar_increasedContrast_usesAccessibleTeal`,
