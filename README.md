@@ -28,8 +28,9 @@ is unsatisfiable against its five colored cells — [ADR-0008](tech_specs/adr/00
 - **A data layer that resolves the brief's traps** — a self-defined, server-shaped contract with eight
   decode/mapping policies (forward-compatible: unknown medal types/values/statuses degrade instead of
   breaking), all unit-tested.
-- **55 tests** — 47 package unit tests (Swift Testing) + 8 app-target tests (1 integration, 5 snapshot,
-  2 XCUITest incl. a launch-perf metric); **CI green**, running the app tests on every PR.
+- **83 tests** — 72 package unit tests (Swift Testing) + 11 app-target tests (1 integration, 7 snapshot,
+  3 XCUITest incl. a launch-perf metric and the EN↔FR switcher round-trip); **CI green**, running the
+  app tests on every PR.
 - **Accessibility-audited** — each medal cell is one VoiceOver element, Dynamic Type to accessibility
   XXL with a 2→1 column reflow and no truncation, an honest WCAG contrast finding on the mock's own
   nav bar.
@@ -138,17 +139,17 @@ these, and knowing *why not* is the point.
 
 ## Testing
 
-**55 tests**, at the cheapest boundary that proves each thing ([ADR-0009](tech_specs/adr/0009-testing-strategy.md)):
+**83 tests**, at the cheapest boundary that proves each thing ([ADR-0009](tech_specs/adr/0009-testing-strategy.md)):
 
 | Layer | Count | Tool | Runs in CI |
 |---|:--:|---|:--:|
 | MedalDomain (formatter matrix, counts, seam) | 16 | Swift Testing | ✅ |
-| MedalData (decode + policies P1–P8 + repository) | 16 | Swift Testing | ✅ |
-| AchievementsFeature (ViewModel state machine, a11y labels, progress) | 11 | Swift Testing | ✅ |
-| DesignSystem (asset resolution) | 4 | Swift Testing | ✅ |
+| MedalData (decode + policies P1–P8 + repository + FR payload variants, ADR-0013) | 23 | Swift Testing | ✅ |
+| AchievementsFeature (ViewModel state machine, a11y labels, progress, AppLanguage + L10n) | 24 | Swift Testing | ✅ |
+| DesignSystem (asset resolution, localization tables + L10n accessors) | 9 | Swift Testing | ✅ |
 | App integration (real repository → ViewModel → 5-of-6) | 1 | Swift Testing | ✅ |
-| Component snapshots (cell light/dark, locked, header) | 5 | swift-snapshot-testing | local + pre-push ([ADR-0009](tech_specs/adr/0009-testing-strategy.md)) |
-| XCUITest smoke + launch-perf | 2 | XCUITest | ✅ |
+| Component snapshots (cell light/dark/locked/FR, headers, the drawn ⋮ glyph) | 7 | swift-snapshot-testing | local + pre-push ([ADR-0009](tech_specs/adr/0009-testing-strategy.md)) |
+| XCUITest smoke + EN↔FR switcher round-trip + launch-perf | 3 | XCUITest | ✅ |
 
 Mocks + fixtures live in a dedicated `MedalTestSupport` package (never inlined); `MedalDomain` uses a
 *local* double to avoid a package cycle. Run: `swift test --package-path Modules/<Name>` (fast loop) or
@@ -272,6 +273,6 @@ open MedalCase.xcodeproj                 # select the MedalCase scheme → Run (
 
 ---
 
-*Built with a spec-driven AI-DLC workflow. Total: 5 packages · 55 tests · 10 ADRs · 8 milestones, one PR
-each. The pipeline is committed as evidence — see [`docs/EXECUTION_PLAN.md`](docs/EXECUTION_PLAN.md) for
-the full roadmap.*
+*Built with a spec-driven AI-DLC workflow. Total: 5 packages · 83 tests · 13 ADRs · 8 milestones (one PR
+each) + 7 post-milestone PRs (polish, EN+FR localization, FR content payloads, fixes). The pipeline is
+committed as evidence — see [`docs/EXECUTION_PLAN.md`](docs/EXECUTION_PLAN.md) for the full roadmap.*
