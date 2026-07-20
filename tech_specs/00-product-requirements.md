@@ -86,15 +86,18 @@ desaturated/ghosted and its value line reads "Not Yet".
 - **R4.4 (Ubiquitous)** All user-facing *chrome/state* strings shall come from localization tables
   (**EN + FR**, per-package `.lproj` `.strings` — ADR-0012), resolved against each package's own
   bundle (`bundle: .module`); the in-app switcher (R1.6) shall re-resolve them live via
-  `\.locale`. Medal titles/section titles come from data (server-localized in production — noted in
-  [`02-data-contract.md`](02-data-contract.md)); numeric value glyphs (23:07, 2095 ft) are verbatim.
+  `\.locale`. Medal titles/section titles come from data, and the bundled source serves them
+  **per-language** (EN/FR payload variants — the Accept-Language analog, ADR-0013), with the feature
+  re-fetching on a language switch; brand race names stay verbatim; numeric value glyphs
+  (23:07, 2095 ft) are verbatim ([ADR-0010](adr/0010-value-formatting.md)).
 
 *done (R4.4) =* `test_localization_frenchCatalog_resolvesNotYet`,
 `test_localization_frenchCatalog_resolvesTitle`,
 `test_localization_frenchCatalog_resolvesLockedAccessibilityFormat`,
 `test_localization_frenchCatalog_resolvesRetry`,
 `test_localization_frenchCatalog_resolvesProgressCountFormat`, snapshot `test_medalCell_locked_fr`,
-UI `test_languageSwitcher_switchesChromeToFrench`.
+UI `test_languageSwitcher_switchesChromeAndContentToFrench`, and the ADR-0013 content suite in
+[`modules/medal-data.md`](modules/medal-data.md).
 
 *done =* `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked`,
 `test_sectionHeader_isAccessibilityHeading`, snapshot `achievements-grid-xxl`.

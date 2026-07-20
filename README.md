@@ -55,8 +55,10 @@ is unsatisfiable against its five colored cells — [ADR-0008](tech_specs/adr/00
 | **Swift**, iPhone | ✅ | SwiftUI, iOS 17 |
 
 **Beyond the brief:** dark mode; Dynamic Type XXL with column reflow; **EN + FR localization with an
-in-app language switcher** in the overflow menu (per-package `.strings` tables, live `\.locale`
-re-resolution — ADR-0012; *Réalisations · 5 sur 6 · Pas encore*); a functional overflow menu (toggles
+in-app language switcher** in the overflow menu — chrome via per-package `.strings` tables with live
+`\.locale` re-resolution (ADR-0012), **content via per-language payload variants served by the data
+layer** (the Accept-Language analog, ADR-0013: *Records personnels · Course la plus longue*, brand
+race names verbatim, structural parity test-enforced, re-fetch on switch); a functional overflow menu (toggles
 the Marathon to show the count is live); an async repository seam ready for a real API; the full AI-DLC
 pipeline with a discriminating, calibrated eval suite.
 

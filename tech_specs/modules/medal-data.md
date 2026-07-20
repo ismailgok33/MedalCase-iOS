@@ -11,8 +11,11 @@ it as an `any AchievementsRepository`; everything else (the data source, mapper,
 plumbing, so a DTO can never leak past the module boundary by construction.
 
 - `public struct DefaultAchievementsRepository: AchievementsRepository` —
-  `public init()` wires the production defaults (bundled fixture + mapper); an **internal**
-  `init(dataSource:mapper:)` is the DI seam for tests (`@testable`) and a future remote source.
+  `public init(languageCode: @escaping @Sendable () -> String = { "en" })` wires the production
+  defaults (bundled fixture + mapper). The provider is read **per call** and selects the per-language
+  payload variant (ADR-0013) — the composition root passes the in-app language, so a language switch
+  followed by a re-fetch serves the new language's document. An **internal** `init(dataSource:mapper:)`
+  is the DI seam for tests (`@testable`) and a future remote source.
   `func achievements() async throws -> AchievementsCase` reads the data source, maps DTO → domain, and
   surfaces a typed `MedalError`.
 
@@ -21,8 +24,10 @@ Internal collaborators (reached by tests via `@testable`):
   The abstraction over "where bytes come from"; a remote client would be added inside this package.
 - `struct BundledAchievementsDataSource: AchievementsDataSource` —
   `init(bundle: Bundle = .module, resource: String = "achievements")`; `load()` reads the packaged
-  `achievements.json` (→ `MedalError.emptyData` if missing) and calls the pure `static decode(_:)`,
-  which maps any `DecodingError` → `MedalError.decoding` (P1).
+  document (→ `MedalError.emptyData` if missing) and calls the pure `static decode(_:)`, which maps
+  any `DecodingError` → `MedalError.decoding` (P1). A second `init(bundle:languageCode:)` selects the
+  payload variant via the pure `static resourceName(forLanguageCode:)` — any `fr*` tag →
+  `achievements-fr`, anything else the base `achievements` (ADR-0013).
 - `struct AchievementMapper: Sendable` — `func map(_ dto:) -> AchievementsCase` (**non-throwing**: every
   semantic policy P2–P8 degrades gracefully; the only failure, P1, is a *decode* concern handled before
   the mapper ever runs). Where the landmines resolve.
@@ -53,10 +58,16 @@ decode; semantic policies apply in the mapper.
 
 ## Resources
 
-The canonical `tech_specs/data/achievements.json` is copied into `Sources/MedalData/Resources/` and
-declared as an SPM resource (`.process("Resources")`). `test_bundledResource_matchesCanonicalFixture`
-decodes the packaged copy and asserts the canonical content (2 sections, 6+6 medals, the locked
-Marathon, the 1387 s 5K), so the two never silently diverge.
+The canonical `tech_specs/data/achievements.json` **and its French variant `achievements-fr.json`**
+(ADR-0013) are copied into `Sources/MedalData/Resources/` and declared as SPM resources
+(`.process("Resources")`). `test_bundledResource_matchesCanonicalFixture` decodes the packaged copy
+and asserts the canonical content (2 sections, 6+6 medals, the locked Marathon, the 1387 s 5K);
+`test_fixtures_frenchMirrorsEnglishStructure` holds the two variants structurally identical (section
+ids, medal ids/order, types, statuses, values, asset keys — only display text may differ), so a
+language switch can never change *what* is shown, only *how it reads*;
+`test_bundledFrenchResource_matchesCanonicalFixture` pins the packaged FR copy to the canonical
+content the same way the EN pin does. Brand race names (the Ekidens) stay verbatim in FR —
+`test_fixtures_brandRaceNamesStayVerbatimInFrench`.
 
 ## done = these tests
 
@@ -76,6 +87,15 @@ Marathon, the 1387 s 5K), so the two never silently diverge.
   `BundledAchievementsDataSource`: "5 of 6" PRs, locked Marathon, 6 races.
 - `test_repository_dataSourceThrows_surfacesMedalError` — via `MockAchievementsDataSource`.
 - `test_bundledResource_matchesCanonicalFixture` — packaged copy decodes to the canonical content.
+- `test_resourceName_frenchTags_selectFrenchVariant` + `test_resourceName_otherTags_fallBackToBaseDocument`
+  (ADR-0013) — the pure payload-variant selection rule.
+- `test_repository_frenchLanguage_servesFrenchTitles` + `test_repository_unsupportedLanguage_servesEnglishTitles`
+  (ADR-0013) — end-to-end language selection through the public init.
+- `test_fixtures_frenchMirrorsEnglishStructure` + `test_fixtures_brandRaceNamesStayVerbatimInFrench`
+  (ADR-0013) — the FR variant's structural-parity (ids, types, statuses, values, asset keys) and
+  brand-name invariants.
+- `test_bundledFrenchResource_matchesCanonicalFixture` (ADR-0013) — the FR analog of the EN
+  canonical pin: the packaged French copy matches the canonical fixture's content.
 
 ## Test doubles
 

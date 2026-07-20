@@ -46,3 +46,8 @@
 {"at":"2026-07-20T00:13:17Z","kind":"agent","name":"swift-reviewer","task":"ui-polish re-verify after fixes: PASS (both majors closed, 3 minor residues)","verdict":"PASS","attempts":2,"head":"abfc14c","notes":""}
 {"at":"2026-07-20T00:13:17Z","kind":"skill","name":"pre-commit-review","task":"residue commit gate (N1 key inventory, N2 Loading labels, N3 telemetry)","verdict":"PASS","attempts":1,"head":"abfc14c","notes":""}
 {"at":"2026-07-20T00:13:18Z","kind":"skill","name":"ios-review","task":"ui-polish push gate","verdict":"PASS","attempts":2,"head":"73b3e77","notes":""}
+{"at":"2026-07-20T00:56:56Z","kind":"skill","name":"visual-eval","task":"re-judge grid-french after ADR-0013 content localization (FR payload titles)","verdict":"PASS","attempts":1,"head":"a3f5a4d","notes":"0.975 advisory; parity + brand-verbatim intents verified"}
+{"at":"2026-07-20T01:15:01Z","kind":"agent","name":"swift-reviewer","task":"fr-content adversarial review: FAIL — 2 major (dead onChange inside .id boundary, probe-proven; ADR-0013 contradicted rewritten a11y stance) + 3 minor","verdict":"FAIL","attempts":1,"head":"a3f5a4d","notes":"refreshContent was dead code as composed"}
+{"at":"2026-07-20T01:15:01Z","kind":"agent","name":"swift-reviewer","task":"fr-content re-verify after fixes: PASS (all 5 resolved; reviewer re-ran switcher UI test itself)","verdict":"PASS","attempts":2,"head":"a3f5a4d","notes":""}
+{"at":"2026-07-20T01:15:01Z","kind":"skill","name":"pre-commit-review","task":"ADR-0013 content localization commit gate","verdict":"PASS","attempts":1,"head":"a3f5a4d","notes":""}
+{"at":"2026-07-20T01:15:02Z","kind":"skill","name":"ios-review","task":"fr-content push gate","verdict":"PASS","attempts":2,"head":"782ff4b","notes":""}

@@ -13,6 +13,18 @@ struct BundledAchievementsDataSource: AchievementsDataSource {
         self.resource = resource
     }
 
+    /// Selects the per-language payload variant — the bundled analog of a server honoring
+    /// Accept-Language (ADR-0013).
+    init(bundle: Bundle = .module, languageCode: String) {
+        self.init(bundle: bundle, resource: Self.resourceName(forLanguageCode: languageCode))
+    }
+
+    /// Any French tag ("fr", "fr-CA") selects the French document; every other language falls back to
+    /// the base English one. Pure, so the selection rule is unit-testable.
+    static func resourceName(forLanguageCode code: String) -> String {
+        code.lowercased().hasPrefix("fr") ? "achievements-fr" : "achievements"
+    }
+
     func load() async throws -> AchievementsDocumentDTO {
         guard let url = bundle.url(forResource: resource, withExtension: "json"),
               let data = try? Data(contentsOf: url)

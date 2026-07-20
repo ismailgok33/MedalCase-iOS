@@ -59,8 +59,9 @@ final class MedalCaseUITests: XCTestCase {
         XCTAssertTrue(race.exists)
     }
 
-    /// The in-app language switcher (R1.6, ADR-0012): round-trip EN → FR through the overflow menu and
-    /// the visible chrome re-resolves live — no relaunch.
+    /// The in-app language switcher (R1.6, ADR-0012 + ADR-0013): round-trip EN → FR through the
+    /// overflow menu — the chrome re-resolves live, and the **content refreshes** to the French payload
+    /// (section titles + medal titles served by the data layer, brand race names verbatim).
     ///
     /// Deliberately launches with NO language argument: `-app_language X` would register in
     /// `NSArgumentDomain`, which shadows every AppStorage write and makes the switch unobservable —
@@ -70,7 +71,7 @@ final class MedalCaseUITests: XCTestCase {
     /// accessibility elements per R4.1 — the FR cell rendering is locked by the
     /// `test_medalCell_locked_fr` snapshot instead.)
     @MainActor
-    func test_languageSwitcher_switchesChromeToFrench() {
+    func test_languageSwitcher_switchesChromeAndContentToFrench() {
         let app = XCUIApplication()
         app.launch()
 
@@ -81,12 +82,20 @@ final class MedalCaseUITests: XCTestCase {
         tapWhenSettled(app.buttons["language-menu"])
         tapWhenSettled(app.buttons["language-en"])
         XCTAssertTrue(app.staticTexts["Achievements"].waitForExistence(timeout: 8))
+        XCTAssertTrue(element(app, labeled: "Longest Run, 00:00").waitForExistence(timeout: 8))
 
-        // Flip to Français: title and menu items re-resolve live.
+        // Flip to Français: chrome re-resolves live…
         tapWhenSettled(app.buttons["overflow-menu"])
         tapWhenSettled(app.buttons["language-menu"])
         tapWhenSettled(app.buttons["language-fr"])
         XCTAssertTrue(app.staticTexts["Réalisations"].waitForExistence(timeout: 8))
+
+        // …and the CONTENT refreshed to the French payload (ADR-0013). The combined header label is
+        // fully French — format AND title — because accessibility labels render through SwiftUI Text
+        // under the `\.locale` environment, so they follow the app's effective language (this test is
+        // the empirical pin for that stance in accessibility.md).
+        XCTAssertTrue(element(app, labeled: "Records personnels, 5 sur 6 obtenues").waitForExistence(timeout: 8))
+        XCTAssertTrue(element(app, labeled: "Course la plus longue, 00:00").exists)
 
         tapWhenSettled(app.buttons["overflow-menu"])
         XCTAssertTrue(app.buttons["Réinitialiser"].waitForExistence(timeout: 3))

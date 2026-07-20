@@ -28,13 +28,22 @@ public struct AchievementsView: View {
                 demoMenu
             }
             .medalCaseNavigationBar()
-            .task { await viewModel.load() }
-            // Applied outermost so every localization-table lookup below — title, menu, cells, state
-            // surfaces — re-resolves live when the reviewer flips the language (ADR-0012).
+            // Applied outermost-of-the-subtree so every localization-table lookup below — title, menu,
+            // cells, state surfaces — re-resolves live when the reviewer flips the language (ADR-0012).
             .environment(\.locale, Locale(identifier: appLanguage))
             // New identity per language: toolbar content is bridged into the UIKit bar, which can hold
             // on to already-resolved text; re-creating the subtree guarantees the flip is total.
             .id(appLanguage)
+            // ORDER IS LOAD-BEARING: `.task`/`.onChange` must sit OUTSIDE the `.id` boundary. Inside
+            // it, the language switch replaces the subtree wholesale — `.onChange` never fires and
+            // `.task` re-runs `load()` (a `.loading` flip that destroys on-screen content), turning
+            // `refreshContent()` into dead code. Caught by the adversarial review's SwiftUI probe.
+            .task { await viewModel.load() }
+            // Content follows the language too (ADR-0013): re-fetch so the repository serves the new
+            // language's payload — the client-side analog of re-requesting on an Accept-Language change.
+            .onChange(of: appLanguage) {
+                Task { await viewModel.refreshContent() }
+            }
     }
 
     /// The bar title as a `principal` toolbar item, not `navigationTitle`: a navigationTitle Text is
@@ -114,8 +123,9 @@ public struct AchievementsView: View {
             Image(systemName: "ellipsis")
                 .rotationEffect(Self.verticalEllipsisAngle)
                 .foregroundStyle(SemanticColor.navTitle)
-                // LocalizedStringResource, not a keyed Text: accessibility labels uniformly resolve at
-                // the device language (accessibility.md), unaffected by the in-app override.
+                // LocalizedStringResource with an explicit module bundle; rendered through Text under
+                // the locale environment it follows the app's effective language, like every
+                // accessibility label (accessibility.md).
                 .accessibilityLabel(Text(LocalizedStringResource(
                     "More options",
                     bundle: .atURL(Bundle.module.bundleURL)

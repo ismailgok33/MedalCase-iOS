@@ -65,6 +65,22 @@ with explicit `CodingKeys` (no `keyDecodingStrategy` magic).
 | L7 | Back chevron + "⋮" on a single-screen app | Real chrome: `NavigationStack`, functional overflow demo menu (R1.6) |
 | L8 | Mock fonts annotated in px | pt 1:1, exposed as Dynamic-Type-relative fonts (`relativeTo:`) — never fixed sizes |
 
+## Content localization (ADR-0013)
+
+Display text in the payload (`title` at both levels) is **content**, localized by the *server* in
+production (the Accept-Language pattern) — never by client string tables, because content is unbounded
+(new virtual races ship server-side without an app release) and often branded (Ekiden race names are
+not translated at all). The bundled source demonstrates this: it ships **per-language document
+variants** — `achievements.json` (EN, base) and `achievements-fr.json` — and selects by the requested
+language (`fr*` → the FR document; anything else → base). Invariants:
+
+- The variants are **structurally identical**: same section ids, medal ids/order, statuses, values,
+  asset keys. Only display text may differ. Enforced by `test_fixtures_frenchMirrorsEnglishStructure`.
+- Brand race names stay verbatim across languages (`test_fixtures_brandRaceNamesStayVerbatimInFrench`).
+- The schema (including `schemaVersion`) is identical — a variant is a translation, never a fork.
+- On an in-app language switch the client **re-fetches** (the analog of re-requesting with a new
+  Accept-Language); ids stay stable so view identity survives the swap.
+
 ## Fixture content (mock-exact)
 
 **personal_records** (`shows_progress_count: true`): Longest Run `00:00` (mm:ss) · Highest

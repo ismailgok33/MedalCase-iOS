@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "id": "personal_records",
+      "title": "Records personnels",
+      "shows_progress_count": true,
+      "medals": [
+        {
+          "id": "pr_longest_run",
+          "type": "longest_run",
+          "title": "Course la plus longue",
+          "asset_key": "pr_longest_run",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "minutes_seconds" }
+        },
+        {
+          "id": "pr_highest_elevation",
+          "type": "highest_elevation",
+          "title": "Altitude la plus élevée",
+          "asset_key": "pr_highest_elevation",
+          "status": "earned",
+          "value": { "kind": "elevation", "feet": 2095 }
+        },
+        {
+          "id": "pr_fastest_5k",
+          "type": "fastest_5k",
+          "title": "5 km le plus rapide",
+          "asset_key": "pr_fastest_5k",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "minutes_seconds" }
+        },
+        {
+          "id": "pr_fastest_10k",
+          "type": "fastest_10k",
+          "title": "10 km",
+          "asset_key": "pr_fastest_10k",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "hours_minutes_seconds" }
+        },
+        {
+          "id": "pr_half_marathon",
+          "type": "fastest_half_marathon",
+          "title": "Demi-marathon",
+          "asset_key": "pr_fastest_half_marathon",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "minutes_seconds" }
+        },
+        {
+          "id": "pr_marathon",
+          "type": "fastest_marathon",
+          "title": "Marathon",
+          "asset_key": "pr_fastest_marathon",
+          "status": "locked"
+        }
+      ]
+    },
+    {
+      "id": "virtual_races",
+      "title": "Courses virtuelles",
+      "shows_progress_count": false,
+      "medals": [
+        {
+          "id": "race_virtual_half_marathon",
+          "type": "virtual_race",
+          "title": "Course virtuelle de demi-marathon",
+          "asset_key": "race_virtual_half_marathon",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "minutes_seconds" }
+        },
+        {
+          "id": "race_tokyo_hakone_ekiden_2020",
+          "type": "virtual_race",
+          "title": "Tokyo-Hakone Ekiden 2020",
+          "asset_key": "race_tokyo_hakone_ekiden_2020",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "hours_minutes_seconds" }
+        },
+        {
+          "id": "race_virtual_10k",
+          "type": "virtual_race",
+          "title": "Course virtuelle de 10 km",
+          "asset_key": "race_virtual_10k",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "hours_minutes_seconds" }
+        },
+        {
+          "id": "race_hakone_ekiden",
+          "type": "virtual_race",
+          "title": "Hakone Ekiden",
+          "asset_key": "race_hakone_ekiden",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "hours_minutes_seconds" }
+        },
+        {
+          "id": "race_mizuno_singapore_ekiden_2015",
+          "type": "virtual_race",
+          "title": "Mizuno Singapore Ekiden 2015",
+          "asset_key": "race_mizuno_singapore_ekiden",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 0, "style": "hours_minutes_seconds" }
+        },
+        {
+          "id": "race_virtual_5k",
+          "type": "virtual_race",
+          "title": "Course virtuelle de 5 km",
+          "asset_key": "race_virtual_5k",
+          "status": "earned",
+          "value": { "kind": "duration", "seconds": 1387, "style": "minutes_seconds" }
+        }
+      ]
+    }
+  ]
+}

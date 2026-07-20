@@ -46,6 +46,23 @@ public final class AchievementsViewModel {
         await load()
     }
 
+    /// Re-fetches after the in-app language changes (ADR-0013), so the repository serves the new
+    /// language's payload. Loaded content stays on screen while fetching (no `.loading` flip — the
+    /// refresh pattern), and stays on a failed refresh: a language flip must never destroy an
+    /// already-loaded medal case. From any other state this is just a load.
+    public func refreshContent() async {
+        guard case .loaded = state else {
+            await load()
+            return
+        }
+        do {
+            let achievements = try await repository.achievements()
+            state = achievements.hasNoMedals ? .empty : .loaded(achievements)
+        } catch {
+            // Keep the current language's content; the switch simply doesn't take visual effect.
+        }
+    }
+
     private func fetch() async {
         do {
             let achievements = try await repository.achievements()

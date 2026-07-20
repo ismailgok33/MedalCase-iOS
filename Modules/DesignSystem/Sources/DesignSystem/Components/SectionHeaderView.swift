@@ -35,8 +35,9 @@ public struct SectionHeaderView: View {
 
     /// "«title», N of M earned" (R4.2) — a `LocalizedStringResource` with an explicit module bundle so
     /// the "earned" phrasing resolves against this package's localization tables (a bare interpolated
-    /// key would look in the app's main bundle and always speak English). Resolves at the device
-    /// language, like every accessibility label (accessibility.md).
+    /// key would look in the app's main bundle and always speak English). Rendered through `Text`
+    /// under the `\.locale` environment, so it follows the app's **effective** language — the switcher
+    /// UI test pins the fully-French "Records personnels, 5 sur 6 obtenues" (accessibility.md).
     private var accessibilityLabel: LocalizedStringResource {
         guard let progress else { return "\(title)" }
         return LocalizedStringResource(

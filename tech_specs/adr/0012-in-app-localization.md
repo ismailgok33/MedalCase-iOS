@@ -51,3 +51,6 @@ authored in-repo (production would add native review); the error message stored 
 `UserFacingError` resolves at creation locale, a known corner documented in the feature spec. For
 production, the switcher would be removed in favor of iOS's per-app language setting, whose
 plumbing (tables, bundles, keys) is exactly what this exercise built.
+
+Content (medal/section titles) is deliberately **not** in these tables — it is payload text, served
+per-language by the data layer. That half of the story is ADR-0013.
