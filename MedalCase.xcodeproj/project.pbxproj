@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0312B0CF8A916CD56DB86B61 /* test_verticalEllipsisIcon.1.png in Resources */ = {isa = PBXBuildFile; fileRef = EDCBF4F11748BA95917BC51F /* test_verticalEllipsisIcon.1.png */; };
 		1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */; };
 		23F2A62ABC814484C0C8E9E7 /* test_medalCell_locked_fr.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F6C43A3286DA63E08A5798 /* test_medalCell_locked_fr.1.png */; };
 		26E94943266A9A084B866304 /* MedalTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2D76D549EDA662B0E348FCDA /* MedalTestSupport */; };
@@ -71,6 +72,7 @@
 		CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalCaseApp.swift; sourceTree = "<group>"; };
 		DAD1BB787459AD5DBB36BD1E /* AchievementsFeature */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AchievementsFeature; path = Modules/AchievementsFeature; sourceTree = SOURCE_ROOT; };
 		DD05263F596B7201A42CCE3A /* MedalData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalData; path = Modules/MedalData; sourceTree = SOURCE_ROOT; };
+		EDCBF4F11748BA95917BC51F /* test_verticalEllipsisIcon.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_verticalEllipsisIcon.1.png; sourceTree = "<group>"; };
 		FF9A4332F55BE4D1105B47A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */,
 				5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */,
 				B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */,
+				EDCBF4F11748BA95917BC51F /* test_verticalEllipsisIcon.1.png */,
 			);
 			path = MedalComponentSnapshotTests;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				23F2A62ABC814484C0C8E9E7 /* test_medalCell_locked_fr.1.png in Resources */,
 				A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */,
 				4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */,
+				0312B0CF8A916CD56DB86B61 /* test_verticalEllipsisIcon.1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
