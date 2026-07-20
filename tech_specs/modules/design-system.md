@@ -70,7 +70,8 @@ is the package.
 - User-facing text localizes via the module's own **EN + FR `.lproj` `.strings` tables**
   (`Resources/en.lproj`, `Resources/fr.lproj`; auto-detected by SwiftPM under `defaultLocalization`)
   with every lookup passing `bundle: .module`. Keys: `Retry`, `%lld of %lld` (the header count —
-  "%lld sur %lld" in FR), `Loading`. Per-locale `.strings` rather than an `.xcstrings` catalog
+  "%lld sur %lld" in FR), `%@, %lld of %lld earned` (the header's combined VoiceOver label — R4.2),
+  `Loading`. Per-locale `.strings` rather than an `.xcstrings` catalog
   because `swift build`/`swift test` copy String Catalogs verbatim without compiling them
   (ADR-0012); Xcode builds both formats fine, the CLI only the classic one.
 
