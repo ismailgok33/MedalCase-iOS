@@ -9,9 +9,9 @@ them; the [`.claude/`](.claude/) tooling, golden [`evals/`](evals/), and structu
 > **Toolchain:** Swift 6 (Xcode 16+, developed on Xcode 26.6) · deployment **iOS 17** · strict
 > concurrency `complete`. Open `MedalCase.xcodeproj` and Run (iPhone 17) — no setup tool required.
 
-| Light (matches the mock) | Dark | Accessibility XXL |
-|:---:|:---:|:---:|
-| ![light](docs/media/01-light.png) | ![dark](docs/media/02-dark.png) | ![xxl](docs/media/03-xxl.png) |
+| Light (matches the mock) | Dark | Accessibility XXL | Français (in-app switcher) |
+|:---:|:---:|:---:|:---:|
+| ![light](docs/media/01-light.png) | ![dark](docs/media/02-dark.png) | ![xxl](docs/media/03-xxl.png) | ![fr](docs/media/04-fr.png) |
 
 The light render is a faithful match to the brief's mock: shield personal-record badges, the ghosted
 "26.2 / Not Yet" Marathon, hexagonal Asics race medals, mock-exact value formats, the small centered
@@ -54,9 +54,11 @@ is unsatisfiable against its five colored cells — [ADR-0008](tech_specs/adr/00
 | **Colors/fonts** per the annotated mock | ✅ | `SemanticColor` / `Typography` tokens (single source) |
 | **Swift**, iPhone | ✅ | SwiftUI, iOS 17 |
 
-**Beyond the brief:** dark mode; Dynamic Type XXL with column reflow; a functional overflow menu (toggles
+**Beyond the brief:** dark mode; Dynamic Type XXL with column reflow; **EN + FR localization with an
+in-app language switcher** in the overflow menu (per-package `.strings` tables, live `\.locale`
+re-resolution — ADR-0012; *Réalisations · 5 sur 6 · Pas encore*); a functional overflow menu (toggles
 the Marathon to show the count is live); an async repository seam ready for a real API; the full AI-DLC
-pipeline with a discriminating eval suite.
+pipeline with a discriminating, calibrated eval suite.
 
 ---
 
@@ -210,7 +212,9 @@ have a review step" and "my review step has teeth."
 **discriminates**: alongside a clean `MedalDomain` golden (1.00 PASS), an **adversarial** golden
 describing a dependency-rule cycle + force-try is correctly **failed at 0.375** with its blocker criteria
 at 0. Every recorded aggregate equals Σ(weight×score) (script-verified). The visual suite judges the real
-screenshots above (advisory — [ADR-0009](tech_specs/adr/0009-testing-strategy.md)).
+screenshots above — six cases including the French grid and FR locked-cell baseline, all 0.975 PASS —
+and is **calibrated**: a deliberately truncated image fails its blocker criterion at 0
+([`evals/README.md`](evals/README.md)). Advisory — [ADR-0009](tech_specs/adr/0009-testing-strategy.md).
 
 ---
 

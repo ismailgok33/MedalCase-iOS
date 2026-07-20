@@ -8,6 +8,7 @@ import SwiftUI
 public struct AchievementsView: View {
     @State private var viewModel: AchievementsViewModel
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @AppStorage(AppLanguage.storageKey) private var appLanguage = AppLanguage.systemDefault.rawValue
 
     /// Two columns normally (matching the mock); a single column at accessibility text sizes so cells
     /// grow rather than cramp — the reflow accessibility.md prescribes (R4.3).
@@ -22,10 +23,33 @@ public struct AchievementsView: View {
 
     public var body: some View {
         content
-            .navigationTitle("Achievements")
-            .toolbar { demoMenu }
+            .toolbar {
+                principalTitle
+                demoMenu
+            }
             .medalCaseNavigationBar()
             .task { await viewModel.load() }
+            // Applied outermost so every localization-table lookup below — title, menu, cells, state
+            // surfaces — re-resolves live when the reviewer flips the language (ADR-0012).
+            .environment(\.locale, Locale(identifier: appLanguage))
+            // New identity per language: toolbar content is bridged into the UIKit bar, which can hold
+            // on to already-resolved text; re-creating the subtree guarantees the flip is total.
+            .id(appLanguage)
+    }
+
+    /// The bar title as a `principal` toolbar item, not `navigationTitle`: a navigationTitle Text is
+    /// hoisted into the UIKit bar and resolves against the app's system language, escaping the SwiftUI
+    /// locale environment — it would stay English after the in-app switch (ADR-0012). A principal item
+    /// is an in-tree view, so it re-resolves like every other Text; it also takes the mock's exact
+    /// 16px navTitle token rather than the system title font.
+    @ToolbarContentBuilder
+    private var principalTitle: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            Text("Achievements", bundle: .module)
+                .medalFont(Typography.navTitle)
+                .foregroundStyle(SemanticColor.navTitle)
+                .accessibilityAddTraits(.isHeader)
+        }
     }
 
     @ViewBuilder
@@ -36,7 +60,7 @@ public struct AchievementsView: View {
         case let .loaded(achievements):
             grid(achievements)
         case .empty:
-            EmptyStateView(message: "You haven't earned any medals yet.")
+            EmptyStateView(message: Text("You haven't earned any medals yet.", bundle: .module))
         case let .error(error):
             ErrorStateView(message: error.message, isRetryable: error.isRetryable) {
                 Task { await viewModel.retry() }
@@ -61,17 +85,70 @@ public struct AchievementsView: View {
         .background(SemanticColor.surface)
     }
 
+    /// SF Symbols has no bare vertical ellipsis (only bubbled/circled variants), so the mock's ⋮ is
+    /// the horizontal `ellipsis` rotated 90° — keeping SF Symbol weight-matching and scaling.
+    private static let verticalEllipsisAngle = Angle.degrees(90)
+
     @ToolbarContentBuilder
     private var demoMenu: some ToolbarContent {
-        ToolbarItem(placement: .primaryAction) {
-            Menu {
-                Button("Toggle Marathon (demo)") { viewModel.toggleMarathonDemo() }
-                Button("Reset") { Task { await viewModel.reset() } }
-            } label: {
-                Image(systemName: "ellipsis")
-                    .accessibilityLabel("More options")
-            }
+        // iOS 26's Liquid Glass wraps toolbar buttons in a capsule the mock doesn't have; hide it so
+        // the glyph sits bare on the teal bar. Pre-26 systems render the bare glyph already.
+        if #available(iOS 26.0, macOS 26.0, *) {
+            ToolbarItem(placement: .primaryAction) { demoMenuButton }
+                .sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .primaryAction) { demoMenuButton }
         }
+    }
+
+    private var demoMenuButton: some View {
+        Menu {
+            languageMenu
+            Button { viewModel.toggleMarathonDemo() } label: {
+                Text("Toggle Marathon (demo)", bundle: .module)
+            }
+            Button { Task { await viewModel.reset() } } label: {
+                Text("Reset", bundle: .module)
+            }
+        } label: {
+            Image(systemName: "ellipsis")
+                .rotationEffect(Self.verticalEllipsisAngle)
+                .foregroundStyle(SemanticColor.navTitle)
+                // LocalizedStringResource, not a keyed Text: accessibility labels uniformly resolve at
+                // the device language (accessibility.md), unaffected by the in-app override.
+                .accessibilityLabel(Text(LocalizedStringResource(
+                    "More options",
+                    bundle: .atURL(Bundle.module.bundleURL)
+                )))
+        }
+        .accessibilityIdentifier("overflow-menu")
+    }
+
+    /// EN/FR switcher (R1.6, ADR-0012) — a "Language" submenu of buttons with a checkmark on the
+    /// current selection (mirroring Picker semantics). Buttons rather than a Picker so each row can
+    /// carry a stable `accessibilityIdentifier`: the switcher UI test must address rows
+    /// language-independently — it cannot pin the language via a launch argument, because an
+    /// `-app_language` argument registers in `NSArgumentDomain`, which shadows every AppStorage write
+    /// and would make the switch unobservable (the exact bug the first version of the test had).
+    /// Language names display verbatim in their own language.
+    private var languageMenu: some View {
+        Menu {
+            ForEach(AppLanguage.allCases) { language in
+                Button {
+                    appLanguage = language.rawValue
+                } label: {
+                    if language.rawValue == appLanguage {
+                        Label { Text(verbatim: language.displayName) } icon: { Image(systemName: "checkmark") }
+                    } else {
+                        Text(verbatim: language.displayName)
+                    }
+                }
+                .accessibilityIdentifier("language-\(language.rawValue)")
+            }
+        } label: {
+            Label { Text("Language", bundle: .module) } icon: { Image(systemName: "globe") }
+        }
+        .accessibilityIdentifier("language-menu")
     }
 }
 

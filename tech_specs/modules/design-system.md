@@ -45,8 +45,11 @@ is the package.
   - `MedalBadgeView(assetKey:isLocked:)` — renders the badge via `MedalAsset`; when `isLocked`, applies
     the **ghosting modifier** (`saturation(0)` + reduced opacity — ADR-0007). Decorative
     (`accessibilityHidden`); the cell owns the label.
-  - `LoadingView`, `EmptyStateView(message:)`, `ErrorStateView(message:isRetryable:retry:)` — the three
-    state surfaces (R2). `ErrorStateView` takes `message: LocalizedStringResource` + `isRetryable`
+  - `LoadingView`, `EmptyStateView(message: Text)`, `ErrorStateView(message:isRetryable:retry:)` — the
+    three state surfaces (R2). `EmptyStateView` takes a pre-resolved `Text` (the caller localizes
+    against its own package catalog with `bundle: .module`; a bare key rendered here would resolve
+    against the app's main bundle and miss every package table — ADR-0012). `ErrorStateView` takes
+    `message: LocalizedStringResource` + `isRetryable`
     (defaulted true; hides the Retry button when false) + the `retry` action, so the feature drives it
     from the `UserFacingError`'s fields.
   - `AchievementsGridSkeleton(cellCount:)` — the loading state: redacted placeholder cells, not a bare
@@ -64,7 +67,13 @@ is the package.
   truncation — R4.3).
 - The ghosting modifier is a pure `ViewModifier` so the locked rendering is one reusable, snapshot-tested
   unit (ADR-0007).
-- User-facing literals are `LocalizedStringKey`s (catalog-ready); the catalog is wired in M6.
+- User-facing text localizes via the module's own **EN + FR `.lproj` `.strings` tables**
+  (`Resources/en.lproj`, `Resources/fr.lproj`; auto-detected by SwiftPM under `defaultLocalization`)
+  with every lookup passing `bundle: .module`. Keys: `Retry`, `%lld of %lld` (the header count —
+  "%lld sur %lld" in FR), `%@, %lld of %lld earned` (the header's combined VoiceOver label — R4.2),
+  `Loading`. Per-locale `.strings` rather than an `.xcstrings` catalog
+  because `swift build`/`swift test` copy String Catalogs verbatim without compiling them
+  (ADR-0012); Xcode builds both formats fine, the CLI only the classic one.
 
 ## done = these tests
 
@@ -73,6 +82,9 @@ is the package.
 - `test_sectionHeaderView_withProgress_showsCount`, `test_sectionHeaderView_noProgress_hidesCount` —
   component snapshots.
 - `test_medalBadgeView_locked_isGhosted` — snapshot of the ghosting modifier (light + dark).
+- Localization (R4.4, ADR-0012): `test_localization_frenchCatalog_resolvesRetry`,
+  `test_localization_frenchCatalog_resolvesProgressCountFormat`,
+  `test_localization_frenchCatalog_resolvesHeaderEarnedFormat` (the combined header VoiceOver label).
 - Component snapshots: earned cell chrome, locked cell, section strip, grid skeleton, the three state
   surfaces — **at default + accessibility XXL, light + dark** (renderer-pinned, run on the simulator +
   pre-push, skipped in CI — ADR-0009).

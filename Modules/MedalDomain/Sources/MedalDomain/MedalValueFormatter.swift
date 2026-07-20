@@ -1,7 +1,7 @@
 /// Pure, total rendering of a `MedalValue` to its mock-exact string (ADR-0010, R3).
 ///
 /// Returns raw numeric glyphs (`23:07`, `2095 ft`) — not localized prose. The user-facing "Not Yet"
-/// string is a presentation concern and lives in the feature's String Catalog (R4.4);
+/// string is a presentation concern and lives in the feature's localization tables (R4.4);
 /// ``lockedPlaceholder()`` exists only so pure tests can assert the non-localized default.
 public enum MedalValueFormatter {
     /// The formatted value line, or `nil` when there is no value to show (locked, or an unknown/absent

@@ -13,7 +13,7 @@ weighted. Aggregate = Σ(weight × score). A case **PASSES** when aggregate ≥ 
 | 4 | Constructor DI; depends on protocols, not concretes | 0.15 | — | All deps injected via `init` as protocols |
 | 5 | Dedicated mock/double file(s) (not inline in a test) | 0.10 | — | Doubles in their own files |
 | 6 | Tests present and derived from acceptance criteria (the spec's `done =` list) | 0.15 | ✅ | Each criterion has a `@Test` |
-| 7 | No hardcoded user strings / magic numbers (strings catalog-ready; sizes/colors in DesignSystem tokens) | 0.05 | — | No literals that belong in a token/catalog |
+| 7 | No hardcoded user strings / magic numbers (strings table-ready — per-package localization tables, CLAUDE.md rule 5; sizes/colors in DesignSystem tokens) | 0.05 | — | No literals that belong in a token/table |
 | 8 | Public surface == spec (no over-exposure; DTOs/mappers internal) | 0.05 | — | Only spec'd API is `public` |
 | 9 | Swift 6 concurrency correct (`@MainActor`/`Sendable`; `@unchecked` justified) | 0.05 | — | No concurrency smell |
 

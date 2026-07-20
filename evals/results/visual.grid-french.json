@@ -1,0 +1,15 @@
+{
+  "suite": "visual",
+  "case": "grid-french",
+  "aggregate": 0.975,
+  "pass": true,
+  "criteria": [
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "White centered 'Réalisations' on the teal bar with the ⋮ control; headers, count, and all visible medals present." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No clipping — 'Réalisations', 'Pas encore', and long race titles fully visible." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Marathon ghosted with the FR locked value 'Pas encore'; earned medals full-color with verbatim numeric values (00:00, 2095 ft)." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 sur 6' — the FR count format — matches the 5 earned + 1 locked cells." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Layout identical to the EN grid; the switch changed strings only." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Colors identical to EN light mode. Medal/section titles correctly remain English (data-supplied, server-localized in production — stated intent, not a gap)." },
+    { "id": 7, "score": 0.5, "weight": 0.05, "evidence": "Body text legible; white-on-teal title remains the documented contrast exception." }
+  ]
+}

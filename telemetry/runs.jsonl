@@ -37,3 +37,12 @@
 {"at":"2026-07-19T03:49:52Z","kind":"milestone","name":"M8","task":"Document: README + roadmap","verdict":"PASS","attempts":1,"head":"851a7e2","notes":""}
 {"at":"2026-07-19T05:00:02Z","kind":"skill","name":"ios-review","task":"fix: app-target resource-package dep (DesignSystem out of app; nav bar → feature)","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
 {"at":"2026-07-19T05:00:02Z","kind":"skill","name":"pre-commit-review","task":"resource-package fix gate","verdict":"PASS","attempts":1,"head":"cb1e98e","notes":""}
+{"at":"2026-07-19T23:10:49Z","kind":"skill","name":"pre-commit-review","task":"ui-polish: vertical ellipsis","verdict":"PASS","attempts":1,"head":"049747b","notes":""}
+{"at":"2026-07-19T23:46:57Z","kind":"skill","name":"pre-commit-review","task":"ui-polish: EN+FR localization + switcher","verdict":"PASS","attempts":1,"head":"07a0a63","notes":""}
+{"at":"2026-07-19T23:51:41Z","kind":"skill","name":"visual-eval","task":"re-judge 6 visual goldens (incl. FR) + calibration known-bad check","verdict":"PASS","attempts":1,"head":"17db7bc","notes":"6x0.975 PASS; calibration FAIL as expected (blocker=0)"}
+{"at":"2026-07-20T00:06:44Z","kind":"skill","name":"eval","task":"cadence re-run after CLAUDE.md rule-5 amendment + evals/** changes: scaffold suite re-validated","verdict":"PASS","attempts":1,"head":"a6e9238","notes":"no score changes (MedalDomain 1.00 PASS, MedalData-cyclic 0.375 expected-FAIL); rubric c7 wording aligned to amended rule 5"}
+{"at":"2026-07-20T00:08:16Z","kind":"agent","name":"swift-reviewer","task":"ui-polish full-branch /ios-review: FAIL (2 major, 5 minor)","verdict":"FAIL","attempts":1,"head":"a6e9238","notes":"M1 unlocalized header a11y label; M2 /eval cadence gate skipped"}
+{"at":"2026-07-20T00:13:17Z","kind":"skill","name":"pre-commit-review","task":"abfc14c review-fix commit gate (makeup line — N3: ran with recorded evidence but was not logged)","verdict":"PASS","attempts":1,"head":"abfc14c","notes":""}
+{"at":"2026-07-20T00:13:17Z","kind":"agent","name":"swift-reviewer","task":"ui-polish re-verify after fixes: PASS (both majors closed, 3 minor residues)","verdict":"PASS","attempts":2,"head":"abfc14c","notes":""}
+{"at":"2026-07-20T00:13:17Z","kind":"skill","name":"pre-commit-review","task":"residue commit gate (N1 key inventory, N2 Loading labels, N3 telemetry)","verdict":"PASS","attempts":1,"head":"abfc14c","notes":""}
+{"at":"2026-07-20T00:13:18Z","kind":"skill","name":"ios-review","task":"ui-polish push gate","verdict":"PASS","attempts":2,"head":"73b3e77","notes":""}

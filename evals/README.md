@@ -39,16 +39,33 @@ An eval that always returns 1.0 is theatre. Two design choices give this one tee
 |---|---|:--:|:--:|
 | scaffold-module | MedalDomain | 1.00 | ✅ PASS |
 | scaffold-module | MedalData-cyclic (adversarial) | 0.375 | ❌ FAIL *(expected)* |
-| visual | grid-light | 1.00 | ✅ PASS |
-| visual | grid-dark | 1.00 | ✅ PASS |
-| visual | grid-accessibility-xxl | 1.00 | ✅ PASS |
+| visual | grid-light | 0.975 | ✅ PASS |
+| visual | grid-dark | 0.975 | ✅ PASS |
+| visual | grid-accessibility-xxl | 0.975 | ✅ PASS |
 | visual | locked-cell | 0.975 | ✅ PASS |
+| visual | locked-cell-fr | 0.975 | ✅ PASS |
+| visual | grid-french | 0.975 | ✅ PASS |
+| visual | calibration-truncated | 0.425 | ❌ FAIL *(expected)* |
+
+Visual cases were re-judged after the localization/chrome pass over the refreshed screenshots. The
+grids now score 0.975 rather than 1.00 — not a regression (Δ 0.025 < tolerance 0.05) but a scoring
+*consistency* fix: the white-on-teal title's documented contrast exception (criterion 7) is now
+applied to every case, where the first run applied it only to `locked-cell`.
+
+## Calibration (visual suite)
+
+Per the `/visual-eval` skill, an advisory baseline is only trustworthy once the rubric demonstrably
+**fails a known-bad image**. [`calibration/truncated-xxl.png`](calibration/truncated-xxl.png) is the
+XXL screenshot deliberately cropped to clip the title, the ⋮ control, the count, and three medal
+titles: the judge scores criterion 2 (truncation, blocker) at **0**, failing the case at 0.425
+([`results/visual.calibration-truncated.json`](results/visual.calibration-truncated.json)). A rubric
+that can't fail this image would be theatre; this one discriminates.
 
 ## Honest gaps (own them)
 
-- **Golden-set size.** Two code goldens (one clean, one adversarial) + four visual — enough to prove the
-  harness discriminates, not yet a dataset. Before trusting the score to gate a team's merges, grow
-  good *and* adversarially-bad goldens per skill.
+- **Golden-set size.** Two code goldens (one clean, one adversarial) + six visual + a visual
+  calibration case — enough to prove the harness discriminates, not yet a dataset. Before trusting
+  the score to gate a team's merges, grow good *and* adversarially-bad goldens per skill.
 - **Judge determinism.** These results are recorded from a manual judge pass. Production hardening:
   pin the judge model + temperature 0 + multi-sample voting; the `regression_tolerance` (0.05) absorbs
   small variance today.

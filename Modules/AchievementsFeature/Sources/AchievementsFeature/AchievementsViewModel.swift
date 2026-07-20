@@ -1,4 +1,5 @@
 import DesignSystem
+import Foundation
 import MedalDomain
 import Observation
 
@@ -77,6 +78,12 @@ public final class AchievementsViewModel {
 
     /// Any load failure maps to one retryable, localized message — no raw `Error` reaches the UI.
     private static func userFacingError(for _: any Error) -> UserFacingError {
-        UserFacingError(message: "We couldn't load your medals. Please try again.", isRetryable: true)
+        UserFacingError(
+            message: LocalizedStringResource(
+                "We couldn't load your medals. Please try again.",
+                bundle: .atURL(Bundle.module.bundleURL)
+            ),
+            isRetryable: true
+        )
     }
 }

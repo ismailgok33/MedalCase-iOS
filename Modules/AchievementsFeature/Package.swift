@@ -19,7 +19,8 @@ let package = Package(
     targets: [
         .target(
             name: "AchievementsFeature",
-            dependencies: ["MedalDomain", "DesignSystem"]
+            dependencies: ["MedalDomain", "DesignSystem"],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "AchievementsFeatureTests",

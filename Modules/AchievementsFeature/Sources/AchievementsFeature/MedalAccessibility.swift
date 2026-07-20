@@ -4,7 +4,7 @@ import MedalDomain
 /// Builds a medal cell's single VoiceOver label (R4.1): "«title», «value»" when earned with a value,
 /// "«title», not yet earned" when locked, just the title when earned without a value. Pure, so the
 /// label structure is unit-tested (via `String(localized:)`) without rendering. Returns a
-/// `LocalizedStringResource` so "not yet earned" resolves against the String Catalog.
+/// `LocalizedStringResource` so "not yet earned" resolves against the localization tables.
 enum MedalAccessibility {
     static func label(for medal: Achievement) -> LocalizedStringResource {
         switch medal.status {
@@ -14,7 +14,12 @@ enum MedalAccessibility {
             }
             return "\(medal.title)"
         case .locked:
-            return "\(medal.title), not yet earned"
+            // Explicit bundle so "not yet earned" resolves against this package's localization tables
+            // (interpolated LocalizedStringResource literals default to the app's main bundle).
+            return LocalizedStringResource(
+                "\(medal.title), not yet earned",
+                bundle: .atURL(Bundle.module.bundleURL)
+            )
         }
     }
 }

@@ -1,15 +1,15 @@
 {
   "suite": "visual",
   "case": "grid-dark",
-  "aggregate": 1.0,
+  "aggregate": 0.975,
   "pass": true,
   "criteria": [
-    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "Same content + layout as light: teal bar, headers, all medals with titles/values present." },
-    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No truncation; titles render fully on the dark surface." },
-    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Marathon stays ghosted and readable against the dark background; earned badges full-color." },
-    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' unchanged and correct." },
-    { "id": 5, "score": 1, "weight": 0.1, "evidence": "Coherent 2-column layout preserved in dark mode." },
-    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Adaptive tokens: dark background + dark section strips + light text; teal bar + white title unchanged (brand-consistent)." },
-    { "id": 7, "score": 1, "weight": 0.05, "evidence": "Light text on dark surface is comfortably legible." }
+    { "id": 1, "score": 1, "weight": 0.25, "blocker": true, "evidence": "All intent elements present in dark appearance — bar, title, ⋮, headers, count, medal cells." },
+    { "id": 2, "score": 1, "weight": 0.2, "blocker": true, "evidence": "No truncation; long race titles fully rendered." },
+    { "id": 3, "score": 1, "weight": 0.15, "evidence": "Ghosted Marathon still clearly dimmer/desaturated against the dark surface; earned badges keep full color." },
+    { "id": 4, "score": 1, "weight": 0.15, "evidence": "'5 of 6' consistent with the visible earned cells." },
+    { "id": 5, "score": 1, "weight": 0.1, "evidence": "2-column layout unchanged from light; no overlap." },
+    { "id": 6, "score": 1, "weight": 0.1, "evidence": "Adaptive tokens flip: near-black surface, dark section strips with light text, values in light grey; the brand teal bar is retained (deliberate brand constant)." },
+    { "id": 7, "score": 0.5, "weight": 0.05, "evidence": "Dark-mode body text high-contrast; the white-on-teal title remains the documented ≈2.0:1 exception (consistent scoring with locked-cell)." }
   ]
 }

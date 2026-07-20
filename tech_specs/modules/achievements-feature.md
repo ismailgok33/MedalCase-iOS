@@ -8,7 +8,21 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
 - `@Observable @MainActor final class AchievementsViewModel` —
   `init(repository: AchievementsRepository)`; `private(set) var state: ViewState<AchievementsCase>`;
   `func load() async`; `func retry() async`; `func toggleMarathonDemo()` / `func reset()` (the
-  overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence).
+  overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence). The overflow
+  glyph matches the mock's bare white **vertical** ⋮: SF Symbols has no bare vertical ellipsis, so it
+  is `ellipsis` rotated 90° (named `verticalEllipsisAngle` constant), tinted `navTitle`, with iOS 26's
+  Liquid Glass capsule hidden via `sharedBackgroundVisibility(.hidden)` (bare glyph pre-26 already).
+  The menu's first entry is the EN/FR **language switcher** (ADR-0012): a "Language" submenu of
+  buttons with a checkmark on the current selection, each row carrying a stable
+  `accessibilityIdentifier` (`language-en`/`language-fr`; the menu itself `overflow-menu` /
+  `language-menu`) so UI tests address them language-independently. `AppLanguage` (enum: `en`/`fr`,
+  `storageKey`, verbatim self-named `displayName`) backs it; `AchievementsView` persists the choice
+  via `AppStorage` and applies `.environment(\.locale, …)` outermost plus `.id(appLanguage)` so the
+  whole subtree — including UIKit-bridged toolbar content — re-creates on switch.
+- **The bar title is a `principal` toolbar item, not `navigationTitle`** — a navigationTitle Text is
+  hoisted into the UIKit bar and resolves against the app's system language, escaping the SwiftUI
+  locale environment (it would ignore the in-app switch; ADR-0012). The principal item re-resolves
+  live and takes the mock's exact `navTitle` 16px token + header accessibility trait.
 - `struct AchievementsView: View` — `init(viewModel: AchievementsViewModel)`. A dumb `switch` over
   `state`: loading → `AchievementsGridSkeleton`, loaded → the grid, empty → `EmptyStateView`, error →
   `ErrorStateView(retry:)`.
@@ -62,8 +76,22 @@ so the production target never depends on `MedalTestSupport` (that stays a test-
 - `test_achievementsViewModel_toggleMarathonDemo_flipsStatus` — demo action mutates in-memory state.
 - `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked` (R4.1).
 - `test_sectionHeader_progress_shownOnlyWhenDeclared` — PRs show "5 of 6"; races show no count (R1.2).
+- Localization (R4.4, ADR-0012): `test_localization_frenchCatalog_resolvesNotYet`,
+  `test_localization_frenchCatalog_resolvesTitle`,
+  `test_localization_frenchCatalog_resolvesLockedAccessibilityFormat`,
+  `test_appLanguage_coversEnglishAndFrench`, `test_appLanguage_default_frenchSystem_isFrench`,
+  `test_appLanguage_default_englishSystem_isEnglish`,
+  `test_appLanguage_default_unsupportedSystem_fallsBackToEnglish`.
 - Snapshots: `achievements-grid-light`, `-dark`, `-xxl`, plus `medal-cell-earned` / `medal-cell-locked`
-  (simulator + pre-push; ADR-0009).
+  / `test_medalCell_locked_fr` (simulator + pre-push; ADR-0009). UI:
+  `test_languageSwitcher_switchesChromeToFrench` (round-trip, identifier-addressed).
+
+## Known corner
+
+- The `UserFacingError` message is a `LocalizedStringResource` created at load-failure time, so it
+  resolves at the **device** language rather than the in-app override — the error surface can lag
+  the switcher (ADR-0012 Consequences). Bounded to the rare error state; a dedicated pass would
+  thread the override locale into the mapping.
 
 ## Test double
 
