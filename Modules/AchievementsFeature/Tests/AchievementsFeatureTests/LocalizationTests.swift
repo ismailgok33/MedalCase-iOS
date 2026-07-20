@@ -44,4 +44,25 @@ struct LocalizationTests {
         #expect(AppLanguage.defaultLanguage(forPreferred: ["ja-JP"]) == .english)
         #expect(AppLanguage.defaultLanguage(forPreferred: []) == .english)
     }
+
+    // Resolution through the production `L10n` accessors — a typo'd key inside `L10n` would
+    // silently fall back to English at runtime, and fails here instead.
+
+    @Test func test_l10n_moreOptions_resolvesFrenchThroughProductionAccessor() {
+        var resource = L10n.moreOptions
+        resource.locale = Locale(identifier: "fr")
+        #expect(String(localized: resource) == "Plus d'options")
+    }
+
+    @Test func test_l10n_lockedMedalLabel_resolvesFrenchThroughProductionAccessor() {
+        var resource = L10n.lockedMedalLabel(title: "Marathon")
+        resource.locale = Locale(identifier: "fr")
+        #expect(String(localized: resource) == "Marathon, pas encore obtenu")
+    }
+
+    @Test func test_l10n_loadFailureMessage_resolvesFrenchThroughProductionAccessor() {
+        var resource = L10n.loadFailureMessage
+        resource.locale = Locale(identifier: "fr")
+        #expect(String(localized: resource) == "Impossible de charger vos médailles. Veuillez réessayer.")
+    }
 }

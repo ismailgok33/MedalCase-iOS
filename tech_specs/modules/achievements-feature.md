@@ -42,7 +42,9 @@ rendering):
   declares it (R1.2, ADR-0008). The grid renders whatever this returns; it never counts inline.
 - `enum MedalAccessibility` — `label(for:) -> LocalizedStringResource`, the cell's single VoiceOver
   label ("«title», «value»" / "«title», not yet earned" / just the title). `LocalizedStringResource`
-  so the phrase localizes and tests can resolve it via `String(localized:)`.
+  so the phrase localizes and tests can resolve it via `String(localized:)`. Composite phrasings come
+  from the internal **`L10n`** namespace (also home to `moreOptions` and the load-failure message),
+  which owns the module-bundle plumbing for every resource-form string in this package.
 - `AchievementsViewModel.marathonDemoID` — the id (`"pr_marathon"`) the demo toggle targets.
 
 SwiftUI `#Preview`s (loading/loaded/empty/error) use an **inline** DEBUG-only repository + sample data,
@@ -89,7 +91,10 @@ so the production target never depends on `MedalTestSupport` (that stays a test-
   `test_localization_frenchCatalog_resolvesLockedAccessibilityFormat`,
   `test_appLanguage_coversEnglishAndFrench`, `test_appLanguage_default_frenchSystem_isFrench`,
   `test_appLanguage_default_englishSystem_isEnglish`,
-  `test_appLanguage_default_unsupportedSystem_fallsBackToEnglish`.
+  `test_appLanguage_default_unsupportedSystem_fallsBackToEnglish`; through the production `L10n`
+  accessors: `test_l10n_moreOptions_resolvesFrenchThroughProductionAccessor`,
+  `test_l10n_lockedMedalLabel_resolvesFrenchThroughProductionAccessor`,
+  `test_l10n_loadFailureMessage_resolvesFrenchThroughProductionAccessor`.
 - Content refresh (ADR-0013): `test_refreshContent_loaded_replacesContentInPlace`,
   `test_refreshContent_failure_keepsCurrentContent`, `test_refreshContent_fromErrorState_performsFullLoad`.
 - Snapshots: `achievements-grid-light`, `-dark`, `-xxl`, plus `medal-cell-earned` / `medal-cell-locked`

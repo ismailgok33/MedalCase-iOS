@@ -25,6 +25,6 @@ public struct AchievementsGridSkeleton: View {
         .padding(Spacing.gridGutter)
         .redacted(reason: .placeholder)
         .accessibilityElement()
-        .accessibilityLabel(Text(LocalizedStringResource("Loading", bundle: .atURL(Bundle.module.bundleURL))))
+        .accessibilityLabel(Text(L10n.loading))
     }
 }

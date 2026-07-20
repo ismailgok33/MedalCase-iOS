@@ -95,12 +95,6 @@ public final class AchievementsViewModel {
 
     /// Any load failure maps to one retryable, localized message — no raw `Error` reaches the UI.
     private static func userFacingError(for _: any Error) -> UserFacingError {
-        UserFacingError(
-            message: LocalizedStringResource(
-                "We couldn't load your medals. Please try again.",
-                bundle: .atURL(Bundle.module.bundleURL)
-            ),
-            isRetryable: true
-        )
+        UserFacingError(message: L10n.loadFailureMessage, isRetryable: true)
     }
 }

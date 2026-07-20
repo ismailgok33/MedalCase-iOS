@@ -7,6 +7,6 @@ public struct LoadingView: View {
 
     public var body: some View {
         ProgressView()
-            .accessibilityLabel(Text(LocalizedStringResource("Loading", bundle: .atURL(Bundle.module.bundleURL))))
+            .accessibilityLabel(Text(L10n.loading))
     }
 }
