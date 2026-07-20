@@ -33,16 +33,11 @@ public struct SectionHeaderView: View {
         .accessibilityLabel(Text(accessibilityLabel))
     }
 
-    /// "«title», N of M earned" (R4.2) — a `LocalizedStringResource` with an explicit module bundle so
-    /// the "earned" phrasing resolves against this package's localization tables (a bare interpolated
-    /// key would look in the app's main bundle and always speak English). Rendered through `Text`
-    /// under the `\.locale` environment, so it follows the app's **effective** language — the switcher
-    /// UI test pins the fully-French "Records personnels, 5 sur 6 obtenues" (accessibility.md).
+    /// "«title», N of M earned" (R4.2), built by `L10n` so the "earned" phrasing resolves against this
+    /// package's tables — the switcher UI test pins the fully-French
+    /// "Records personnels, 5 sur 6 obtenues" (accessibility.md). Title-only when there is no progress.
     private var accessibilityLabel: LocalizedStringResource {
         guard let progress else { return "\(title)" }
-        return LocalizedStringResource(
-            "\(title), \(progress.earned) of \(progress.total) earned",
-            bundle: .atURL(Bundle.module.bundleURL)
-        )
+        return L10n.sectionHeaderLabel(title: title, earned: progress.earned, total: progress.total)
     }
 }

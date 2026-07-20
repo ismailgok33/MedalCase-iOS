@@ -24,9 +24,12 @@ menu (R1.6, R4.4). Four real constraints surfaced while building it, each worth 
 
 ## Decision
 - **Per-package `.lproj/Localizable.strings` tables (EN + FR)**, auto-detected by SwiftPM under
-  `defaultLocalization`, every lookup passing `bundle: .module` (or
-  `LocalizedStringResource(…, bundle: .atURL(Bundle.module.bundleURL))`). No xcstrings in packages
-  (constraint 1). Unit tests prove each table resolves (`fr.lproj` fetched explicitly).
+  `defaultLocalization`, every lookup passing `bundle: .module` (or, for resource-form strings, via
+  each module's internal **`L10n`** namespace, which centralizes the
+  `LocalizedStringResource(…, bundle: .atURL(Bundle.module.bundleURL))` plumbing so call sites can't
+  silently resolve against the main bundle). No xcstrings in packages (constraint 1). Unit tests
+  prove each table resolves (`fr.lproj` fetched explicitly) **and** that the `L10n` accessors resolve
+  FR end-to-end (a typo'd key inside `L10n` fails tests instead of silently speaking English).
 - **Switcher = AppStorage + `\.locale` environment.** `AppLanguage` (en/fr) persists via
   `@AppStorage`; `AchievementsView` applies `.environment(\.locale, …)` outermost plus
   `.id(appLanguage)` so the whole subtree — including UIKit-bridged toolbar content — re-creates on

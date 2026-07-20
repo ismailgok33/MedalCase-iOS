@@ -120,13 +120,7 @@ public struct AchievementsView: View {
             // during iOS 26's menu-dismiss morph (probe-measured; see VerticalEllipsisIcon).
             VerticalEllipsisIcon()
                 .foregroundStyle(SemanticColor.navTitle)
-                // LocalizedStringResource with an explicit module bundle; rendered through Text under
-                // the locale environment it follows the app's effective language, like every
-                // accessibility label (accessibility.md).
-                .accessibilityLabel(Text(LocalizedStringResource(
-                    "More options",
-                    bundle: .atURL(Bundle.module.bundleURL)
-                )))
+                .accessibilityLabel(Text(L10n.moreOptions))
         }
         .accessibilityIdentifier("overflow-menu")
     }

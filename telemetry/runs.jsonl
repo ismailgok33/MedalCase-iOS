@@ -53,3 +53,5 @@
 {"at":"2026-07-20T01:15:02Z","kind":"skill","name":"ios-review","task":"fr-content push gate","verdict":"PASS","attempts":2,"head":"782ff4b","notes":""}
 {"at":"2026-07-20T02:17:39Z","kind":"skill","name":"ios-review","task":"ui-glitch-ellipsis: drawn glyph replaces rotated symbol; probe-measured 1.2s stall -> ~170ms","verdict":"PASS","attempts":1,"head":"a108cfa","notes":""}
 {"at":"2026-07-20T02:17:39Z","kind":"skill","name":"pre-commit-review","task":"ellipsis glitch fix commit gate","verdict":"PASS","attempts":1,"head":"a108cfa","notes":""}
+{"at":"2026-07-20T02:44:40Z","kind":"skill","name":"pre-commit-review","task":"L10n namespaces commit gate","verdict":"PASS","attempts":1,"head":"4dcf5e9","notes":""}
+{"at":"2026-07-20T02:44:40Z","kind":"skill","name":"ios-review","task":"l10n-namespaces: inline checklist PASS — 6 sites consolidated, +5 accessor tests, behavior byte-identical","verdict":"PASS","attempts":1,"head":"4dcf5e9","notes":""}

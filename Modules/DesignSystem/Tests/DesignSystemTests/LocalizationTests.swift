@@ -25,4 +25,20 @@ struct LocalizationTests {
         let format = try frenchBundle().localizedString(forKey: "%@, %lld of %lld earned", value: nil, table: nil)
         #expect(String(format: format, "Personal Records", 5, 6) == "Personal Records, 5 sur 6 obtenues")
     }
+
+    // The two tests above assert the table side by raw key; these two resolve through the
+    // production `L10n` accessors — a typo'd key inside `L10n` would silently fall back to English
+    // at runtime, and fails here instead.
+
+    @Test func test_l10n_loading_resolvesFrenchThroughProductionAccessor() {
+        var resource = L10n.loading
+        resource.locale = Locale(identifier: "fr")
+        #expect(String(localized: resource) == "Chargement")
+    }
+
+    @Test func test_l10n_sectionHeaderLabel_resolvesFrenchThroughProductionAccessor() {
+        var resource = L10n.sectionHeaderLabel(title: "Personal Records", earned: 5, total: 6)
+        resource.locale = Locale(identifier: "fr")
+        #expect(String(localized: resource) == "Personal Records, 5 sur 6 obtenues")
+    }
 }

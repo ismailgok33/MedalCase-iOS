@@ -80,6 +80,10 @@ is the package.
   `Loading`. Per-locale `.strings` rather than an `.xcstrings` catalog
   because `swift build`/`swift test` copy String Catalogs verbatim without compiling them
   (ADR-0012); Xcode builds both formats fine, the CLI only the classic one.
+  **Resource-form strings** (accessibility labels/formats that must exist as `LocalizedStringResource`
+  values) live in the internal **`L10n`** namespace — the module-bundle plumbing exists once, and the
+  shared `Loading` key is defined once (used by both loading surfaces). Single-use visual strings
+  stay inline as `Text("…", bundle: .module)`, the platform idiom.
 
 ## done = these tests
 
@@ -90,7 +94,9 @@ is the package.
 - `test_medalBadgeView_locked_isGhosted` — snapshot of the ghosting modifier (light + dark).
 - Localization (R4.4, ADR-0012): `test_localization_frenchCatalog_resolvesRetry`,
   `test_localization_frenchCatalog_resolvesProgressCountFormat`,
-  `test_localization_frenchCatalog_resolvesHeaderEarnedFormat` (the combined header VoiceOver label).
+  `test_localization_frenchCatalog_resolvesHeaderEarnedFormat` (the combined header VoiceOver label);
+  through the production `L10n` accessors: `test_l10n_loading_resolvesFrenchThroughProductionAccessor`,
+  `test_l10n_sectionHeaderLabel_resolvesFrenchThroughProductionAccessor`.
 - Component snapshots: earned cell chrome, locked cell, section strip, grid skeleton, the three state
   surfaces — **at default + accessibility XXL, light + dark** (renderer-pinned, run on the simulator +
   pre-push, skipped in CI — ADR-0009).
