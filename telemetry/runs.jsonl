@@ -51,3 +51,5 @@
 {"at":"2026-07-20T01:15:01Z","kind":"agent","name":"swift-reviewer","task":"fr-content re-verify after fixes: PASS (all 5 resolved; reviewer re-ran switcher UI test itself)","verdict":"PASS","attempts":2,"head":"a3f5a4d","notes":""}
 {"at":"2026-07-20T01:15:01Z","kind":"skill","name":"pre-commit-review","task":"ADR-0013 content localization commit gate","verdict":"PASS","attempts":1,"head":"a3f5a4d","notes":""}
 {"at":"2026-07-20T01:15:02Z","kind":"skill","name":"ios-review","task":"fr-content push gate","verdict":"PASS","attempts":2,"head":"782ff4b","notes":""}
+{"at":"2026-07-20T02:17:39Z","kind":"skill","name":"ios-review","task":"ui-glitch-ellipsis: drawn glyph replaces rotated symbol; probe-measured 1.2s stall -> ~170ms","verdict":"PASS","attempts":1,"head":"a108cfa","notes":""}
+{"at":"2026-07-20T02:17:39Z","kind":"skill","name":"pre-commit-review","task":"ellipsis glitch fix commit gate","verdict":"PASS","attempts":1,"head":"a108cfa","notes":""}
