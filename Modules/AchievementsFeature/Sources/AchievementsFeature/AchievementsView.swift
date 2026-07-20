@@ -8,7 +8,7 @@ import SwiftUI
 public struct AchievementsView: View {
     @State private var viewModel: AchievementsViewModel
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @AppStorage(AppLanguage.storageKey) private var appLanguage = AppLanguage.english.rawValue
+    @AppStorage(AppLanguage.storageKey) private var appLanguage = AppLanguage.systemDefault.rawValue
 
     /// Two columns normally (matching the mock); a single column at accessibility text sizes so cells
     /// grow rather than cramp — the reflow accessibility.md prescribes (R4.3).
@@ -29,7 +29,7 @@ public struct AchievementsView: View {
             }
             .medalCaseNavigationBar()
             .task { await viewModel.load() }
-            // Applied outermost so every String Catalog lookup below — title, menu, cells, state
+            // Applied outermost so every localization-table lookup below — title, menu, cells, state
             // surfaces — re-resolves live when the reviewer flips the language (ADR-0012).
             .environment(\.locale, Locale(identifier: appLanguage))
             // New identity per language: toolbar content is bridged into the UIKit bar, which can hold
@@ -114,7 +114,12 @@ public struct AchievementsView: View {
             Image(systemName: "ellipsis")
                 .rotationEffect(Self.verticalEllipsisAngle)
                 .foregroundStyle(SemanticColor.navTitle)
-                .accessibilityLabel(Text("More options", bundle: .module))
+                // LocalizedStringResource, not a keyed Text: accessibility labels uniformly resolve at
+                // the device language (accessibility.md), unaffected by the in-app override.
+                .accessibilityLabel(Text(LocalizedStringResource(
+                    "More options",
+                    bundle: .atURL(Bundle.module.bundleURL)
+                )))
         }
         .accessibilityIdentifier("overflow-menu")
     }

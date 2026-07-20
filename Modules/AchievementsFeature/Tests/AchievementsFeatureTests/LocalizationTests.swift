@@ -2,7 +2,7 @@ import Foundation
 import Testing
 @testable import AchievementsFeature
 
-/// Proves the feature's String Catalog is wired: the `fr` table exists in the module bundle and
+/// Proves the feature's localization tables are wired: the `fr` table exists in the module bundle and
 /// resolves the keys the UI renders (R4.4, ADR-0012). Guards against the classic SPM localization
 /// failure — keys silently falling back to English because a `Text` lacked `bundle: .module` or the
 /// catalog wasn't processed as a resource.
@@ -30,5 +30,18 @@ struct LocalizationTests {
     @Test func test_appLanguage_coversEnglishAndFrench() {
         #expect(AppLanguage.allCases.map(\.rawValue) == ["en", "fr"])
         #expect(AppLanguage(rawValue: AppLanguage.storageKey) == nil)
+    }
+
+    @Test func test_appLanguage_default_frenchSystem_isFrench() {
+        #expect(AppLanguage.defaultLanguage(forPreferred: ["fr-CA", "en"]) == .french)
+    }
+
+    @Test func test_appLanguage_default_englishSystem_isEnglish() {
+        #expect(AppLanguage.defaultLanguage(forPreferred: ["en-CA", "fr"]) == .english)
+    }
+
+    @Test func test_appLanguage_default_unsupportedSystem_fallsBackToEnglish() {
+        #expect(AppLanguage.defaultLanguage(forPreferred: ["ja-JP"]) == .english)
+        #expect(AppLanguage.defaultLanguage(forPreferred: []) == .english)
     }
 }

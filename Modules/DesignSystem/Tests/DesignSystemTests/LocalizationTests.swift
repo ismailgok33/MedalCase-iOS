@@ -2,7 +2,7 @@ import Foundation
 import Testing
 @testable import DesignSystem
 
-/// Proves the design system's String Catalog is wired (R4.4, ADR-0012): the `fr` table exists in the
+/// Proves the design system's localization tables are wired (R4.4, ADR-0012): the `fr` table exists in the
 /// module bundle and resolves the state-surface keys — including the positional count format the
 /// section header renders.
 struct LocalizationTests {
@@ -19,5 +19,10 @@ struct LocalizationTests {
     @Test func test_localization_frenchCatalog_resolvesProgressCountFormat() throws {
         let format = try frenchBundle().localizedString(forKey: "%lld of %lld", value: nil, table: nil)
         #expect(String(format: format, 5, 6) == "5 sur 6")
+    }
+
+    @Test func test_localization_frenchCatalog_resolvesHeaderEarnedFormat() throws {
+        let format = try frenchBundle().localizedString(forKey: "%@, %lld of %lld earned", value: nil, table: nil)
+        #expect(String(format: format, "Personal Records", 5, 6) == "Personal Records, 5 sur 6 obtenues")
     }
 }

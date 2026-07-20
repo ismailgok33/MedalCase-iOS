@@ -30,13 +30,18 @@ public struct SectionHeaderView: View {
         .background(SemanticColor.sectionStrip)
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isHeader)
-        .accessibilityLabel(accessibilityLabel)
+        .accessibilityLabel(Text(accessibilityLabel))
     }
 
-    private var accessibilityLabel: LocalizedStringKey {
-        if let progress {
-            return "\(title), \(progress.earned) of \(progress.total) earned"
-        }
-        return "\(title)"
+    /// "«title», N of M earned" (R4.2) — a `LocalizedStringResource` with an explicit module bundle so
+    /// the "earned" phrasing resolves against this package's localization tables (a bare interpolated
+    /// key would look in the app's main bundle and always speak English). Resolves at the device
+    /// language, like every accessibility label (accessibility.md).
+    private var accessibilityLabel: LocalizedStringResource {
+        guard let progress else { return "\(title)" }
+        return LocalizedStringResource(
+            "\(title), \(progress.earned) of \(progress.total) earned",
+            bundle: .atURL(Bundle.module.bundleURL)
+        )
     }
 }

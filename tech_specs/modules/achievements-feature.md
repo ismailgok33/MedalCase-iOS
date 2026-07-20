@@ -76,8 +76,22 @@ so the production target never depends on `MedalTestSupport` (that stays a test-
 - `test_achievementsViewModel_toggleMarathonDemo_flipsStatus` — demo action mutates in-memory state.
 - `test_medalCell_accessibilityLabel_earned`, `test_medalCell_accessibilityLabel_locked` (R4.1).
 - `test_sectionHeader_progress_shownOnlyWhenDeclared` — PRs show "5 of 6"; races show no count (R1.2).
+- Localization (R4.4, ADR-0012): `test_localization_frenchCatalog_resolvesNotYet`,
+  `test_localization_frenchCatalog_resolvesTitle`,
+  `test_localization_frenchCatalog_resolvesLockedAccessibilityFormat`,
+  `test_appLanguage_coversEnglishAndFrench`, `test_appLanguage_default_frenchSystem_isFrench`,
+  `test_appLanguage_default_englishSystem_isEnglish`,
+  `test_appLanguage_default_unsupportedSystem_fallsBackToEnglish`.
 - Snapshots: `achievements-grid-light`, `-dark`, `-xxl`, plus `medal-cell-earned` / `medal-cell-locked`
-  (simulator + pre-push; ADR-0009).
+  / `test_medalCell_locked_fr` (simulator + pre-push; ADR-0009). UI:
+  `test_languageSwitcher_switchesChromeToFrench` (round-trip, identifier-addressed).
+
+## Known corner
+
+- The `UserFacingError` message is a `LocalizedStringResource` created at load-failure time, so it
+  resolves at the **device** language rather than the in-app override — the error surface can lag
+  the switcher (ADR-0012 Consequences). Bounded to the rare error state; a dedicated pass would
+  thread the override locale into the mapping.
 
 ## Test double
 

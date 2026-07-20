@@ -81,6 +81,9 @@ is the package.
 - `test_sectionHeaderView_withProgress_showsCount`, `test_sectionHeaderView_noProgress_hidesCount` —
   component snapshots.
 - `test_medalBadgeView_locked_isGhosted` — snapshot of the ghosting modifier (light + dark).
+- Localization (R4.4, ADR-0012): `test_localization_frenchCatalog_resolvesRetry`,
+  `test_localization_frenchCatalog_resolvesProgressCountFormat`,
+  `test_localization_frenchCatalog_resolvesHeaderEarnedFormat` (the combined header VoiceOver label).
 - Component snapshots: earned cell chrome, locked cell, section strip, grid skeleton, the three state
   surfaces — **at default + accessibility XXL, light + dark** (renderer-pinned, run on the simulator +
   pre-push, skipped in CI — ADR-0009).

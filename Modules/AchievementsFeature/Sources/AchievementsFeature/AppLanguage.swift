@@ -2,7 +2,7 @@ import Foundation
 
 /// The in-app language override (EN/FR) — a demo affordance surfaced in the overflow menu (R1.6) so a
 /// reviewer can flip the app's language without leaving it. `AchievementsView` persists the raw value
-/// via `AppStorage` and applies `.environment(\.locale)`, which re-resolves every String Catalog lookup
+/// via `AppStorage` and applies `.environment(\.locale)`, which re-resolves every localization-table lookup
 /// live (ADR-0012). Injectable at launch for tests/screenshots: `-app_language fr`.
 enum AppLanguage: String, CaseIterable, Identifiable {
     case english = "en"
@@ -10,6 +10,17 @@ enum AppLanguage: String, CaseIterable, Identifiable {
 
     /// The AppStorage/UserDefaults key.
     static let storageKey = "app_language"
+
+    /// First-launch seed: a French-system device starts in French without touching the switcher
+    /// (ADR-0012). Pure overload so the mapping is unit-testable.
+    static var systemDefault: AppLanguage {
+        defaultLanguage(forPreferred: Locale.preferredLanguages)
+    }
+
+    static func defaultLanguage(forPreferred preferred: [String]) -> AppLanguage {
+        guard let first = preferred.first else { return .english }
+        return first.lowercased().hasPrefix("fr") ? .french : .english
+    }
 
     var id: String {
         rawValue

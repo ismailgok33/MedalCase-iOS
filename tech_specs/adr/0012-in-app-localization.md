@@ -30,7 +30,8 @@ menu (R1.6, R4.4). Four real constraints surfaced while building it, each worth 
 - **Switcher = AppStorage + `\.locale` environment.** `AppLanguage` (en/fr) persists via
   `@AppStorage`; `AchievementsView` applies `.environment(\.locale, …)` outermost plus
   `.id(appLanguage)` so the whole subtree — including UIKit-bridged toolbar content — re-creates on
-  switch. Language rows are plain menu **buttons** with a checkmark and stable
+  switch. First launch seeds from `Locale.preferredLanguages` (`fr*` → French, else English), so a
+  French-system device starts in French without touching the switcher. Language rows are plain menu **buttons** with a checkmark and stable
   `accessibilityIdentifier`s (`language-en`/`language-fr`) so the UI test addresses them
   language-independently (constraint 3: the test launches with *no* language argument and pins its
   EN baseline through the UI itself).
