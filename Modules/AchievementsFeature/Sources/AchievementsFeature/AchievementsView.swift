@@ -94,10 +94,6 @@ public struct AchievementsView: View {
         .background(SemanticColor.surface)
     }
 
-    /// SF Symbols has no bare vertical ellipsis (only bubbled/circled variants), so the mock's ⋮ is
-    /// the horizontal `ellipsis` rotated 90° — keeping SF Symbol weight-matching and scaling.
-    private static let verticalEllipsisAngle = Angle.degrees(90)
-
     @ToolbarContentBuilder
     private var demoMenu: some ToolbarContent {
         // iOS 26's Liquid Glass wraps toolbar buttons in a capsule the mock doesn't have; hide it so
@@ -120,8 +116,9 @@ public struct AchievementsView: View {
                 Text("Reset", bundle: .module)
             }
         } label: {
-            Image(systemName: "ellipsis")
-                .rotationEffect(Self.verticalEllipsisAngle)
+            // Drawn glyph, not a rotated SF symbol — the transform-hacked symbol vanished for ~1.2 s
+            // during iOS 26's menu-dismiss morph (probe-measured; see VerticalEllipsisIcon).
+            VerticalEllipsisIcon()
                 .foregroundStyle(SemanticColor.navTitle)
                 // LocalizedStringResource with an explicit module bundle; rendered through Text under
                 // the locale environment it follows the app's effective language, like every

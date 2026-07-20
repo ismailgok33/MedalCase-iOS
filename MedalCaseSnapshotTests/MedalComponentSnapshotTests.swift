@@ -51,6 +51,14 @@ final class MedalComponentSnapshotTests: XCTestCase {
         assertSnapshot(of: card(MedalCellView(medal: medal), size: cellSize, colorScheme: .dark), as: .image)
     }
 
+    func test_verticalEllipsisIcon() {
+        // Locks the drawn glyph's geometry (dot size/gap) — it replaced the rotated SF symbol that
+        // stalled during iOS 26's menu-dismiss morph; a metric drift here would un-match the mock.
+        let icon = VerticalEllipsisIcon()
+            .foregroundStyle(SemanticColor.medalTitle)
+        assertSnapshot(of: card(icon, size: CGSize(width: 44, height: 44)), as: .image)
+    }
+
     func test_sectionHeader_withCount() {
         assertSnapshot(
             of: card(SectionHeaderView(title: "Personal Records", progress: (5, 6)), size: headerSize),

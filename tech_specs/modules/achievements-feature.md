@@ -12,9 +12,12 @@ App injects a concrete repository); no other feature. This is a leaf in the grap
   content on failure, degrades to `load()` from non-loaded states — `AchievementsView` calls it from
   `.onChange(of: appLanguage)`); `func toggleMarathonDemo()` / `func reset()` (the
   overflow-menu demo actions, R1.6 — operate on in-memory state only, no persistence). The overflow
-  glyph matches the mock's bare white **vertical** ⋮: SF Symbols has no bare vertical ellipsis, so it
-  is `ellipsis` rotated 90° (named `verticalEllipsisAngle` constant), tinted `navTitle`, with iOS 26's
-  Liquid Glass capsule hidden via `sharedBackgroundVisibility(.hidden)` (bare glyph pre-26 already).
+  glyph matches the mock's bare white **vertical** ⋮ via DesignSystem's drawn `VerticalEllipsisIcon`
+  tinted `navTitle`, with iOS 26's Liquid Glass capsule hidden via `sharedBackgroundVisibility(.hidden)`
+  (bare glyph pre-26 already). *Why drawn:* SF has no bare vertical ellipsis, and the first
+  implementation (`ellipsis` + `rotationEffect(90°)`) left the glyph stuck as a single dot for a
+  probe-measured **~1.2 s** during iOS 26's menu-dismiss morph — the morph defers symbol re-rendering;
+  plain geometry fades back in ~2 frames (recorded frame-by-frame, `ui-glitch-ellipsis`).
   The menu's first entry is the EN/FR **language switcher** (ADR-0012): a "Language" submenu of
   buttons with a checkmark on the current selection, each row carrying a stable
   `accessibilityIdentifier` (`language-en`/`language-fr`; the menu itself `overflow-menu` /

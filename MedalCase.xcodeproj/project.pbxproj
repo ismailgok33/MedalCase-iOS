@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D8FA4B3285B892FEBF44111 /* MedalCaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B8B3BE6E506515DA17F20 /* MedalCaseApp.swift */; };
+		23F2A62ABC814484C0C8E9E7 /* test_medalCell_locked_fr.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F6C43A3286DA63E08A5798 /* test_medalCell_locked_fr.1.png */; };
 		26E94943266A9A084B866304 /* MedalTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2D76D549EDA662B0E348FCDA /* MedalTestSupport */; };
 		287A89471233A429E009BB93 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E571F683ACE6450310176D69 /* DesignSystem */; };
 		3B365B446E8D44BB61C5F09E /* MedalDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 78929A2D9C663C7D6B93C690 /* MedalDomain */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		022206842C002B9B033C9E71 /* MedalDomain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalDomain; path = Modules/MedalDomain; sourceTree = SOURCE_ROOT; };
+		10F6C43A3286DA63E08A5798 /* test_medalCell_locked_fr.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_medalCell_locked_fr.1.png; sourceTree = "<group>"; };
 		16286A535C731B471D5445EE /* MedalTestSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MedalTestSupport; path = Modules/MedalTestSupport; sourceTree = SOURCE_ROOT; };
 		1F7C81F1EEFBAB463E94DB03 /* MedalComponentSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalComponentSnapshotTests.swift; sourceTree = "<group>"; };
 		301E0B6D6CF743A574824B13 /* MedalCaseSnapshotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MedalCaseSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +158,7 @@
 			children = (
 				3EB91B2DE8FEDB61C7FC14A9 /* test_medalCell_earned_dark.1.png */,
 				9E19E58F10EE28C33812E1A2 /* test_medalCell_earned.1.png */,
+				10F6C43A3286DA63E08A5798 /* test_medalCell_locked_fr.1.png */,
 				A2A0E1953A3AEA601ACF9E6F /* test_medalCell_locked.1.png */,
 				5F18683A4C63034785642A1D /* test_sectionHeader_noCount.1.png */,
 				B11F3D919A98849A56B591BA /* test_sectionHeader_withCount.1.png */,
@@ -349,6 +352,7 @@
 				F18C3474A5E7171E4DE60909 /* test_medalCell_earned.1.png in Resources */,
 				A82843D21F468BE6D7628B17 /* test_medalCell_earned_dark.1.png in Resources */,
 				78AE6DB0BCD1C6155BEB44A8 /* test_medalCell_locked.1.png in Resources */,
+				23F2A62ABC814484C0C8E9E7 /* test_medalCell_locked_fr.1.png in Resources */,
 				A0710EE41DA64CC301008F05 /* test_sectionHeader_noCount.1.png in Resources */,
 				4A8A43A86B61B7454391D745 /* test_sectionHeader_withCount.1.png in Resources */,
 			);

@@ -26,6 +26,7 @@ is the package.
     with Dynamic Type (L8). No fixed sizes escape.
   - `Spacing`, `Radius` — grid gutter, cell padding, badge size, corner radii.
   - `Opacity` — `ghosted` (the locked-medal ghost opacity, tuned against the mock — ADR-0007).
+  - `IconMetrics` (internal) — dot diameter/gap for the drawn vertical-ellipsis glyph.
 - **Assets:**
   - `MedalAsset` — a typed accessor mapping the contract's `assetKey` → an `Image`. The only public
     member is `image(for:)`, which returns the catalog image or a placeholder SF Symbol for an unknown
@@ -54,6 +55,11 @@ is the package.
     from the `UserFacingError`'s fields.
   - `AchievementsGridSkeleton(cellCount:)` — the loading state: redacted placeholder cells, not a bare
     spinner; collapses to one "Loading" VoiceOver label.
+  - `VerticalEllipsisIcon()` — the mock's bare ⋮ drawn as three circles (SF has no bare vertical
+    ellipsis; a rotated `ellipsis` symbol stalls at a single dot for ~1.2 s in iOS 26's menu-dismiss
+    morph — probe-measured). Inherits the caller's `foregroundStyle`; `@ScaledMetric` dot geometry
+    from `IconMetrics`; decorative (`accessibilityHidden`) — the consuming control owns the label.
+    *done =* snapshot `test_verticalEllipsisIcon`.
 - **Nav bar styling** uses SwiftUI's **scoped** `.toolbarBackground(SemanticColor.brandTeal, …)` +
   `.toolbarColorScheme(.dark, …)`, swapping to `brandTealHighContrast` under Increased Contrast — not a
   global `UINavigationBar.appearance()` mutation, and no UIKit appearance factory (the module is
