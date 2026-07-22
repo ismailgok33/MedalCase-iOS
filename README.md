@@ -223,7 +223,7 @@ and is **calibrated**: a deliberately truncated image fails its blocker criterio
 
 ## The role, mapped
 
-Deliberate evidence for the Runkeeper Mobile Developer JD ([`docs/EXECUTION_PLAN.md`](docs/EXECUTION_PLAN.md) §8):
+Deliberate evidence for the Runkeeper ([`docs/EXECUTION_PLAN.md`](docs/EXECUTION_PLAN.md) §8):
 
 | JD signal | Evidence |
 |---|---|
